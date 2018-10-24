@@ -1,3 +1,4 @@
+<p>LuxuryWatchShop</p>
 Cấu trúc trang web:
 1.	Trang chủ:
 •	Header:
