@@ -47,6 +47,7 @@
                             </div>
                             <div class="col-lg-12 form-group">
                                 <button type="submit" value="submit" class="btn subs_btn form-control">đăng nhập</button>
+                                <a href="{{ route('loginBySocial',['social'=>'facebook']) }}"></a>
                             </div>
                         </form>
                     </div>
