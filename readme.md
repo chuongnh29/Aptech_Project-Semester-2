@@ -1,4 +1,7 @@
-<p>LuxuryWatchShop</p>
+LuxuryWatchShop
+
+Xây dựng website bán đồng hồ Thụy Sĩ
+
 Cấu trúc trang web:
 1.	Trang chủ:
 •	Header:
