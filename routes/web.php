@@ -28,3 +28,5 @@ Route::get('shopping-cart', ['as' => 'cart', 'uses' => 'PagesController@getCheck
 Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBySocial');
 
 Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+Route::get('admin/index','AdminController@getIndex');
