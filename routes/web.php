@@ -30,3 +30,11 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBy
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 Route::get('admin/index','AdminController@getIndex');
+
+Route::get('admin/getproduct','AdminController@getProductManager');
+
+Route::get('admin/addproduct','AdminController@getAddProduct');
+
+Route::post('admin/products/delete/{id}','ProductController@destroy');
+
+Route::get('admin/products/delete/{id}','ProductController@destroy');
