@@ -8,16 +8,19 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    public function getIndex(){
-    	return view('pages.admin');
+    public function getIndex()
+    {
+        return view('pages.admin');
     }
 
-    public function getProductManager(){
-    	$products = Products::paginate(10);
-    	return view('pages.adminProductManager',['products'=>$products]);
+    public function getProductManager()
+    {
+        $products = Products::paginate(10);
+        return view('pages.adminProductManager', ['products' => $products]);
     }
 
-    public function getAddProduct(){
-    	return view('pages.addProduct');
+    public function getAddProduct()
+    {
+        return view('pages.addProduct');
     }
 }
