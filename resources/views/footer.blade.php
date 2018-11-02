@@ -10,11 +10,15 @@
                             Việt Nam</p>
                         <h6>Social:</h6>
                         <ul>
-                            <li><a href="#"><i class="social_facebook"></i></a></li>
-                            <li><a href="#"><i class="social_twitter"></i></a></li>
-                            <li><a href="#"><i class="social_pinterest"></i></a></li>
-                            <li><a href="#"><i class="social_instagram"></i></a></li>
-                            <li><a href="#"><i class="social_youtube"></i></a></li>
+                            <li><a href="https://www.facebook.com/luxurywatchofficial/"><i class="social_facebook"></i></a>
+                            </li>
+                            <li><a href="https://twitter.com/LuxuryWatch7"><i class="social_twitter"></i></a></li>
+                            <li><a href="https://www.pinterest.com/luxurywatch94/"><i class="social_pinterest"></i></a>
+                            </li>
+                            <li><a href="https://www.instagram.com/luxurywatchvnofficial/"><i
+                                            class="social_instagram"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCXd5TFUJ04Pk9-k8ycbDgRg"><i
+                                            class="social_youtube"></i></a></li>
                         </ul>
                     </aside>
                 </div>
@@ -75,7 +79,7 @@
         <div class="footer_copyright">
             <h5>©
                 <script>document.write(new Date().getFullYear());</script>
-                Copyright by Chuong Nguyen - FPT Aptech | All rights reserved | Contact Us
+                Copyright by CTC Group - FPT Academy International | All rights reserved | Contact Us
             </h5>
         </div>
     </div>

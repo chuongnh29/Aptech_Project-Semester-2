@@ -68,5 +68,17 @@
 <script src="public/source/assets/dest/vendors/vertical-slider/js/jQuery.verticalCarousel.js"></script>
 <script src="public/source/assets/dest/vendors/jquery-ui/jquery-ui.js"></script>
 <script src="public/source/assets/dest/js/theme.js"></script>
+<script>
+    $(document).ready(function ($) {
+        $(window).scroll(function () {
+                if ($(this).scrollTop() > 185) {
+                    $(".nav-menu").addClass('fixNav')
+                } else {
+                    $(".nav-menu").removeClass('fixNav')
+                }
+            }
+        )
+    })
+</script>
 </body>
 </html>

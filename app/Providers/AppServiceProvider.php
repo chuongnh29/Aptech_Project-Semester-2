@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\ProductType;
-use URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        URL::forceScheme('https');
         view()->composer('header', function ($view) {
             $loai_sp_nam = ProductType::where('type', 0)->get();
             $view->with('loai_sp_nam', $loai_sp_nam);
@@ -25,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
             $loai_sp_nu = ProductType::where('type', 1)->get();
             $view1->with('loai_sp_nu', $loai_sp_nu);
         });
+
     }
 
     /**

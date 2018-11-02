@@ -27,24 +27,29 @@
             </div>
             <div class="col-lg-6">
                 <div class="top_header_middle">
-                    <a href="tel:0988211231"><i class="fa fa-phone"></i> Hotline: <span>+84 988 211 231</span></a>
-                    <a href="mailto:chuongnhd00645@fpt.edu.v"><i class="fa fa-envelope"></i> Email: <span>chuongnhd00645@fpt.edu.vn</span></a>
+                    <a href="tel:0988211231"><i class="fa fa-phone"></i> Hotline: <span>+84 988 666 999</span></a>
+                    <a href="mailto:chuongnhd00645@fpt.edu.v"><i class="fa fa-envelope"></i> Email: <span>ctcgroup@fpt.edu.vn</span></a>
                     <a href="{{route('home')}}"><img src="public/source/assets/dest/img/logo.png" alt="" height="74px"
                                                      width="400px"></a>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="top_right_header">
-                    <ul class="header_social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                    </ul>
+                    <li class="account">
+                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+                            Tài khoản của tôi
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="account_selection">
+                            <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
+                                    nhập</a></li>
+                            <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng
+                                    ký</a></li>
+                        </ul>
+                    </li>
                     <ul class="top_right">
-                        <li class="user"><a href="{{route('login')}}"><i class="icon-user icons"></i></a></li>
-                        <li class="cart"><a href="{{route('cart')}}"><i class="icon-handbag icons"></i></a></li>
+                        <li class="cart"><a href="{{route('cart')}}"><i class="icon-handbag icons"><span
+                                            class="cart_quantity">10</span></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -56,13 +61,11 @@
 <!--================Menu Area =================-->
 <header class="shop_header_area">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="public/source/assets/dest/img/logo.png" alt=""></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light nav-menu">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center">
 
                 <ul class="navbar-nav" style="alignment: center;">
@@ -74,10 +77,13 @@
 
                     </li>
                     <li class="nav-item dropdown submenu">
+                        <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Đồng hồ nam
+                        </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nam <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </a>
+                            <span><i class="fa fa-angle-down down_arrow" aria-hidden="true"></i></span></a>
                         <ul class="dropdown-menu">
                             @foreach($loai_sp_nam as $loai)
                                 <li class="nav-item"><a class="nav-link"
@@ -87,10 +93,13 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown submenu">
+                        <a class="nav-link dropdown-toggle" href="{{route('donghonu')}}" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Đồng hồ nữ
+                        </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nữ <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </a>
+                            <span><i class="fa fa-angle-down " aria-hidden="true"></i></span></a>
                         <ul class="dropdown-menu">
                             @foreach($loai_sp_nu as $loai)
                                 <li class="nav-item"><a class="nav-link"
@@ -99,7 +108,8 @@
                             @endforeach
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Giới thiệu</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Giới thiệu</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
                 </ul>
             </div>

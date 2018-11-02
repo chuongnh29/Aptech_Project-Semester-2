@@ -13,7 +13,9 @@
                         <div class="carousel_hover">
                             <h4>{{$sl->name}}</h4>
                             <h3>{{$sl->description}}</h3>
-                            <a class="discover_btn" href="#">khám phá ngay</a>
+                            <a class="discover_btn" href="{{route('producttype', $sl->id_name)}}">khám phá
+                                ngay</a>
+
                         </div>
                     </div>
                 </div>
@@ -38,9 +40,11 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 woman bags">
                             <div class="l_product_item">
                                 <div class="l_p_img">
-                                    <img class="img-fluid" src="public/source/img/product/{{$new->image}}" alt=""
-                                         width="270px"
-                                         height="320px">
+                                    <a href="{{route('detail', $new->id)}}"><img class="img-fluid"
+                                                                                 src="public/source/img/product/{{$new->image}}"
+                                                                                 alt=""
+                                                                                 width="270px"
+                                                                                 height="320px"></a>
                                     <h5 class="new">New</h5>
                                     @if($new->promotion_price != 0)
                                         <h5 class="sale">Sale</h5>
@@ -49,7 +53,8 @@
                                 <div class="l_p_text">
                                     <ul>
                                         <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
-                                        <li><a class="add_cart_btn" href="#">Chi tiết</a></li>
+                                        <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a>
+                                        </li>
                                     </ul>
                                     <h4>{{$new->name}}</h4>
                                     <h5>@if($new->promotion_price != 0)
@@ -80,7 +85,8 @@
                     <div class="item">
                         <div class="l_product_item">
                             <div class="l_p_img">
-                                <img src="public/source/img/product/{{$new->image}}" alt="">
+                                <a href="{{route('detail', $new->id)}}"><img
+                                            src="public/source/img/product/{{$new->image}}" alt=""></a>
                                 @if($new->promotion_price != 0)
                                     <h5 class="sale">Sale</h5>
                                 @endif
@@ -88,7 +94,7 @@
                             <div class="l_p_text">
                                 <ul>
                                     <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
-                                    <li><a class="add_cart_btn" href="#">Chi tiết</a></li>
+                                    <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a></li>
                                 </ul>
                                 <h4>{{$new->name}}</h4>
                                 <h5>@if($new->promotion_price != 0)
@@ -202,7 +208,9 @@
                                                  height="100px" width="70px">
                                         </div>
                                         <div class="media-body">
-                                            <h4>{{$featured->name}}</h4>
+                                            <h4><a style="color: #0b0b0b;"
+                                                   href="{{route('detail', $featured->id)}}">{{$featured->name}}</a>
+                                            </h4>
                                             <h5>$ {{number_format($featured->promotion_price)}}</h5>
                                         </div>
                                     </div>
@@ -221,13 +229,15 @@
                                     <div class="item shoes">
                                         <div class="fillter_product_item bags">
                                             <div class="f_p_img">
-                                                <img src="public/source/img/product/{{$new->image}}" alt="">
+                                                <a href="{{route('detail', $new->id)}}"><img
+                                                            src="public/source/img/product/{{$new->image}}" alt=""></a>
                                                 @if($new->promotion_price != 0)
                                                     <h5 class="sale">Sale</h5>
                                                 @endif
                                             </div>
                                             <div class="f_p_text">
-                                                <h5>{{$new->name}}</h5>
+                                                <h5><a style="color: #0b0b0b; opacity: 0.8;"
+                                                       href="{{route('detail', $new->id)}}">{{$new->name}}</a></h5>
                                                 <h4>@if($new->promotion_price != 0)
                                                         <del>$ {{number_format($new->unit_price)}}</del>
                                                         $ {{number_format($new->promotion_price)}}
@@ -253,7 +263,7 @@
         <div class="container">
             <div class="from_blog_inner">
                 <div class="c_main_title">
-                    <h2>From The Blog</h2>
+                    <h2>REVIEW SẢN PHẨM</h2>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
@@ -261,7 +271,7 @@
                             <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/f-blog-1.jpg"
                                  alt="">
                             <div class="f_blog_text">
-                                <h5>fashion</h5>
+                                <h5>hublot</h5>
                                 <p>Neque porro quisquam est qui dolorem ipsum</p>
                                 <h6>21.09.2017</h6>
                             </div>
@@ -272,7 +282,7 @@
                             <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/f-blog-2.jpg"
                                  alt="">
                             <div class="f_blog_text">
-                                <h5>fashion</h5>
+                                <h5>rolex</h5>
                                 <p>Neque porro quisquam est qui dolorem ipsum</p>
                                 <h6>21.09.2017</h6>
                             </div>
@@ -283,7 +293,7 @@
                             <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/f-blog-3.jpg"
                                  alt="">
                             <div class="f_blog_text">
-                                <h5>fashion</h5>
+                                <h5>tissot</h5>
                                 <p>Neque porro quisquam est qui dolorem ipsum</p>
                                 <h6>21.09.2017</h6>
                             </div>

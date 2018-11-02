@@ -291,7 +291,7 @@ i:before {
 }
 
 .top_header_left {
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .top_header_left .selector {
@@ -335,6 +335,7 @@ i:before {
     background: #fff;
     max-width: 125px;
     width: 100%;
+    border-radius: 5px;
 }
 
 .top_header_left .selector .ddcommon .ddChild ul {
@@ -370,7 +371,7 @@ i:before {
 .top_header_left .input-group {
     display: block;
     position: relative;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .top_header_left .input-group input {
@@ -538,30 +539,92 @@ i:before {
     margin-top: 25px;
 }
 
+.account {
+    display: inline-block;
+    position: relative;
+    min-width: 50px;
+    padding-top: 3px;
+    padding-left: 20px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.account .fa-user {
+    margin-right: 5px;
+}
+
+.account > a {
+    display: block;
+    color: #000;
+    font-weight: 400;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+}
+
+.account > a > i {
+    margin-left: 5px;
+}
+
+.account:hover .account_selection {
+    visibility: visible;
+    opacity: 1;
+    top: 100%;
+}
+
+.account_selection {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 120%;
+    margin: 0;
+    width: 90%;
+    background: #FFFFFF;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.account_selection li {
+    padding-left: 29px;
+    padding-right: 29px;
+    line-height: 45px;
+}
+
+.account_selection li a {
+    display: block;
+    color: #232530;
+    border-bottom: solid 1px #dddddd;
+    font-size: 14px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.account_selection li a:hover {
+    color: #d91522;
+}
+
+.account_selection li:last-child a {
+    border-bottom: none;
+}
+
+.account_selection li a i {
+    margin-right: 10px;
+}
+
 .top_right_header {
     text-align: right;
-}
-
-.header_social li {
-    display: inline-block;
-    margin-right: 14px;
-}
-
-.header_social li a {
-    font-size: 14px;
-    color: #000;
-    line-height: 54px;
-    -webkit-transition: all 400ms linear 0s;
-    -o-transition: all 400ms linear 0s;
-    transition: all 400ms linear 0s;
-}
-
-.header_social li:last-child {
-    margin-right: 0px;
-}
-
-.header_social li:hover a {
-    color: #cccccc;
 }
 
 .top_right {
@@ -586,15 +649,11 @@ i:before {
     margin-right: 15px;
 }
 
-.top_right li.cart {
-    margin-right: -3px;
-}
-
 .top_right li.cart a {
     position: relative;
 }
 
-.top_right li.cart a:before {
+.top_right li.cart a span {
     content: "0";
     height: 20px;
     width: 20px;
@@ -680,7 +739,7 @@ i:before {
 
 .shop_header_area .navbar {
     padding: 0px;
-    background-color: transparent !important;
+    background-color: white !important;
     border-top: 2px solid #d91522;
     border-bottom: 2px solid #d91522;
 }
@@ -864,6 +923,24 @@ i:before {
         transform: scaleY(1);
         visibility: visible;
     }
+}
+
+.submenu a span {
+    position: absolute;
+    right: -15px;
+    top: 0;
+}
+
+.fixNav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*justify-content: center;*/
+    background-color: white;
+    z-index: 100000000;
+    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
 }
 
 /* Main title css
@@ -1576,6 +1653,20 @@ i:before {
     z-index: 3;
 }
 
+.men {
+    background: url(../img/banner/categories-banner-men.jpg) no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+}
+
+.women {
+    background: url(../img/banner/categories-banner-women.jpg) no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+}
+
 .categories_banner_area:before {
     content: "";
     background: rgba(0, 0, 0, 0.5);
@@ -1594,7 +1685,7 @@ i:before {
 
 .c_banner_inner h3 {
     color: #fff;
-    font-size: 24px;
+    font-size: 30px;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     text-transform: uppercase;
@@ -1608,7 +1699,7 @@ i:before {
 }
 
 .c_banner_inner ul li a {
-    font-size: 14px;
+    font-size: 16px;
     color: #cccccc;
     font-family: "Poppins", sans-serif;
     font-weight: normal;
@@ -2739,14 +2830,23 @@ i:before {
 .l_product_item {
     border: 1px solid #cccccc;
     margin-bottom: 30px;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .l_product_item .l_p_img {
     position: relative;
 }
 
+.l_product_item .l_p_img img:hover {
+    background-color: red;
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
 .l_product_item .l_p_img img {
     max-width: 100%;
+    transition: transform 0.8s;
 }
 
 .l_product_item .l_p_text {
@@ -2800,12 +2900,14 @@ i:before {
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
+    /*font-weight: bolder;*/
     color: #000;
     padding-bottom: 5px;
     padding-top: 10px;
     -webkit-transition: all 400ms linear 0s;
     -o-transition: all 400ms linear 0s;
     transition: all 400ms linear 0s;
+    /*text-transform: uppercase;*/
 }
 
 .l_product_item .l_p_text h5 {
@@ -2988,6 +3090,7 @@ i:before {
 .fillter_product_item .f_p_img {
     border: 1px solid #cccccc;
     position: relative;
+    /*transform: scale(1.1);*/
 }
 
 .fillter_product_item .f_p_text {
@@ -3619,8 +3722,8 @@ i:before {
 }
 
 .quantity {
-    margin-top: 30px;
-    margin-bottom: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .quantity .custom {
@@ -3703,11 +3806,11 @@ i:before {
 
 .quantity .add_cart_btn {
     height: 50px;
-    vertical-align: top;
+    /*vertical-align: top;*/
     line-height: 49px;
     border: 1px solid #cccccc;
     padding: 0px 30px;
-    margin-left: 7px;
+    margin-left: 10px;
 }
 
 .shareing_icon h5 {
@@ -5585,7 +5688,7 @@ i:before {
     display: inline-block;
     font-size: 14px;
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 25px;
     -webkit-transition: all 400ms linear 0s;
     -o-transition: all 400ms linear 0s;
@@ -6148,6 +6251,12 @@ i:before {
     letter-spacing: .70px;
     font-weight: 500;
     border-bottom: 1px solid #d6d6d6;
+    transition: 0.1s all;
+}
+
+.l_menufacture_widget ul li a:hover {
+    font-weight: bolder;
+    color: #d91522;
 }
 
 .l_feature_widget .media {
@@ -6232,6 +6341,7 @@ i:before {
     -ms-flex: 0 0 75%;
     flex: 0 0 75%;
     max-width: 31%;
+    /*margin-top: 3px;*/
 }
 
 .showing_fillter .first_fillter h4 {
@@ -6240,15 +6350,17 @@ i:before {
     font-family: "Poppins", sans-serif;
     font-weight: normal;
     text-transform: uppercase;
+    padding-top: 2px;
 }
 
 .showing_fillter .secand_fillter {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 26%;
-    flex: 0 0 26%;
-    max-width: 26%;
+    flex: 0 0 38%;
+    max-width: 38%;
     position: relative;
     top: -3px;
+    text-align: center;
 }
 
 .showing_fillter .secand_fillter h4 {
@@ -6258,14 +6370,15 @@ i:before {
     font-weight: normal;
     display: inline-block;
     text-transform: uppercase;
+    padding-left: 48px;
 }
 
 .showing_fillter .secand_fillter .bootstrap-select {
-    width: 85px !important;
+    width: 183px !important;
     display: inline-block;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     position: relative;
-    top: 4px;
+    /*top: 2px;*/
 }
 
 .showing_fillter .secand_fillter .bootstrap-select .dropdown-toggle {
@@ -6276,18 +6389,19 @@ i:before {
     position: relative;
     cursor: pointer;
     background: transparent;
+    padding-left: 10px;
 }
 
 .showing_fillter .secand_fillter .bootstrap-select .dropdown-toggle span {
     color: #000;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     font-weight: normal;
+    text-align: left;
 }
 
 .showing_fillter .secand_fillter .bootstrap-select .dropdown-toggle:after {
-    content: "\33";
     border: none;
     margin: 0px;
     padding: 0px;
@@ -6308,7 +6422,7 @@ i:before {
 
 .showing_fillter .secand_fillter .bootstrap-select .dropdown-menu .dropdown-menu.inner li a {
     color: #000;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     font-weight: normal;
@@ -6318,87 +6432,87 @@ i:before {
     cursor: pointer;
 }
 
-.showing_fillter .third_fillter {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 26%;
-    flex: 0 0 26%;
-    max-width: 26%;
-    padding-left: 15px;
-    position: relative;
-    top: -3px;
-}
+/*.showing_fillter .third_fillter {*/
+/*-webkit-box-flex: 0;*/
+/*-ms-flex: 0 0 12%;*/
+/*flex: 0 0 12%;*/
+/*max-width: 12%;*/
+/*padding-left: 15px;*/
+/*position: relative;*/
+/*top: -3px;*/
+/*}*/
 
-.showing_fillter .third_fillter h4 {
-    font-size: 14px;
-    color: #999999;
-    font-family: "Poppins", sans-serif;
-    font-weight: normal;
-    display: inline-block;
-    text-transform: uppercase;
-}
+/*.showing_fillter .third_fillter h4 {*/
+/*font-size: 14px;*/
+/*color: #999999;*/
+/*font-family: "Poppins", sans-serif;*/
+/*font-weight: normal;*/
+/*display: inline-block;*/
+/*text-transform: uppercase;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select {
-    width: 70px !important;
-    display: inline-block;
-    text-transform: uppercase;
-    position: relative;
-    top: 4px;
-}
+/*.showing_fillter .third_fillter .bootstrap-select {*/
+/*width: 70px !important;*/
+/*display: inline-block;*/
+/*text-transform: uppercase;*/
+/*position: relative;*/
+/*top: 4px;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select .dropdown-toggle {
-    padding: 0px;
-    outline: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    position: relative;
-    cursor: pointer;
-    background: transparent;
-}
+/*.showing_fillter .third_fillter .bootstrap-select .dropdown-toggle {*/
+/*padding: 0px;*/
+/*outline: none !important;*/
+/*-webkit-box-shadow: none !important;*/
+/*box-shadow: none !important;*/
+/*position: relative;*/
+/*cursor: pointer;*/
+/*background: transparent;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select .dropdown-toggle span {
-    color: #000;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-    font-weight: normal;
-}
+/*.showing_fillter .third_fillter .bootstrap-select .dropdown-toggle span {*/
+/*color: #000;*/
+/*text-transform: uppercase;*/
+/*font-size: 14px;*/
+/*font-family: "Poppins", sans-serif;*/
+/*font-weight: normal;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select .dropdown-toggle:after {
-    border: none;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-    right: 25px;
-    top: -2px;
-}
+/*.showing_fillter .third_fillter .bootstrap-select .dropdown-toggle:after {*/
+/*border: none;*/
+/*margin: 0px;*/
+/*padding: 0px;*/
+/*position: relative;*/
+/*right: 25px;*/
+/*top: -2px;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select .dropdown-menu {
-    margin: 0px;
-    padding: 0px;
-    border-radius: 0px;
-}
+/*.showing_fillter .third_fillter .bootstrap-select .dropdown-menu {*/
+/*margin: 0px;*/
+/*padding: 0px;*/
+/*border-radius: 0px;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select .dropdown-menu .dropdown-menu.inner {
-    display: block;
-}
+/*.showing_fillter .third_fillter .bootstrap-select .dropdown-menu .dropdown-menu.inner {*/
+/*display: block;*/
+/*}*/
 
-.showing_fillter .third_fillter .bootstrap-select .dropdown-menu .dropdown-menu.inner li a {
-    color: #000;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-    font-weight: normal;
-    display: block;
-    padding: 0px 10px;
-    line-height: 35px;
-    cursor: pointer;
-}
+/*.showing_fillter .third_fillter .bootstrap-select .dropdown-menu .dropdown-menu.inner li a {*/
+/*color: #000;*/
+/*text-transform: uppercase;*/
+/*font-size: 14px;*/
+/*font-family: "Poppins", sans-serif;*/
+/*font-weight: normal;*/
+/*display: block;*/
+/*padding: 0px 10px;*/
+/*line-height: 35px;*/
+/*cursor: pointer;*/
+/*}*/
 
 .showing_fillter .four_fillter {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 17%;
-    flex: 0 0 17%;
-    max-width: 17%;
+    -ms-flex: 0 0 29%;
+    flex: 0 0 31%;
+    max-width: 31%;
     text-align: right;
 }
 
