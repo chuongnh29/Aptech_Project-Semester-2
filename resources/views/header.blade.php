@@ -87,7 +87,7 @@
                         <ul class="dropdown-menu">
                             @foreach($loai_sp_nam as $loai)
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('producttype', $loai->id_name)}}">{{$loai->name}}</a>
+                                                        href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -103,7 +103,7 @@
                         <ul class="dropdown-menu">
                             @foreach($loai_sp_nu as $loai)
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('producttype', $loai->id_name)}}">
+                                                        href="{{route('producttype', $loai->name_id)}}">
                                         {{$loai->name}}</a></li>
                             @endforeach
                         </ul>

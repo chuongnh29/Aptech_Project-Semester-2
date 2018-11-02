@@ -34,9 +34,9 @@ class PagesController extends Controller
 
     public function getProductType($type)
     {
-        $sp_theoloai = Products::where('id_type', $type)->get();
-//        $loai_sp_nam = ProductType::where('type', 0)->get();
-        return view('pages.product_type', compact('sp_theoloai'));
+        $sp_theoloai = Products::where('type_id', $type)->get();
+        $loai_sp = ProductType::where('type', 0)->get();
+        return view('pages.product_type', compact('sp_theoloai', 'loai_sp'));
     }
 
     public function getProductDetail(Request $req)

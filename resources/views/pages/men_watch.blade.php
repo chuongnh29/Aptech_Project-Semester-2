@@ -102,7 +102,7 @@
                             </div>
                             <ul>
                                 @foreach($loai_sp_nam as $loai)
-                                    <li><a href="{{route('producttype', $loai->id_name)}}">{{$loai->name}}</a></li>
+                                    <li><a href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a></li>
                                 @endforeach
                             </ul>
                         </aside>
@@ -132,44 +132,39 @@
                                             <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
                                         </ul>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Phone & Accessories
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Electronic Appliance
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Computer & Networking
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">TV, Audiio & Gaming
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Office Supplies
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">All Categories
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </aside>
+
+                            <aside class="l_widgest l_p_categories_widget">
+                                <div class="l_w_title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Men’s Fashion
+                                            <i class="icon_plus" aria-hidden="true"></i>
+                                            <i class="icon_minus-06" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Women’s Fashion
+                                            <i class="icon_plus" aria-hidden="true"></i>
+                                            <i class="icon_minus-06" aria-hidden="true"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li class="nav-item"><a class="nav-link" href="#">Hoodies & Sweatshirts</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Jackets & Coats</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </aside>
+
                             <aside class="l_widgest l_fillter_widget">
                                 <div class="l_w_title">
                                     <h3>Filter section</h3>

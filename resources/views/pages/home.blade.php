@@ -13,7 +13,7 @@
                         <div class="carousel_hover">
                             <h4>{{$sl->name}}</h4>
                             <h3>{{$sl->description}}</h3>
-                            <a class="discover_btn" href="{{route('producttype', $sl->id_name)}}">khám phá
+                            <a class="discover_btn" href="{{route('producttype', $sl->name_id)}}">khám phá
                                 ngay</a>
 
                         </div>

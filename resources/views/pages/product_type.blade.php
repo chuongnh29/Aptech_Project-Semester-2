@@ -48,7 +48,7 @@
                                             <div class="l_p_text">
                                                 <ul>
                                                     <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li><a class="add_cart_btn" href="{{route('detail')}}">Details</a>
+                                                    <li><a class="add_cart_btn" href="{{route('detail', $sp->id)}}">Details</a>
                                                     </li>
                                                 </ul>
                                                 <h4>{{$sp->name}}</h4>
@@ -83,8 +83,9 @@
                                 <h3>Thương hiệu</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Nigel Cabourn.</a></li>
-
+                                @foreach($loai_sp as $loai)
+                                    <li><a href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a></li>
+                                @endforeach
                             </ul>
                         </aside>
                         <div class="categories_sidebar">

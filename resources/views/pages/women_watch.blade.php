@@ -102,7 +102,7 @@
                             </div>
                             <ul>
                                 @foreach($loai_sp_nu as $loai)
-                                    <li><a href="{{route('producttype', $loai->id_name)}}">{{$loai->name}}</a></li>
+                                    <li><a href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a></li>
                                 @endforeach
                             </ul>
                         </aside>
