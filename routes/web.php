@@ -13,9 +13,15 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getIndex']);
 
+Route::get('dong-ho-nam', ['as' => 'donghonam', 'uses' => 'PagesController@getMenWatch']);
+
+Route::get('dong-ho-nu', ['as' => 'donghonu', 'uses' => 'PagesController@getWomenWatch']);
+
 Route::get('products/{type}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
 
 Route::get('product-detail', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
+
+Route::get('about', ['as' => 'about', 'uses' => 'PagesController@getAbout']);
 
 Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@getContact']);
 
