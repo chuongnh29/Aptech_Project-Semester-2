@@ -1,63 +1,95 @@
 <div class="container crud-table">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Manage <b>Employees</b></h2>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>                        
-                    </div>
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><b>Sản phẩm</b></h2>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ route('addProduct') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span></a>
+                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>                        
                 </div>
             </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            <span class="custom-checkbox">
-                                <input type="checkbox" id="selectAll">
-                                <label for="selectAll"></label>
-                            </span>
-                        </th>
-                        <th>Img</th>
-                        <th>Name</th>
-                        <th>Unit price</th>
-                        <th>Sale price</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($products as $product)
-                    <tr>
-                        <td>
-                            <span class="custom-checkbox">
-                                <input type="checkbox" id="checkbox1" name="options[]" value="{{ $product->id }}">
-                                <label for="checkbox1"></label>
-                            </span>
-                        </td>
-                        <td><img src="../public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->unit_price }} VND</td>
-                        <td>{{ $product->promotion_price }} VND</td>
-                        <td>{{ $product->description }}</td>
-                        <td class="edit-delete-block">
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="javascript:void(0)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            <input type="hidden" name="id" value="{{ $product->id }}">
-                        </td>
-                    </tr>
-                     @endforeach
-                </tbody>
-            </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                {{ $products->onEachSide(1)->links() }}
-            </div>
-        </div>
+            <div class="row search-product-form">
+                <div class="col">
+                    <form class="form-inline" action="{{ route('product') }}" method="get">
+                      <label class="sr-only" for="inlineFormInputName2">Name</label>
+                      <input type="text" name="textSearch" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+
+                      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                        
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="searchType" id="inlineRadio1" value="1" @if($type == 1) checked @endif>
+                          <label class="form-check-label" for="inlineRadio1">Tên sản phẩm</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="searchType" id="inlineRadio2" value="2" @if($type == 2) checked @endif>
+                          <label class="form-check-label" for="inlineRadio2">Tên thương hiệu</label>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary mb-2">Search</button>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="selectAll">
+                        <label for="selectAll"></label>
+                    </span>
+                </th>
+                <th>Ảnh</th>
+                <th>Tên <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
+                <th>Thương hiệu
+                    <select>
+                        
+                      <option value="volvo" onselect="">tesst</option>
+                        
+                    </select> 
+                </th>
+                <th style="width: 8rem;">Giá bán <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
+                <th style="width: 8rem;">Giá sale <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
+                <th>Mô tả</th>
+                <th>Trạng thái hàng</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($products as $product)
+            <tr>
+                <td>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="checkbox1" name="options[]" value="{{ $product->id }}">
+                        <label for="checkbox1"></label>
+                    </span>
+                </td>
+                <td><img src="public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->name_type }}</td>
+                <td>{{ $product->unit_price }} VND</td>
+                <td>{{ $product->promotion_price }} VND</td>
+                <td>{{ $product->description }}</td>
+                <td>{{ $product->product_status }}</td>
+                <td class="edit-delete-block">
+                    <a href="#editEmployeeModal" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                    <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                    <input type="hidden" name="name" value="{{ $product->name }}">
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        {{ $products->onEachSide(1)->links() }}
     </div>
-    <!-- Edit Modal HTML -->
+</div>
+</div>
+<!-- Edit Modal HTML -->
     <!-- <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -13,9 +13,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -83,13 +83,9 @@ class ProductController extends Controller
     {   
         $sanPham = Products::where('id',$id)->first();
         if($sanPham != null){
-            Products::where('id',$id)->delete();
+            // Products::where('id',$id)->delete();
         }
         $products = Products::paginate(10);
-        $view = view('crudProduct',['products'=>$products])->render();
-        return response()->json([
-            'status'=>'delete success',
-            'product'=>$view,
-        ]);
+        return redirect()->route('product');
     }
 }
