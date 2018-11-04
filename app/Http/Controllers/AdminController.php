@@ -54,7 +54,20 @@ class AdminController extends Controller
     }
 
     public function getAddProduct(){
-    	return view('pages.addProduct');
+        $loaiDay = LoaiDay::all();
+        $error = collect([]);
+        $loaiVo = LoaiVo::all();
+        $trangThaiSanPham = TrangThaiSanPham::all();
+        $thuongHieu = DB::table('type_products')->groupBy('id_name')->get();
+        $gioiTinh = DB::table('type_products')->groupBy('type')->get();
+    	return view('pages.addProduct',[
+    	    'loaiDay'=>$loaiDay,
+            'loaiVo'=>$loaiVo,
+            'trangThaiSP'=>$trangThaiSanPham,
+            'thuongHieu'=>$thuongHieu,
+            'gioiTinh'=>$gioiTinh,
+            'errors'=>$error
+        ]);
     }
 
     public function timKiemSanPham($request){

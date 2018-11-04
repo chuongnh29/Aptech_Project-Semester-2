@@ -1,5 +1,6 @@
 <div class="container crud-table">
   <div class="table-wrapper">
+      <form action="{{ route('addProduct') }}" method="post">
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
@@ -7,29 +8,40 @@
         </div>
         <div class="col-sm-6">
           
-          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm ảnh</span></a>
+          {{--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm ảnh</span></a>--}}
           <!-- <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>  -->                       
         </div>
       </div>
     </div>
-   <form>
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li style="color: red;">{{ $error }}</li>
+              @endforeach
+          </ul>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Tên sản phẩm">
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Bắt buộc nhập">
       </div>
       <div class="form-group col-md-4">
         <label for="inputPassword4">Thương hiệu</label>
         <select id="inputState" class="form-control">
-          <option selected>Chọn...</option>
-          <option>...</option>
+          <option selected>Bắt buộc chọn</option>
+            @foreach($thuongHieu as $brand)
+                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+            @endforeach
         </select>
       </div>
       <div class="form-group col-md-4">
         <label for="inputState">Giới tính</label>
         <select id="inputState" class="form-control">
-          <option selected>Chọn...</option>
-          <option>...</option>
+          <option selected>Bắt buộc chọn</option>
+            @foreach($gioiTinh as $gender)
+                @if($gender->type == 0)<option value="{{ $gender->type }}">Nam</option>
+                @else
+                    <option value="{{ $gender->type }}">Nữ</option>
+                @endif
+            @endforeach
         </select>
       </div>
     </div>
@@ -37,46 +49,63 @@
        <div class="form-group col-md-4">
            <label for="inputPassword4">Loại dây</label>
            <select id="inputState" class="form-control">
-               <option selected>Chọn...</option>
-               <option>...</option>
+               <option selected>Bắt buộc chọn</option>
+               @foreach($loaiDay as $day)
+                   <option value="{{ $day->id }}">{{ $day->ten_loai_day }}</option>
+               @endforeach
            </select>
        </div>
 
        <div class="form-group col-md-4">
            <label for="inputPassword4">Loại vỏ</label>
            <select id="inputState" class="form-control">
-               <option selected>Chọn...</option>
-               <option>...</option>
+               <option selected>Bắt buộc chọn</option>
+               @foreach($loaiVo as $vo)
+                   <option value="{{ $vo->id }}">{{ $vo->ten_loai_vo }}</option>
+               @endforeach
            </select>
        </div>
        <div class="form-group col-md-4">
-           <label for="inputCity">Giá gốc</label>
-           <input type="text" class="form-control" id="inputCity">
+           <label for="inputPassword4">Trạng thái sản phẩm</label>
+           <select id="inputState" class="form-control">
+               <option selected>Bắt buộc chọn</option>
+               @foreach($trangThaiSP as $trangThai)
+                   <option value="{{ $trangThai->id }}">{{ $trangThai->ten_trang_thai }}</option>
+               @endforeach
+           </select>
        </div>
    </div>
    <div class="form-row">
        <div class="form-group col-md-4">
-           <label for="inputCity">Giá sale</label>
-           <input type="text" class="form-control" id="inputCity">
+           <label for="inputCity">Giá gốc</label>
+           <input type="text" class="form-control" id="inputCity" placeholder="Bắt buộc nhập">
        </div>
 
-       <div class="form-group col-md-8">
+       <div class="form-group col-md-4">
+           <label for="inputAddress">Giá sale</label>
+           <input type="text" class="form-control" id="inputAddress" placeholder="Bắt buộc nhập">
+       </div>
+
+       <div class="form-group col-md-4">
            <label for="inputAddress">Mô tả ngắn</label>
            <input type="text" class="form-control" id="inputAddress" placeholder="Viết vào đây...">
        </div>
    </div>
+      <div class="form-group">
+          <label for="exampleFormControlFile1">Thêm ảnh</label>
+          <input type="file" required="true" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
+      </div>
     <div class="form-group">
       <label for="inputAddress2">Bài viết</label>
-      <textarea name="productPost" id="productReview" style="min-height: 400px;"></textarea>
+      <textarea name="productPost" id="productReview"></textarea>
     </div>
     
     <button type="submit" class="btn btn-primary">Thêm</button>
-  </form>
+
     <!-- Edit Modal HTML -->
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
                     <div class="modal-header">                      
                         <h4 class="modal-title">Thêm ảnh</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -103,10 +132,13 @@
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                         <input type="submit" class="btn btn-success" value="Add">
                     </div>
-                </form>
             </div>
+
         </div>
+
       </div>
+      </form>
+  </div>
       <!-- Edit Modal HTML -->
     <!-- <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">

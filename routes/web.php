@@ -38,3 +38,5 @@ Route::get('admin/addproduct','AdminController@getAddProduct')->name('addProduct
 Route::post('admin/products/delete/{id}','ProductController@destroy');
 
 Route::get('admin/products/delete/{id}','ProductController@destroy')->name('delete');
+
+Route::post('admin/products/add','ProductController@create')->name('addProduct');
