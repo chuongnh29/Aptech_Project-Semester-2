@@ -47,8 +47,8 @@
                                             </div>
                                             <div class="l_p_text">
                                                 <ul>
-                                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li><a class="add_cart_btn" href="{{route('detail', $sp->id)}}">Details</a>
+                                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                                    <li><a class="add_cart_btn" href="{{route('detail', $sp->id)}}">Chi tiết</a>
                                                     </li>
                                                 </ul>
                                                 <h4>{{$sp->name}}</h4>

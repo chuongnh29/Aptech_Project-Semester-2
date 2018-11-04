@@ -10,14 +10,17 @@
                             Việt Nam</p>
                         <h6>Social:</h6>
                         <ul>
-                            <li><a href="https://www.facebook.com/luxurywatchofficial/"><i class="social_facebook"></i></a>
+                            <li><a target="_blank" href="https://www.facebook.com/luxurywatchofficial/"><i
+                                            class="social_facebook"></i></a>
                             </li>
-                            <li><a href="https://twitter.com/LuxuryWatch7"><i class="social_twitter"></i></a></li>
-                            <li><a href="https://www.pinterest.com/luxurywatch94/"><i class="social_pinterest"></i></a>
+                            <li><a target="_blank" href="https://twitter.com/LuxuryWatch7"><i
+                                            class="social_twitter"></i></a></li>
+                            <li><a target="_blank" href="https://www.pinterest.com/luxurywatch94/"><i
+                                            class="social_pinterest"></i></a>
                             </li>
-                            <li><a href="https://www.instagram.com/luxurywatchvnofficial/"><i
+                            <li><a target="_blank" href="https://www.instagram.com/luxurywatchvnofficial/"><i
                                             class="social_instagram"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCXd5TFUJ04Pk9-k8ycbDgRg"><i
+                            <li><a target="_blank" href="https://www.youtube.com/channel/UCXd5TFUJ04Pk9-k8ycbDgRg"><i
                                             class="social_youtube"></i></a></li>
                         </ul>
                     </aside>

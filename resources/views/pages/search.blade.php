@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Đồng hồ nam
+    Tìm kiếm
 @endsection
 
 @section('content')
@@ -9,11 +9,10 @@
     <section class="categories_banner_area men">
         <div class="container">
             <div class="c_banner_inner">
-                <h3>đồng hồ nam</h3>
+                <h3>Tìm kiếm</h3>
                 <ul>
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
-                    <li><a href="#">Sản phẩm</a></li>
-                    <li class="current"><a href="#">Đồng hồ nam</a></li>
+                    <li class="current"><a href="#">Tìm kiếm</a></li>
                 </ul>
             </div>
         </div>
@@ -29,7 +28,7 @@
                         <div class="showing_fillter">
                             <div class="row m0">
                                 <div class="first_fillter">
-                                    <h4>Hiện có {{count($sp_nam)}} sản phẩm</h4>
+                                    <h4>Tìm thấy {{count($product)}} sản phẩm</h4>
                                 </div>
                                 <div class="secand_fillter">
                                     <h4>SẮP XẾP THEO:</h4>
@@ -51,31 +50,31 @@
                         </div>
                         <div class="categories_product_area">
                             <div class="row">
-                                @foreach($sp_nam as $nam)
+                                @foreach($product as $loai)
                                     <div class="col-lg-4 col-sm-6">
                                         <div class="l_product_item">
                                             <div class="l_p_img">
-                                                <img src="public/source/img/product/{{$nam->image}}" alt=""
+                                                <img src="public/source/img/product/{{$loai->image}}" alt=""
                                                      width="270px"
                                                      height="320px">
                                                 <h5 class="new">New</h5>
-                                                @if($nam->promotion_price != 0)
+                                                @if($loai->promotion_price != 0)
                                                     <h5 class="sale">Sale</h5>
                                                 @endif
                                             </div>
                                             <div class="l_p_text">
                                                 <ul>
                                                     <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
-                                                    <li><a class="add_cart_btn" href="{{route('detail', $nam->id)}}">Chi
+                                                    <li><a class="add_cart_btn" href="{{route('detail', $loai->id)}}">Chi
                                                             tiết</a>
                                                     </li>
                                                 </ul>
-                                                <h4>{{$nam->name}}</h4>
-                                                <h5>@if($nam->promotion_price != 0)
-                                                        <del>$ {{number_format($nam->unit_price)}}</del>
-                                                        $ {{number_format($nam->promotion_price)}}
+                                                <h4>{{$loai->name}}</h4>
+                                                <h5>@if($loai->promotion_price != 0)
+                                                        <del>$ {{number_format($loai->unit_price)}}</del>
+                                                        $ {{number_format($loai->promotion_price)}}
                                                     @else
-                                                        $ {{number_format($nam->unit_price)}}
+                                                        $ {{number_format($loai->unit_price)}}
                                                     @endif
                                                 </h5>
                                             </div>
@@ -101,7 +100,7 @@
                                 <h3>Thương hiệu</h3>
                             </div>
                             <ul>
-                                @foreach($loai_sp_nam as $loai)
+                                @foreach($loai_sp as $loai)
                                     <li><a href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a></li>
                                 @endforeach
                             </ul>
