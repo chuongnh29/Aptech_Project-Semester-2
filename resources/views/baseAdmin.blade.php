@@ -33,8 +33,8 @@
   <body id="page-top">
 
     @yield('content')
-    
-    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+
+    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
     <script src="admin/vendor/jquery/jquery.min.js"></script>
     <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

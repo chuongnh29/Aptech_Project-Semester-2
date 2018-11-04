@@ -19,7 +19,7 @@
         <input type="email" class="form-control" id="inputEmail4" placeholder="Tên sản phẩm">
       </div>
       <div class="form-group col-md-4">
-        <label for="inputPassword4">Category</label>
+        <label for="inputPassword4">Thương hiệu</label>
         <select id="inputState" class="form-control">
           <option selected>Chọn...</option>
           <option>...</option>
@@ -33,24 +33,41 @@
         </select>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">Giá gốc</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      
-      <div class="form-group col-md-6">
-        <label for="inputZip">Giá sale</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputAddress">Mô tả ngắn</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Viết vào đây...">
-    </div>
+   <div class="form-row">
+       <div class="form-group col-md-4">
+           <label for="inputPassword4">Loại dây</label>
+           <select id="inputState" class="form-control">
+               <option selected>Chọn...</option>
+               <option>...</option>
+           </select>
+       </div>
+
+       <div class="form-group col-md-4">
+           <label for="inputPassword4">Loại vỏ</label>
+           <select id="inputState" class="form-control">
+               <option selected>Chọn...</option>
+               <option>...</option>
+           </select>
+       </div>
+       <div class="form-group col-md-4">
+           <label for="inputCity">Giá gốc</label>
+           <input type="text" class="form-control" id="inputCity">
+       </div>
+   </div>
+   <div class="form-row">
+       <div class="form-group col-md-4">
+           <label for="inputCity">Giá sale</label>
+           <input type="text" class="form-control" id="inputCity">
+       </div>
+
+       <div class="form-group col-md-8">
+           <label for="inputAddress">Mô tả ngắn</label>
+           <input type="text" class="form-control" id="inputAddress" placeholder="Viết vào đây...">
+       </div>
+   </div>
     <div class="form-group">
       <label for="inputAddress2">Bài viết</label>
-      <textarea id="productReview" style="min-height: 400px;"></textarea>
+      <textarea name="productPost" id="productReview" style="min-height: 400px;"></textarea>
     </div>
     
     <button type="submit" class="btn btn-primary">Thêm</button>

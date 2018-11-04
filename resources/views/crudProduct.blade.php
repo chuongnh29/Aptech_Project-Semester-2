@@ -10,50 +10,81 @@
                     <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>                        
                 </div>
             </div>
-            <div class="row search-product-form">
-                <div class="col">
-                    <form class="form-inline" action="{{ route('product') }}" method="get">
-                      <label class="sr-only" for="inlineFormInputName2">Name</label>
-                      <input type="text" name="textSearch" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
 
-                      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-                        
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="searchType" id="inlineRadio1" value="1" @if($type == 1) checked @endif>
-                          <label class="form-check-label" for="inlineRadio1">Tên sản phẩm</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="searchType" id="inlineRadio2" value="2" @if($type == 2) checked @endif>
-                          <label class="form-check-label" for="inlineRadio2">Tên thương hiệu</label>
-                      </div>
-
-                      <button type="submit" class="btn btn-primary mb-2">Search</button>
-                  </form>
-
-              </div>
-          </div>
       </div>
-      <table class="table table-striped table-hover">
+        <form action="{{ route('product') }}" method="get">
+            <input type="hidden" name="type" value="timKiem">
+            <div class="form-row">
+                <div class=""></div>
+                <div class="form-group col-md-4">
+                    <label for="inputEmail4">Tên sản phẩm</label>
+                    <input type="textSearch" class="form-control" id="inputEmail4" placeholder="Nhập tên sản phẩm" name="textSearch">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Thương hiệu</label>
+                    <select id="inputState" class="form-control" name="thuongHieu">
+                        <option value="none" selected>Có thể chọn</option>
+                        @foreach($thuongHieu as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+            </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Giới tính</label>
+                    <select id="inputState" class="form-control" name="gioiTinh">
+                        <option value="none" selected>Có thể chọn</option>
+                        @foreach($gioiTinh as $gender)
+                            @if($gender->type == 0)<option value="{{ $gender->type }}">Nam</option>
+                            @else
+                                <option value="{{ $gender->type }}">Nữ</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputCity">Loại dây</label>
+                    <select id="inputState" class="form-control" name="loaiDay">
+                        <option value="none" selected>Có thể chọn</option>
+                        @foreach($loaiDay as $day)
+                        <option value="{{ $day->id }}">{{ $day->ten_loai_day }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Loại vỏ</label>
+                    <select id="inputState" class="form-control" name="loaiVo">
+                        <option value="none" selected>Có thể chọn</option>
+                        @foreach($loaiVo as $vo)
+                            <option value="{{ $vo->id }}">{{ $vo->ten_loai_vo }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Trạng thái sản phẩm</label>
+                    <select id="inputState" class="form-control" name="trangThaiSP">
+                        <option value="none" selected>Có thể chọn</option>
+                        @foreach($trangThaiSP as $trangThai)
+                            <option value="{{ $trangThai->id }}">{{ $trangThai->ten_trang_thai }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </form>
+      <table class="table table-striped table-hover" style="margin-top: 50px;">
         <thead>
             <tr>
-                <th>
-                    <span class="custom-checkbox">
-                        <input type="checkbox" id="selectAll">
-                        <label for="selectAll"></label>
-                    </span>
-                </th>
+
                 <th>Ảnh</th>
                 <th>Tên <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
-                <th>Thương hiệu
-                    <select>
-                        
-                      <option value="volvo" onselect="">tesst</option>
-                        
-                    </select> 
-                </th>
+                <th>Thương hiệu</th>
+                <th>Giới tính</th>
                 <th style="width: 8rem;">Giá bán <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
                 <th style="width: 8rem;">Giá sale <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
-                <th>Mô tả</th>
+                <th>Loại dây</th>
+                <th>Loại vỏ</th>
                 <th>Trạng thái hàng</th>
                 <th>Actions</th>
             </tr>
@@ -61,18 +92,19 @@
         <tbody>
             @foreach($products as $product)
             <tr>
-                <td>
-                    <span class="custom-checkbox">
-                        <input type="checkbox" id="checkbox1" name="options[]" value="{{ $product->id }}">
-                        <label for="checkbox1"></label>
-                    </span>
-                </td>
+
                 <td><img src="public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->name_type }}</td>
+                @if($product->gender == 0)
+                    <td>Nam</td>
+                @else
+                    <td>Nữ</td>
+                @endif
                 <td>{{ $product->unit_price }} VND</td>
                 <td>{{ $product->promotion_price }} VND</td>
-                <td>{{ $product->description }}</td>
+                <td>{{ $product->loai_day }}</td>
+                <td>{{ $product->loai_vo }}</td>
                 <td>{{ $product->product_status }}</td>
                 <td class="edit-delete-block">
                     <a href="#editEmployeeModal" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>

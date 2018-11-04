@@ -83,9 +83,8 @@ class ProductController extends Controller
     {   
         $sanPham = Products::where('id',$id)->first();
         if($sanPham != null){
-            // Products::where('id',$id)->delete();
+             Products::where('id',$id)->delete();
         }
-        $products = Products::paginate(10);
         return redirect()->route('product');
     }
 }
