@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductType extends Model
 {
-    protected $table = "type_products";
+    protected $table = "product_types";
 
     public function product()
     {
-        return $this->hasMany('app/Products', 'id_type','id');
+        return $this->hasMany('app/Products', 'type_id','id');
     }
 }

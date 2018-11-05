@@ -1,6 +1,7 @@
 <div class="container crud-table">
   <div class="table-wrapper">
       <form action="{{ route('addProduct') }}" method="post">
+          {{ csrf_field() }}
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
@@ -13,20 +14,24 @@
         </div>
       </div>
     </div>
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li style="color: red;">{{ $error }}</li>
-              @endforeach
-          </ul>
+
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Bắt buộc nhập">
+        <input type="" class="form-control" id="" name="tenSP" placeholder="Bắt buộc nhập">
       </div>
       <div class="form-group col-md-4">
         <label for="inputPassword4">Thương hiệu</label>
-        <select id="inputState" class="form-control">
-          <option selected>Bắt buộc chọn</option>
+        <select id="inputState" class="form-control" name="thuongHieu">
             @foreach($thuongHieu as $brand)
                 <option value="{{ $brand->id }}">{{ $brand->name }}</option>
             @endforeach
@@ -34,8 +39,7 @@
       </div>
       <div class="form-group col-md-4">
         <label for="inputState">Giới tính</label>
-        <select id="inputState" class="form-control">
-          <option selected>Bắt buộc chọn</option>
+        <select id="inputState" class="form-control" name="gioiTinh">
             @foreach($gioiTinh as $gender)
                 @if($gender->type == 0)<option value="{{ $gender->type }}">Nam</option>
                 @else
@@ -48,8 +52,7 @@
    <div class="form-row">
        <div class="form-group col-md-4">
            <label for="inputPassword4">Loại dây</label>
-           <select id="inputState" class="form-control">
-               <option selected>Bắt buộc chọn</option>
+           <select id="inputState" class="form-control" name="loaiDay">
                @foreach($loaiDay as $day)
                    <option value="{{ $day->id }}">{{ $day->ten_loai_day }}</option>
                @endforeach
@@ -58,8 +61,7 @@
 
        <div class="form-group col-md-4">
            <label for="inputPassword4">Loại vỏ</label>
-           <select id="inputState" class="form-control">
-               <option selected>Bắt buộc chọn</option>
+           <select id="inputState" class="form-control" name="loaiVo">
                @foreach($loaiVo as $vo)
                    <option value="{{ $vo->id }}">{{ $vo->ten_loai_vo }}</option>
                @endforeach
@@ -67,8 +69,7 @@
        </div>
        <div class="form-group col-md-4">
            <label for="inputPassword4">Trạng thái sản phẩm</label>
-           <select id="inputState" class="form-control">
-               <option selected>Bắt buộc chọn</option>
+           <select id="inputState" class="form-control" name="trangThaiSP">
                @foreach($trangThaiSP as $trangThai)
                    <option value="{{ $trangThai->id }}">{{ $trangThai->ten_trang_thai }}</option>
                @endforeach
@@ -78,12 +79,12 @@
    <div class="form-row">
        <div class="form-group col-md-4">
            <label for="inputCity">Giá gốc</label>
-           <input type="text" class="form-control" id="inputCity" placeholder="Bắt buộc nhập">
+           <input type="text" class="form-control" id="inputCity" placeholder="Bắt buộc nhập" name="giaGoc">
        </div>
 
        <div class="form-group col-md-4">
            <label for="inputAddress">Giá sale</label>
-           <input type="text" class="form-control" id="inputAddress" placeholder="Bắt buộc nhập">
+           <input type="text" class="form-control" id="inputAddress" placeholder="Bắt buộc nhập" name="giaSale">
        </div>
 
        <div class="form-group col-md-4">
@@ -103,40 +104,40 @@
     <button type="submit" class="btn btn-primary">Thêm</button>
 
     <!-- Edit Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                    <div class="modal-header">                      
-                        <h4 class="modal-title">Thêm ảnh</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">                    
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
-                        </div>                  
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
-                    </div>
-            </div>
+    {{--<div id="addEmployeeModal" class="modal fade">--}}
+        {{--<div class="modal-dialog">--}}
+            {{--<div class="modal-content">--}}
+                    {{--<div class="modal-header">                      --}}
+                        {{--<h4 class="modal-title">Thêm ảnh</h4>--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-body">                    --}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Name</label>--}}
+                            {{--<input type="text" class="form-control" required>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Email</label>--}}
+                            {{--<input type="email" class="form-control" required>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Address</label>--}}
+                            {{--<textarea class="form-control" required></textarea>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Phone</label>--}}
+                            {{--<input type="text" class="form-control" required>--}}
+                        {{--</div>                  --}}
+                    {{--</div>--}}
+                    {{--<div class="modal-footer">--}}
+                        {{--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">--}}
+                        {{--<input type="submit" class="btn btn-success" value="Add">--}}
+                    {{--</div>--}}
+            {{--</div>--}}
 
-        </div>
+        {{--</div>--}}
 
-      </div>
+      {{--</div>--}}
       </form>
   </div>
       <!-- Edit Modal HTML -->

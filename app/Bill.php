@@ -10,11 +10,11 @@ class Bill extends Model
 
     public function bill_detail()
     {
-        return $this->hasMany('App\BillDetail', 'id_bill', 'id');
+        return $this->hasMany('App\BillDetail', 'bill_id', 'id');
     }
 
     public function bill()
     {
-        return $this->belongsTo('App\Customer', 'id_customer', "id");
+        return $this->belongsTo('App\Customer', 'customer_id', "id");
     }
 }

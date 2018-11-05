@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <base href="{{ asset('') }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,14 +24,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Custom styles for this template-->
+
     <link href="admin/css/sb-admin.css" rel="stylesheet">
     <link href="admin/css/MyCSS.css" rel="stylesheet">
-    
 
-  </head>
 
-  <body id="page-top">
 
+</head>
+<body>
     @yield('content')
 
     <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
@@ -42,7 +42,7 @@
     <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Page level plugin JavaScript-->
-    <!-- <script src="admin/vendor/chart.js/Chart.min.js"></script> -->
+    <script src="admin/vendor/chart.js/Chart.min.js"></script>
     <script src="admin/vendor/datatables/jquery.dataTables.js"></script>
     <script src="admin/vendor/datatables/dataTables.bootstrap4.js"></script>
 
@@ -51,7 +51,7 @@
 
     <!-- Demo scripts for this page-->
     <script src="admin/js/demo/datatables-demo.js"></script>
-    <!-- <script src="admin/js/demo/chart-area-demo.js"></script> -->
+    <script src="admin/js/demo/chart-area-demo.js"></script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script> -->

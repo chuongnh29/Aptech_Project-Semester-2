@@ -13,9 +13,15 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getIndex']);
 
+Route::get('dong-ho-nam', ['as' => 'donghonam', 'uses' => 'PagesController@getMenWatch']);
+
+Route::get('dong-ho-nu', ['as' => 'donghonu', 'uses' => 'PagesController@getWomenWatch']);
+
 Route::get('products/{type}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
 
 Route::get('product-detail', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
+
+Route::get('about', ['as' => 'about', 'uses' => 'PagesController@getAbout']);
 
 Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@getContact']);
 
@@ -33,7 +39,7 @@ Route::get('admin/index','AdminController@getIndex')->name('adminIndex');
 
 Route::get('admin/getproduct','AdminController@getProductManager')->name('product');
 
-Route::get('admin/addproduct','AdminController@getAddProduct')->name('addProduct');
+Route::get('admin/addproduct','AdminController@getAddProduct')->name('addProductForm');
 
 Route::post('admin/products/delete/{id}','ProductController@destroy');
 

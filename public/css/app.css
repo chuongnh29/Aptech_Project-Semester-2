@@ -447,7 +447,10 @@ hr {
 
 .img-fluid, .img-thumbnail {
     max-width: 100%;
-    /*height: auto*/
+}
+
+.img-fluid, .img-thumbnail:hover {
+    background-color: #1b2a47;
 }
 
 .img-thumbnail {

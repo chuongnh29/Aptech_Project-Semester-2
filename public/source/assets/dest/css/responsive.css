@@ -38,7 +38,7 @@
         margin-left: 18px;
     }
     .shop_header_area .navbar .navbar-nav li {
-        margin-right: 15px; 
+        margin-right: 60px;
     }
     .l_p_text .add_cart_btn{
         padding: 0px 10px;
@@ -109,6 +109,12 @@
     }
 }
 @media (max-width: 991px){
+    .submenu a span {
+        position: absolute;
+        right: 15px;
+        top: 0;
+        font-size: 25px;
+    }
     .shop_header_area .navbar .navbar-brand {
         display: inline-block;
         padding-top: 0px;
@@ -351,6 +357,13 @@
     }
 }
 @media (max-width: 799px){
+    .submenu a span {
+        position: absolute;
+        right: 15px;
+        top: 0;
+        font-size: 25px;
+    }
+
     .home_carousel_slider .h_carousel_item .carousel_hover {
         left: 50%;
         top: 50%;
@@ -376,6 +389,12 @@
     }
 }
 @media (max-width: 767px){
+    .submenu a span {
+        position: absolute;
+        right: 0;
+        font-size: 25px;
+
+    }
     .p_list_text {
         padding-left: 10px;
         padding-top: 0px;

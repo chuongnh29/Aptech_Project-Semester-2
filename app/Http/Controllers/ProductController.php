@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddProductRequest;
+use Validator;
+use Illuminate\Support\Facades\Redirect;
 use App\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,22 +26,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(AddProductRequest $request)
     {
 
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -87,4 +78,6 @@ class ProductController extends Controller
         }
         return redirect()->route('product');
     }
+
+
 }

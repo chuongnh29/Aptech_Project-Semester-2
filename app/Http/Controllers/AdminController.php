@@ -40,7 +40,14 @@ class AdminController extends Controller
         }
 
     	if($products == null){
-    		$products = Products::paginate(5);
+            $products = DB::table('products')
+                ->join('type_products','products.id_type','=','type_products.id')
+                ->join('loai_day_models','products.id_loai_day','=','loai_day_models.id')
+                ->join('loai_vo_models','products.id_loai_vo','=','loai_vo_models.id')
+                ->join('trang_thai_san_pham_models','products.id_trang_thai','=','trang_thai_san_pham_models.id')
+                ->select('products.id','products.name', 'type_products.name as name_type',
+                    'products.image', 'products.unit_price','products.promotion_price','products.description','trang_thai_san_pham_models.ten_trang_thai as product_status',
+                    'loai_day_models.ten_loai_day as loai_day', 'loai_vo_models.ten_loai_vo as loai_vo', 'type_products.type as gender')->paginate(5);
     	}
     	$products->withPath($url);
     	return view('pages.adminProductManager',[
@@ -55,7 +62,6 @@ class AdminController extends Controller
 
     public function getAddProduct(){
         $loaiDay = LoaiDay::all();
-        $error = collect([]);
         $loaiVo = LoaiVo::all();
         $trangThaiSanPham = TrangThaiSanPham::all();
         $thuongHieu = DB::table('type_products')->groupBy('id_name')->get();
@@ -65,8 +71,7 @@ class AdminController extends Controller
             'loaiVo'=>$loaiVo,
             'trangThaiSP'=>$trangThaiSanPham,
             'thuongHieu'=>$thuongHieu,
-            'gioiTinh'=>$gioiTinh,
-            'errors'=>$error
+            'gioiTinh'=>$gioiTinh
         ]);
     }
 

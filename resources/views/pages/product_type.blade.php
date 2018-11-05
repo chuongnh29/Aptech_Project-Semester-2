@@ -14,29 +14,25 @@
                         <div class="showing_fillter">
                             <div class="row m0">
                                 <div class="first_fillter">
-                                    <h4>Showing 1 to 12 of 30 total</h4>
+                                    <h4>Hiện có {{count($sp_theoloai)}} sản phẩm</h4>
                                 </div>
                                 <div class="secand_fillter">
-                                    <h4>SORT BY :</h4>
+                                    <h4>SẮP XẾP THEO:</h4>
                                     <select class="selectpicker">
-                                        <option>Name</option>
-                                        <option>Name 2</option>
-                                        <option>Name 3</option>
+                                        <option>Giá giảm dần</option>
+                                        <option>Giá tăng dần</option>
+                                        <option>Tên sản phẩm (từ A - Z)</option>
+                                        <option>Tên sản phẩm (từ Z - A)</option>
                                     </select>
                                 </div>
                                 <div class="third_fillter">
-                                    <h4>Show : </h4>
-                                    <select class="selectpicker">
-                                        <option>09</option>
-                                        <option>10</option>
-                                        <option>10</option>
-                                    </select>
                                 </div>
                                 <div class="four_fillter">
-                                    <h4>View</h4>
+                                    <h4>HIỂN THỊ:</h4>
                                     <a class="active" href="#"><i class="icon_grid-2x2"></i></a>
                                     <a href="#"><i class="icon_grid-3x3"></i></a>
                                 </div>
+
                             </div>
                         </div>
                         <div class="categories_product_area">
@@ -52,7 +48,7 @@
                                             <div class="l_p_text">
                                                 <ul>
                                                     <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                                    <li><a class="add_cart_btn" href="{{route('detail')}}">Details</a>
+                                                    <li><a class="add_cart_btn" href="{{route('detail', $sp->id)}}">Details</a>
                                                     </li>
                                                 </ul>
                                                 <h4>{{$sp->name}}</h4>
@@ -87,11 +83,9 @@
                                 <h3>Thương hiệu</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Nigel Cabourn.</a></li>
-                                <li><a href="#">Cacharel.</a></li>
-                                <li><a href="#">Calibre (Menswear)</a></li>
-                                <li><a href="#">Calvin Klein.</a></li>
-                                <li><a href="#">Camilla and Marc</a></li>
+                                @foreach($loai_sp as $loai)
+                                    <li><a href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a></li>
+                                @endforeach
                             </ul>
                         </aside>
                         <div class="categories_sidebar">

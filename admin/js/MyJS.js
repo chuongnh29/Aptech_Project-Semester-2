@@ -1,7 +1,5 @@
 $(document).ready(function(){
-    CKEDITOR.replace( 'productPost', {
-        height: 500
-    });
+
     // Activate tooltip
     // $('[data-toggle="tooltip"]').tooltip();
 
@@ -38,4 +36,7 @@ $(document).ready(function(){
     //     var 
     //     window.location.assign(url);
     // }
+    CKEDITOR.replace( 'productPost', {
+        height: 500
+    });
 });
