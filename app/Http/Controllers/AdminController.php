@@ -91,25 +91,26 @@ class AdminController extends Controller
         }
         $loaiDay = $request->input('loaiDay');
         if($loaiDay != 'none'){
-            $dieuKienTim[] = ['loai_day_models.id','=', $loaiDay];
+            $dieuKienTim[] = ['strap_types.id','=', $loaiDay];
         }
         $loaiVo = $request->input('loaiVo');
         if($loaiVo != 'none'){
-            $dieuKienTim[] = ['loai_vo_models.id','=', $loaiVo];
+            $dieuKienTim[] = ['case_material.id','=', $loaiVo];
         }
         $trangThai = $request->input('trangThaiSP');
         if($trangThai != 'none'){
-            $dieuKienTim[] = ['trang_thai_san_pham_models.id','=', $trangThai];
+            $dieuKienTim[] = ['product_status.id','=', $trangThai];
         }
-         $products = DB::table('products')
-             ->join('type_products','products.id_type','=','type_products.id')
-             ->join('loai_day_models','products.id_loai_day','=','loai_day_models.id')
-             ->join('loai_vo_models','products.id_loai_vo','=','loai_vo_models.id')
-             ->join('trang_thai_san_pham_models','products.id_trang_thai','=','trang_thai_san_pham_models.id')
-             ->select('products.id','products.name', 'type_products.name as name_type',
-                 'products.image', 'products.unit_price','products.promotion_price','products.description','trang_thai_san_pham_models.ten_trang_thai as product_status',
-                 'loai_day_models.ten_loai_day as loai_day', 'loai_vo_models.ten_loai_vo as loai_vo', 'type_products.type as gender')
-             ->where($dieuKienTim)->paginate(5);
+        $products = DB::table('products')
+            ->join('type_products','products.id_type','=','type_products.id')
+            ->join('strap_types','products.strap_id','=','strap_types.id')
+            ->join('case_material','products.case_material_id','=','case_material.id')
+            ->join('product_status','products.product_status_id','=','product_status.id')
+            ->select('products.id','products.name', 'type_products.name as name_type',
+                'products.image', 'products.unit_price','products.promotion_price','products.description','product_status.product_status_name as product_status',
+                'strap_types.strap_name as loai_day', 'case_material.material_name as loai_vo', 'type_products.type as gender')
+            ->where($dieuKienTim)
+            ->paginate(5);
 
         return $products;
     }

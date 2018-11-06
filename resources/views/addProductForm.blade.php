@@ -1,7 +1,6 @@
 <div class="container crud-table">
   <div class="table-wrapper">
-      <form action="{{ route('addProduct') }}" method="post">
-          {{ csrf_field() }}
+
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
@@ -15,15 +14,9 @@
       </div>
     </div>
 
-          @if ($errors->any())
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
+          <div class="errors">
+            @include('errorValidate')
+          </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
@@ -89,19 +82,19 @@
 
        <div class="form-group col-md-4">
            <label for="inputAddress">Mô tả ngắn</label>
-           <input type="text" class="form-control" id="inputAddress" placeholder="Viết vào đây...">
+           <input type="text" class="form-control" name="moTa" id="inputAddress" placeholder="Viết vào đây...">
        </div>
    </div>
       <div class="form-group">
           <label for="exampleFormControlFile1">Thêm ảnh</label>
-          <input type="file" required="true" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
+          <input type="file" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
       </div>
     <div class="form-group">
       <label for="inputAddress2">Bài viết</label>
-      <textarea name="productPost" id="productReview"></textarea>
+      <textarea name="productPost" id="productPost"></textarea>
     </div>
-    
-    <button type="submit" class="btn btn-primary">Thêm</button>
+
+    <button class="btn btn-primary save">Lưu</button>
 
     <!-- Edit Modal HTML -->
     {{--<div id="addEmployeeModal" class="modal fade">--}}
@@ -138,7 +131,7 @@
         {{--</div>--}}
 
       {{--</div>--}}
-      </form>
+
   </div>
       <!-- Edit Modal HTML -->
     <!-- <div id="editEmployeeModal" class="modal fade">

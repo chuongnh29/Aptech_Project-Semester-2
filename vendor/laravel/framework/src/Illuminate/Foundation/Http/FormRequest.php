@@ -188,7 +188,8 @@ class FormRequest extends Request implements ValidatesWhenResolved
             'giaSale.required'  => 'Nhập giá sale',
             'giaGoc.integer'  => 'Giá gốc phải là số lớn hơn 0',
             'giaSale.integer'  => 'Giá sale phải là số lớn hơn 0 và nhỏ hơn hoặc bằng giá gốc',
-            'anh.image'  => 'File phải là file ảnh'
+            'anh.image'  => 'File phải là file ảnh',
+            'anh.required' => 'Phải chọn ảnh'
         ];
     }
 

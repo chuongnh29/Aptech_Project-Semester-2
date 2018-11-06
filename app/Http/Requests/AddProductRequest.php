@@ -42,7 +42,7 @@ class AddProductRequest extends FormRequest
                 new CheckPositiveNum($this->giaSale, 'Giá sale'),
                 new CheckGiaGocGiaSale($this->giaGoc, $this->giaSale)
             ],
-            'anh' => ['image']
+            'anh' => ['required']
         ];
     }
 
