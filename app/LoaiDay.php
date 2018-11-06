@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoaiDay extends Model
 {
-    protected $table = 'loai_day_models';
+    protected $table = 'strap_types';
 }

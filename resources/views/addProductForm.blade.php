@@ -54,7 +54,7 @@
            <label for="inputPassword4">Loại dây</label>
            <select id="inputState" class="form-control" name="loaiDay">
                @foreach($loaiDay as $day)
-                   <option value="{{ $day->id }}">{{ $day->ten_loai_day }}</option>
+                   <option value="{{ $day->id }}">{{ $day->strap_name }}</option>
                @endforeach
            </select>
        </div>
@@ -63,7 +63,7 @@
            <label for="inputPassword4">Loại vỏ</label>
            <select id="inputState" class="form-control" name="loaiVo">
                @foreach($loaiVo as $vo)
-                   <option value="{{ $vo->id }}">{{ $vo->ten_loai_vo }}</option>
+                   <option value="{{ $vo->id }}">{{ $vo->material_name }}</option>
                @endforeach
            </select>
        </div>
@@ -71,7 +71,7 @@
            <label for="inputPassword4">Trạng thái sản phẩm</label>
            <select id="inputState" class="form-control" name="trangThaiSP">
                @foreach($trangThaiSP as $trangThai)
-                   <option value="{{ $trangThai->id }}">{{ $trangThai->ten_trang_thai }}</option>
+                   <option value="{{ $trangThai->id }}">{{ $trangThai->product_status_name }}</option>
                @endforeach
            </select>
        </div>

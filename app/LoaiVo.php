@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoaiVo extends Model
 {
-    protected $table = 'loai_vo_models';
+    protected $table = 'case_material';
 }
