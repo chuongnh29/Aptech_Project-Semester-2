@@ -24,8 +24,8 @@ class AdminController extends Controller
     	$loaiDay = LoaiDay::all();
     	$loaiVo = LoaiVo::all();
     	$trangThaiSanPham = TrangThaiSanPham::all();
-    	$thuongHieu = DB::table('type_products')->groupBy('id_name')->get();
-    	$gioiTinh = DB::table('type_products')->groupBy('type')->get();
+    	$thuongHieu = DB::table('product_types')->groupBy('name_id')->get();
+    	$gioiTinh = DB::table('product_types')->groupBy('type')->get();
     	// $paginateURL = $request;
     	$products = null;
 
@@ -41,7 +41,7 @@ class AdminController extends Controller
 
     	if($products == null){
             $products = DB::table('products')
-                ->join('type_products','products.id_type','=','type_products.id')
+                ->join('product_types','products.type_id','=','product_types.id')
                 ->join('strap_types','products.strap_id','=','strap_types.id')
                 ->join('case_material','products.case_material_id','=','case_material.id')
                 ->join('product_status','products.product_status_id','=','product_status.id')
@@ -64,8 +64,8 @@ class AdminController extends Controller
         $loaiDay = LoaiDay::all();
         $loaiVo = LoaiVo::all();
         $trangThaiSanPham = TrangThaiSanPham::all();
-        $thuongHieu = DB::table('type_products')->groupBy('id_name')->get();
-        $gioiTinh = DB::table('type_products')->groupBy('type')->get();
+        $thuongHieu = DB::table('product_types')->groupBy('name_id')->get();
+        $gioiTinh = DB::table('product_types')->groupBy('type')->get();
     	return view('pages.addProduct',[
     	    'loaiDay'=>$loaiDay,
             'loaiVo'=>$loaiVo,
@@ -102,7 +102,7 @@ class AdminController extends Controller
             $dieuKienTim[] = ['trang_thai_san_pham_models.id','=', $trangThai];
         }
          $products = DB::table('products')
-             ->join('type_products','products.id_type','=','type_products.id')
+             ->join('product_types','products.id_type','=','type_products.id')
              ->join('loai_day_models','products.id_loai_day','=','loai_day_models.id')
              ->join('loai_vo_models','products.id_loai_vo','=','loai_vo_models.id')
              ->join('trang_thai_san_pham_models','products.id_trang_thai','=','trang_thai_san_pham_models.id')
