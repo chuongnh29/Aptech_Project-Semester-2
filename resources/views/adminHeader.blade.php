@@ -76,7 +76,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
-            <a class="dropdown-item" href="login.html">Sản phẩm</a>
+            <a class="dropdown-item" href="{{ route('product') }}">Sản phẩm</a>
             <a class="dropdown-item" href="register.html">Nhãn hiệu</a>
             <a class="dropdown-item" href="forgot-password.html">Danh mục</a>
             <div class="dropdown-divider"></div>
