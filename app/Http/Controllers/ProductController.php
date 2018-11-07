@@ -39,7 +39,7 @@ class ProductController extends Controller
         $giaGoc = (int)$request->giaGoc;
         $giaSale = (int)$request->giaSale;
         $moTa = $request->moTa;
-        $anhs = $request->anh->store('test');
+        $anhs = $request->anh;
         $post = $request->post;
         $status = 'thất bại';
         try{
@@ -68,7 +68,7 @@ class ProductController extends Controller
             }
             $status = 'thành công';
         }catch (Exception $exception){
-
+            return $exception;
         }
         return response()->json([
             'status' => $status,

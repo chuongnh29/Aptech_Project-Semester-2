@@ -48,7 +48,7 @@
                     <select id="inputState" class="form-control" name="loaiDay">
                         <option value="none" selected>Có thể chọn</option>
                         @foreach($loaiDay as $day)
-                        <option value="{{ $day->id }}">{{ $day->ten_loai_day }}</option>
+                        <option value="{{ $day->id }}">{{ $day->strap_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -57,7 +57,7 @@
                     <select id="inputState" class="form-control" name="loaiVo">
                         <option value="none" selected>Có thể chọn</option>
                         @foreach($loaiVo as $vo)
-                            <option value="{{ $vo->id }}">{{ $vo->ten_loai_vo }}</option>
+                            <option value="{{ $vo->id }}">{{ $vo->material_name }}</option>
                         @endforeach
                     </select>
                 </div>
