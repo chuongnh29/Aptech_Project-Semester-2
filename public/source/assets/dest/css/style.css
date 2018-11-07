@@ -578,12 +578,13 @@ i:before {
 }
 
 .account_selection {
+    width: 150px;
     display: block;
     position: absolute;
     right: 0;
     top: 120%;
     margin: 0;
-    width: 90%;
+    width: 100%;
     background: #FFFFFF;
     visibility: hidden;
     opacity: 0;
@@ -598,8 +599,8 @@ i:before {
 }
 
 .account_selection li {
-    padding-left: 29px;
-    padding-right: 29px;
+    padding-left: 15px;
+    padding-right: 15px;
     line-height: 45px;
 }
 

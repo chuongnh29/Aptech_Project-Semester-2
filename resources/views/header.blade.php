@@ -19,7 +19,7 @@
 
                     <div class="input-group">
                         <form role="search" method="get" action="{{route('search')}}">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Search">
+                            <input type="text" class="form-control" placeholder="{{__('message.search')}}" aria-label="Search">
                             <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit"><i class="icon-magnifier"></i></button>
                                 </span>
@@ -40,27 +40,23 @@
                     <li class="account">
                         @if(Auth::check())
                             <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
-                                Tài khoản của tôi
+                                {{__('message.myaccount')}}
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @else
                             <a href="#">
-                                Đăng nhập | Đăng ký
+                                {{__('message.login')}} | {{__('message.register')}}
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @endif
 
                         <ul class="account_selection">
                             @if(Auth::check())
-                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
-                                        nhập</a></li>
-                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
-                                        xuất</a></li>
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{__('message.login')}}</a></li>
+                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>{{__('message.logout')}}</a></li>
                             @else
-                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
-                                        nhập</a></li>
-                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng
-                                        ký</a></li>
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{__('message.login')}}</a></li>
+                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>{{__('message.register')}}</a></li>
                             @endif
                         </ul>
                     </li>
@@ -112,7 +108,7 @@
                     <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonu')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nữ
+                            {{__('message.womenwatch')}}
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -127,9 +123,9 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
+                        <a class="nav-link" href="{{route('about')}}">{{__('message.aboutus')}}</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">{{__('message.contact')}}</a></li>
                 </ul>
             </div>
         </nav>
