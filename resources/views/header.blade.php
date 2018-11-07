@@ -18,10 +18,12 @@
                     </div>
 
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Search">
-                        <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button"><i class="icon-magnifier"></i></button>
+                        <form role="search" method="get" action="{{route('search')}}">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit"><i class="icon-magnifier"></i></button>
                                 </span>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -36,15 +38,30 @@
             <div class="col-lg-3">
                 <div class="top_right_header">
                     <li class="account">
-                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
-                            Tài khoản của tôi
-                            <i class="fa fa-angle-down"></i>
-                        </a>
+                        @if(Auth::check())
+                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+                                Tài khoản của tôi
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                        @else
+                            <a href="#">
+                                Đăng nhập | Đăng ký
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                        @endif
+
                         <ul class="account_selection">
-                            <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
-                                    nhập</a></li>
-                            <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng
-                                    ký</a></li>
+                            @if(Auth::check())
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
+                                        nhập</a></li>
+                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
+                                        xuất</a></li>
+                            @else
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
+                                        nhập</a></li>
+                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng
+                                        ký</a></li>
+                            @endif
                         </ul>
                     </li>
                     <ul class="top_right">
@@ -109,7 +126,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Giới thiệu</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
                 </ul>
             </div>

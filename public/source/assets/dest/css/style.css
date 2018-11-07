@@ -553,6 +553,10 @@ i:before {
     margin-right: 5px;
 }
 
+.account .fa-sign-in {
+    margin-right: 5px;
+}
+
 .account > a {
     display: block;
     color: #000;
@@ -4866,10 +4870,10 @@ i:before {
 .checkout_main_area .checkout_prosses .checkout_from_area .form-group label {
     color: #000;
     font-family: "Poppins", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: capitalize;
     margin-bottom: 15px;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .checkout_main_area .checkout_prosses .checkout_from_area .form-group label span {
@@ -5486,15 +5490,37 @@ i:before {
     margin-bottom: 0px;
 }
 
+.login_form .col-lg-4 {
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    /*text-transform: capitalize;*/
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 59px;
+}
+
+.login_form .form-group label span {
+    color: #ff0000;
+}
+
+.login_form .form-group label {
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    /*text-transform: capitalize;*/
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
 .login_form .form-group input {
     height: 50px;
     border: 1px solid #cccccc;
-    border-radius: 0px;
+    border-radius: 3px;
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: none;
-    padding: 0px 22px;
-    box-shadow: none;
+    /*padding: 0px 22px;*/
     line-height: 50px;
 }
 
@@ -5522,12 +5548,20 @@ i:before {
     color: #666666;
 }
 
+.login_form h3 {
+    color: #ff0000;
+    font-size: 13px;
+    letter-spacing: .25px;
+    /*padding-top: 10px;*/
+}
+
 .login_form .form-group .creat_account {
     display: inline-block;
     float: left;
     width: auto;
     margin-top: 0px;
     margin-bottom: -10px;
+    margin-left: 44px;
 }
 
 .login_form .form-group .creat_account input {
@@ -5543,11 +5577,12 @@ i:before {
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     color: #d91522;
-    font-weight: bold;
+    /*font-weight: bold;*/
     letter-spacing: .30px;
     display: inline-block;
     float: right;
     padding-top: 6px;
+    padding-right: 50px;
 }
 
 .login_form .update_btn {
@@ -5556,6 +5591,16 @@ i:before {
 
 .login_form .subs_btn {
     line-height: 48px;
+    margin-left: 45px;
+    width: 83%;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.login_form .register_btn {
+    margin-left: 0;
+    width: 100%;
+    border-radius: 3px;
 }
 
 .emty_cart_area {

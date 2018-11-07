@@ -26,34 +26,73 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8">
                         <div class="login_title">
+                            @if(count($errors)>0)
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $err)
+                                        {{$err}}
+                                    @endforeach
+                                </div>
+                            @endif
+                            @if(Session::has('Register Success'))
+                                <div class="alert alert-success">{{Session::get('Register Success')}}</div>
+                            @endif
                             <h2>đăng ký tài khoản mới</h2>
                         </div>
-                        <form class="login_form row">
+                        <form class="login_form row" action="{{route('register')}}" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+
                             <div class="col-lg-6 form-group">
-                                <input class="form-control" type="text" placeholder="Tên tài khoản">
+                                <label for="email">Tên đăng nhập <span>*</span></label>
+                                <input class="form-control" type="text" name="username"
+                                       placeholder="Nhập tên tài khoản" required>
                             </div>
+
                             <div class="col-lg-6 form-group">
-                                <input class="form-control" type="email" placeholder="Email">
+                                <label for="email">Số điện thoại <span>*</span></label>
+                                <input class="form-control" type="text" name="phone_number"
+                                       placeholder="Nhập số điện thoại" required>
                             </div>
+
                             <div class="col-lg-6 form-group">
-                                <input class="form-control" type="text" placeholder="Họ tên">
+                                <label for="email">Email <span>*</span></label>
+                                <input class="form-control" type="email" name="email" placeholder="Nhập địa chỉ email"
+                                       required>
                             </div>
+
                             <div class="col-lg-6 form-group">
-                                <input class="form-control" type="text" placeholder="Số điện thoại">
+                                <label for="email">Mật khẩu <span>*</span></label>
+                                <input class="form-control" type="password" name="password" placeholder="Nhập mật khẩu"
+                                       required>
                             </div>
+
                             <div class="col-lg-6 form-group">
-                                <input class="form-control" type="password" placeholder="Mật khẩu">
+                                <label for="email">Họ tên <span>*</span></label>
+                                <input class="form-control" type="text" name="fullname"
+                                       placeholder="Nhập họ tên đầy đủ" required>
                             </div>
+
                             <div class="col-lg-6 form-group">
-                                <input class="form-control" type="password" placeholder="Nhập lại mật khẩu">
+                                <label for="email">Xác nhận mật khẩu <span>*</span></label>
+                                <input class="form-control" type="password" name="re_password"
+                                       placeholder="Nhập lại mật khẩu" required>
                             </div>
+
+                            <div class="col-lg-6 form-group">
+                                <h3>* Các trường bắt buộc</h3>
+                            </div>
+
+                            <div class="col-lg-6 form-group">
+                            </div>
+
                             <div class="col-lg-6 form-group" style="align-items: center">
-                                <button type="submit" value="submit" class="btn subs_btn form-control">đăng ký
+                                <button type="submit" class="btn subs_btn register_btn form-control">đăng ký
                                 </button>
                             </div>
+
                             <div class="col-lg-6 form-group" style="align-items: center">
                                 <a href="{{route('login')}}">
-                                    <button type="button" value="login" class="btn subs_btn form-control">đăng nhập
+                                    <button type="button" value="login" class="btn subs_btn register_btn form-control">
+                                        đăng nhập
                                     </button>
                                 </a>
                             </div>

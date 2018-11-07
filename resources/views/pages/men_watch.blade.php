@@ -109,11 +109,11 @@
                         <div class="categories_sidebar">
                             <aside class="l_widgest l_p_categories_widget">
                                 <div class="l_w_title">
-                                    <h3>Categories</h3>
+                                    <h3>Loại dây</h3>
                                 </div>
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Men’s Fashion
+                                        <a class="nav-link" href="#">Dây kim loại
                                             <i class="icon_plus" aria-hidden="true"></i>
                                             <i class="icon_minus-06" aria-hidden="true"></i>
                                         </a>
@@ -121,16 +121,10 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Women’s Fashion
+                                            Dây da
                                             <i class="icon_plus" aria-hidden="true"></i>
                                             <i class="icon_minus-06" aria-hidden="true"></i>
                                         </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li class="nav-item"><a class="nav-link" href="#">Hoodies & Sweatshirts</a>
-                                            </li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Jackets & Coats</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
-                                        </ul>
                                     </li>
 
                                 </ul>
@@ -138,11 +132,11 @@
 
                             <aside class="l_widgest l_p_categories_widget">
                                 <div class="l_w_title">
-                                    <h3>Categories</h3>
+                                    <h3>Loại vỏ</h3>
                                 </div>
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Men’s Fashion
+                                        <a class="nav-link" href="#">Thép không gỉ
                                             <i class="icon_plus" aria-hidden="true"></i>
                                             <i class="icon_minus-06" aria-hidden="true"></i>
                                         </a>
@@ -150,16 +144,10 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Women’s Fashion
+                                            Mạ vàng
                                             <i class="icon_plus" aria-hidden="true"></i>
                                             <i class="icon_minus-06" aria-hidden="true"></i>
                                         </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li class="nav-item"><a class="nav-link" href="#">Hoodies & Sweatshirts</a>
-                                            </li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Jackets & Coats</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
-                                        </ul>
                                     </li>
 
                                 </ul>

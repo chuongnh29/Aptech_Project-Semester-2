@@ -102,6 +102,7 @@ class AdminController extends Controller
         if($trangThai != 'none'){
             $dieuKienTim[] = ['product_status.id','=', $trangThai];
         }
+
         $products = DB::table('products')
             ->leftJoin('product_types','products.type_id','=','product_types.id')
             ->leftJoin('strap_types','products.strap_id','=','strap_types.id')

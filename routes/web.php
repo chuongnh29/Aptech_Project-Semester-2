@@ -27,7 +27,15 @@ Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@getContact'
 
 Route::get('login', ['as' => 'login', 'uses' => 'PagesController@getLogin']);
 
+Route::post('login', ['as' => 'login', 'uses' => 'PagesController@postLogin']);
+
+Route::get('logout', ['as' => 'logout', 'uses' => 'PagesController@postLogout']);
+
 Route::get('register', ['as' => 'register', 'uses' => 'PagesController@getRegister']);
+
+Route::post('register', ['as' => 'register', 'uses' => 'PagesController@postRegister']);
+
+Route::get('search', ['as' => 'search', 'uses' => 'PagesController@getSearch']);
 
 Route::get('shopping-cart', ['as' => 'cart', 'uses' => 'PagesController@getCheckOut']);
 
@@ -35,14 +43,22 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBy
 
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
-Route::get('admin/index','AdminController@getIndex')->name('adminIndex');
+Route::get('admin/index', 'AdminController@getIndex');
 
-Route::get('admin/getproduct','AdminController@getProductManager')->name('product');
+Route::get('admin/getproduct', 'AdminController@getProductManager');
 
-Route::get('admin/addproduct','AdminController@getAddProduct')->name('addProductForm');
+Route::get('admin/addproduct', 'AdminController@getAddProduct');
 
-Route::post('admin/products/delete/{id}','ProductController@destroy');
+Route::get('admin/index', 'AdminController@getIndex')->name('adminIndex');
 
-Route::get('admin/products/delete/{id}','ProductController@destroy')->name('delete');
+Route::get('admin/getproduct', 'AdminController@getProductManager')->name('product');
 
-Route::post('admin/products/add','ProductController@create')->name('addProduct');
+Route::get('admin/addproduct', 'AdminController@getAddProduct')->name('addProductForm');
+
+Route::post('admin/products/delete/{id}', 'ProductController@destroy');
+
+Route::get('admin/products/delete/{id}', 'ProductController@destroy');
+
+Route::get('admin/products/delete/{id}', 'ProductController@destroy')->name('delete');
+
+Route::post('admin/products/add', 'ProductController@create')->name('addProduct');
