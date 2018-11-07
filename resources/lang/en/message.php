@@ -48,6 +48,6 @@ return [
     "wish_list" => "Wish list",
     "news" => "News",
 
-
 // Kết thúc dich phần Footer
+
 ];
