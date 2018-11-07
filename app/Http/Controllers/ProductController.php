@@ -45,9 +45,8 @@ class ProductController extends Controller
         try{
             $product = new Products;
             $product->name = $tenSP;
-            $product->id_type = $thuongHieu;
+            $product->type_id = $thuongHieu;
             $product->description = $moTa;
-            $product->unit = 'chiếc';
             $product->unit_price = $giaGoc;
             $product->promotion_price = $giaSale;
             $product->case_material_id = $loaiVo;
@@ -57,15 +56,15 @@ class ProductController extends Controller
             $product->save();
             $id = $product->id;
 
-            foreach ($anhs as $anh){
-                $image = new ProductImages;
-                $image->product_id = $id;
-//                $image->name_image = $anh->getClientOriginalName();
-                $image->name_image = 'abc';
-                $image->save();
-//                $anh->move('public/source/img/test', $anh->getClientOriginalName());
-                $anh->store($anh->getClientOriginalName());
-            }
+//            foreach ($anhs as $anh){
+//                $image = new ProductImages;
+//                $image->product_id = $id;
+////                $image->name_image = $anh->getClientOriginalName();
+//                $image->name_image = 'abc';
+//                $image->save();
+////                $anh->move('public/source/img/test', $anh->getClientOriginalName());
+//                $anh->store($anh->getClientOriginalName());
+//            }
             $status = 'thành công';
         }catch (Exception $exception){
             return $exception;
