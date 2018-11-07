@@ -5,14 +5,14 @@
             <div class="col-lg-3">
                 <div class="top_header_left">
                     <div class="selector">
-                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="public/source/assets/dest/img/icon/flag-vi.jpg"
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;" onchange="location = this.value;">
+                            <option value='/LuxuryWatchShop/change-language/vi' data-image="public/source/assets/dest/img/icon/flag-vi.jpg"
                                     data-imagecss="flag yt"
-                                    data-title="Vietnam">Vietnam
+                                    data-title="Vietnam" {{\Illuminate\Support\Facades\Session::get('locale')=='vi'?'selected':''}}>Vietnam
                             </option>
-                            <option value='yu' data-image="public/source/assets/dest/img/icon/flag-en.png"
+                            <option value='/LuxuryWatchShop/change-language/en' data-image="public/source/assets/dest/img/icon/flag-en.png"
                                     data-imagecss="flag yu"
-                                    data-title="English">English
+                                    data-title="English" {{\Illuminate\Support\Facades\Session::get('locale')=='en'?'selected':''}}>English
                             </option>
                         </select>
                     </div>
@@ -89,14 +89,14 @@
                     <li class="nav-item dropdown submenu active">
                         <a class="nav-link dropdown-toggle" href="{{route('home')}}" role="button" aria-haspopup="true"
                            aria-expanded="false">
-                            Trang chủ
+                            {{__('message.home')}}
                         </a>
 
                     </li>
                     <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nam
+                            {{__('message.menwatch')}}
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">

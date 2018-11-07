@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +52,5 @@ Route::get('admin/addproduct', 'AdminController@getAddProduct');
 Route::post('admin/products/delete/{id}', 'ProductController@destroy');
 
 Route::get('admin/products/delete/{id}', 'ProductController@destroy');
+
+Route::get('change-language/{locale}', 'PagesController@changeLanguage');
