@@ -21,6 +21,33 @@ return [
     "add_to_cart" => "Add to cart",
     "details" => "Details",
     "product_sale" => "Reduction Products",
-
+    "featured_products" => "Featured Products",
 //  Kết thúc dịch nội dung trang Home.
+
+// Bắt đầu dich phần Footer
+
+    "luxury_watch" => "We are proud to be the exclusive distributor of Swiss luxury watches in Vietnam",
+    "information" => "Information",
+    "about_us_footer" => "About us",
+    "transport_info" => "Transport information",
+    "terms" => "Terms and condition",
+    "contact_footer" => "Contact us",
+
+    "services" => "Services",
+    "help_center" => "Help center",
+
+    "additional" => "Additional",
+    "brand" => "Brand",
+    "gift_certificate" => "Gift certificate",
+    "agency" => "Agency",
+    "special_offer" => "Special offer",
+
+    "account_footer" => "Account",
+    "my_account_footer" => "My account",
+    "order_history" => "Order history",
+    "wish_list" => "Wish list",
+    "news" => "News",
+
+
+// Kết thúc dich phần Footer
 ];

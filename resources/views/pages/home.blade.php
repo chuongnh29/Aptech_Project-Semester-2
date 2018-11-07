@@ -197,7 +197,7 @@
                     <div class="col-lg-3">
                         <div class="f_product_left">
                             <div class="s_m_title">
-                                <h2>Sản phẩm nổi bật</h2>
+                                <h2>{{__('message.featured_products')}}</h2>
                             </div>
                             <div class="f_product_inner">
                                 @foreach($featured_product as $featured)
@@ -220,8 +220,8 @@
                     <div class="col-lg-9">
                         <div class="fillter_slider_inner">
                             <ul class="portfolio_filter">
-                                <li class="active" data-filter="*"><a href="#">ĐỒNG HỒ NAM</a></li>
-                                <li data-filter=".woman"><a href="#">ĐỒNG HỒ NỮ</a></li>
+                                <li class="active" data-filter="*"><a href="#">{{__('message.menwatch')}}</a></li>
+                                <li data-filter=".woman"><a href="#">{{__('message.womenwatch')}}</a></li>
                             </ul>
                             <div class="fillter_slider owl-carousel">
                                 @foreach($new_product as $new)
