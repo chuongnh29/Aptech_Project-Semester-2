@@ -3,6 +3,38 @@ $(document).ready(function () {
     CKEDITOR.replace('productPost', {
         height: 500
     });
+
+
+    var idLoadPost = $('input[name=productID]');
+    console.log(idLoadPost != null);
+    if(idLoadPost!=null){
+        $.ajax({
+            url: "https://localhost/LuxuryWatchShop/admin/products/getpost/" + $('input[name=productID]').val(),
+            type: "get",
+            success: function (data) {
+                setTimeout(200);
+                CKEDITOR.instances['productPost'].setData(data.post);
+
+                // window.location.assign(data.url);
+                // $(':root').html(data);
+            },
+            error: function (data) {
+                if(data.status === 422){
+                    var errors = data.responseJSON.errors;
+                    var html = '<div class="alert alert-danger"><ul>';
+                    $.each(errors, function (key, value) {
+                        html+='<li>'+value+'</li>';
+
+                    })
+                    html+='</ul></div>';
+                    console.log(html);
+                    $('.errors').html(html);
+                    return;
+                }
+                console.log(data);
+            }
+        });
+    }
     // Activate tooltip
     // $('[data-toggle="tooltip"]').tooltip();
 
@@ -39,7 +71,7 @@ $(document).ready(function () {
     });
 
     $('body').on('click', '.save', function () {
-        console.log($('input[name=anh]').val());
+        // console.log($('input[name=anh]').val());
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -55,20 +87,27 @@ $(document).ready(function () {
         dataForm.append('giaGoc', $('input[name=giaGoc]').val());
         dataForm.append('giaSale', $('input[name=giaSale]').val());
         dataForm.append('moTa', $('input[name=moTa]').val());
-        dataForm.append('anh', $('input[name=anh]').prop('files')[0]);
+        $.each($("input[name=anh]").prop('files'), function(i, file) {
+            dataForm.append('anh[]', file);
+            console.log(file);
+        });
+        // dataForm.append('anh[]', $('input[name=anh]').prop('files')[0]);
+
         dataForm.append('post', CKEDITOR.instances['productPost'].getData());
-        console.log($('input[name=anh]').prop('files')[0]);
+
 
         $.ajax({
             url: "https://localhost/LuxuryWatchShop/admin/products/add",
             type: "post",
+            enctype: 'multipart/form-data',
+            cache: false,
             contentType: false,
             processData: false,
             data: dataForm,
             success: function (data) {
                 console.log(data);
                 alert('Bạn đã thêm sản phẩm '+ data.status);
-                // window.location.assign(data.url);
+                window.location.assign(data.url);
                 // $(':root').html(data);
             },
             error: function (data) {

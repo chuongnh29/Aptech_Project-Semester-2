@@ -93,7 +93,7 @@
             @foreach($products as $product)
             <tr>
 
-                <td><img src="public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
+                <td><img src="public/storage/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->name_type }}</td>
                 @if($product->gender == 0)
@@ -107,7 +107,7 @@
                 <td>{{ $product->loai_vo }}</td>
                 <td>{{ $product->product_status }}</td>
                 <td class="edit-delete-block">
-                    <a href="#editEmployeeModal" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                    <a href="{{ route('editProductForm',['id'=>$product->id]) }}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
                     <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
                     <input type="hidden" name="name" value="{{ $product->name }}">
                 </td>

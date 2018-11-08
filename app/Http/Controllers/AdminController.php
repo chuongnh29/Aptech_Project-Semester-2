@@ -10,6 +10,7 @@ use App\TrangThaiSanPham;
 use App\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Mockery\Exception;
 
 class AdminController extends Controller
 {
@@ -61,19 +62,43 @@ class AdminController extends Controller
     	]);
     }
 
-    public function getAddProduct(){
+    public function getAddProduct($id = null){
         $loaiDay = LoaiDay::all();
         $loaiVo = LoaiVo::all();
         $trangThaiSanPham = TrangThaiSanPham::all();
         $thuongHieu = DB::table('product_types')->groupBy('name_id')->get();
         $gioiTinh = DB::table('product_types')->groupBy('type')->get();
-    	return view('pages.addProduct',[
-    	    'loaiDay'=>$loaiDay,
-            'loaiVo'=>$loaiVo,
-            'trangThaiSP'=>$trangThaiSanPham,
-            'thuongHieu'=>$thuongHieu,
-            'gioiTinh'=>$gioiTinh
-        ]);
+        if($id == null){
+
+            return view('pages.addProduct',[
+                'loaiDay'=>$loaiDay,
+                'loaiVo'=>$loaiVo,
+                'trangThaiSP'=>$trangThaiSanPham,
+                'thuongHieu'=>$thuongHieu,
+                'gioiTinh'=>$gioiTinh,
+                'type'=>'add'
+            ]);
+        } else {
+            $product = DB::table('products')
+                ->leftJoin('product_types','products.type_id','=','product_types.id')
+                ->leftJoin('strap_types','products.strap_id','=','strap_types.id')
+                ->leftJoin('case_material','products.case_material_id','=','case_material.id')
+                ->leftJoin('product_status','products.product_status_id','=','product_status.id')
+                ->select('products.id','products.name', 'products.type_id',
+                    'products.image', 'products.unit_price','products.promotion_price','products.description','products.product_status_id',
+                    'products.strap_id', 'products.case_material_id', 'product_types.type as gender')
+                ->where('products.id', (int) $id)
+                ->first();
+            return view('pages.editProduct',[
+                'loaiDay'=>$loaiDay,
+                'loaiVo'=>$loaiVo,
+                'trangThaiSP'=>$trangThaiSanPham,
+                'thuongHieu'=>$thuongHieu,
+                'gioiTinh'=>$gioiTinh,
+                'product'=>$product,
+                'type'=>'edit'
+            ]);
+        }
     }
 
     public function timKiemSanPham($request){

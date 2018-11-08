@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddProductRequest;
 use App\ProductType;
 use App\ProductImages;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Products;
@@ -39,7 +40,7 @@ class ProductController extends Controller
         $giaGoc = (int)$request->giaGoc;
         $giaSale = (int)$request->giaSale;
         $moTa = $request->moTa;
-        $anhs = $request->anh;
+        $anhs = $request->file('anh');
         $post = $request->post;
         $status = 'thất bại';
         try{
@@ -56,15 +57,15 @@ class ProductController extends Controller
             $product->save();
             $id = $product->id;
 
-//            foreach ($anhs as $anh){
-//                $image = new ProductImages;
-//                $image->product_id = $id;
-////                $image->name_image = $anh->getClientOriginalName();
-//                $image->name_image = 'abc';
-//                $image->save();
-////                $anh->move('public/source/img/test', $anh->getClientOriginalName());
-//                $anh->store($anh->getClientOriginalName());
-//            }
+            foreach ($anhs as $anh){
+                $imgName = $anh->hashName();
+                $anh->store('public/img/product');
+                $image = new ProductImages;
+                $image->product_id = $id;
+                $image->name_image = $imgName;
+                $image->save();
+
+            }
             $status = 'thành công';
         }catch (Exception $exception){
             return $exception;
@@ -122,6 +123,14 @@ class ProductController extends Controller
              Products::where('id',$id)->delete();
         }
         return redirect()->route('product');
+    }
+
+    public function getPost($id){
+        $id = (int)$id;
+        $post = Products::where('id',$id)->first()->post;
+        return response()->json([
+            'post'=>$post
+        ]);
     }
 
 
