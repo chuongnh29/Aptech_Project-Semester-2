@@ -71,7 +71,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            <div style="text-align: center;"><button type="submit" class="btn btn-primary">Tìm kiếm</button></div>
         </form>
       <table class="table table-striped table-hover" style="margin-top: 50px;">
         <thead>
@@ -116,7 +116,7 @@
         </tbody>
     </table>
     <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+
         {{ $products->onEachSide(1)->links() }}
     </div>
 </div>
