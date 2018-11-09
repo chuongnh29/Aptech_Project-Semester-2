@@ -182,14 +182,7 @@ class FormRequest extends Request implements ValidatesWhenResolved
      */
     public function messages()
     {
-        return [
-            'tenSP.required' => 'Nhập tên sản phẩm',
-            'giaGoc.required'  => 'Nhập giá gốc',
-            'giaSale.required'  => 'Nhập giá sale',
-            'giaGoc.integer'  => 'Giá gốc phải là số lớn hơn 0',
-            'giaSale.integer'  => 'Giá sale phải là số lớn hơn 0 và nhỏ hơn hoặc bằng giá gốc',
-            'anh.image'  => 'File phải là file ảnh'
-        ];
+        return [];
     }
 
     /**

@@ -48,7 +48,7 @@
                     <select id="inputState" class="form-control" name="loaiDay">
                         <option value="none" selected>Có thể chọn</option>
                         @foreach($loaiDay as $day)
-                        <option value="{{ $day->id }}">{{ $day->ten_loai_day }}</option>
+                        <option value="{{ $day->id }}">{{ $day->strap_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -57,7 +57,7 @@
                     <select id="inputState" class="form-control" name="loaiVo">
                         <option value="none" selected>Có thể chọn</option>
                         @foreach($loaiVo as $vo)
-                            <option value="{{ $vo->id }}">{{ $vo->ten_loai_vo }}</option>
+                            <option value="{{ $vo->id }}">{{ $vo->material_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -71,7 +71,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            <div style="text-align: center;"><button type="submit" class="btn btn-primary">Tìm kiếm</button></div>
         </form>
       <table class="table table-striped table-hover" style="margin-top: 50px;">
         <thead>
@@ -93,7 +93,7 @@
             @foreach($products as $product)
             <tr>
 
-                <td><img src="public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
+                <td><img src="public/storage/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->name_type }}</td>
                 @if($product->gender == 0)
@@ -107,7 +107,7 @@
                 <td>{{ $product->loai_vo }}</td>
                 <td>{{ $product->product_status }}</td>
                 <td class="edit-delete-block">
-                    <a href="#editEmployeeModal" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                    <a href="{{ route('editProductForm',['id'=>$product->id]) }}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
                     <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
                     <input type="hidden" name="name" value="{{ $product->name }}">
                 </td>
@@ -116,7 +116,7 @@
         </tbody>
     </table>
     <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+
         {{ $products->onEachSide(1)->links() }}
     </div>
 </div>

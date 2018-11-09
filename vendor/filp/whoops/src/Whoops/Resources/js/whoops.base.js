@@ -39,7 +39,7 @@ Zepto(function($) {
 
     prettyPrint(highlightCurrentLine);
 
-  };
+  }
 
   /*
    * Highlight the active and neighboring lines for the current frame
@@ -69,7 +69,7 @@ Zepto(function($) {
 
     $container.scrollTop(0);
 
-  };
+  }
 
   /*
    * click handler for loading codeblocks

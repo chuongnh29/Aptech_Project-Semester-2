@@ -43,6 +43,8 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBy
 
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
+Route::get('change-language/{locale}', 'PagesController@changeLanguage');
+
 Route::get('admin/index', 'AdminController@getIndex');
 
 Route::get('admin/getproduct', 'AdminController@getProductManager');
@@ -62,3 +64,7 @@ Route::get('admin/products/delete/{id}', 'ProductController@destroy');
 Route::get('admin/products/delete/{id}', 'ProductController@destroy')->name('delete');
 
 Route::post('admin/products/add', 'ProductController@create')->name('addProduct');
+
+Route::get('admin/edit/{id}', 'AdminController@getAddProduct')->name('editProductForm');
+
+Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->name('getPost');

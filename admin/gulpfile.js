@@ -26,13 +26,13 @@ gulp.task('vendor', function() {
       '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
       '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
     ])
-    .pipe(gulp.dest('./vendor/bootstrap'));
+    .pipe(gulp.dest('./vendor/bootstrap'))
 
   // ChartJS
   gulp.src([
       './node_modules/chart.js/dist/*.js'
     ])
-    .pipe(gulp.dest('./vendor/chart.js'));
+    .pipe(gulp.dest('./vendor/chart.js'))
 
   // DataTables
   gulp.src([
@@ -40,20 +40,20 @@ gulp.task('vendor', function() {
       './node_modules/datatables.net-bs4/js/*.js',
       './node_modules/datatables.net-bs4/css/*.css'
     ])
-    .pipe(gulp.dest('./vendor/datatables/'));
+    .pipe(gulp.dest('./vendor/datatables/'))
 
   // Font Awesome
   gulp.src([
       './node_modules/@fortawesome/**/*',
     ])
-    .pipe(gulp.dest('./vendor'));
+    .pipe(gulp.dest('./vendor'))
 
   // jQuery
   gulp.src([
       './node_modules/jquery/dist/*',
       '!./node_modules/jquery/dist/core.js'
     ])
-    .pipe(gulp.dest('./vendor/jquery'));
+    .pipe(gulp.dest('./vendor/jquery'))
 
   // jQuery Easing
   gulp.src([

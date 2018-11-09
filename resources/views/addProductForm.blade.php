@@ -1,11 +1,10 @@
 <div class="container crud-table">
   <div class="table-wrapper">
-      <form action="{{ route('addProduct') }}" method="post">
-          {{ csrf_field() }}
+
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
-          <h2>Thêm sản phẩm</h2>
+          <h2>@if($type == 'add')Thêm mới sản phẩm @elseif($type == 'edit') Sửa thông tin sản phẩm @endif </h2>
         </div>
         <div class="col-sm-6">
           
@@ -15,25 +14,20 @@
       </div>
     </div>
 
-          @if ($errors->any())
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
+          <div class="errors">
+            @include('errorValidate')
+          </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
-        <input type="" class="form-control" id="" name="tenSP" placeholder="Bắt buộc nhập">
+        <input type="" class="form-control" @if($type == 'edit') value="{{ $product->name }}" @endif id="" name="tenSP" placeholder="Bắt buộc nhập">
       </div>
+        <input type="hidden" name="productID" @if($type == 'edit') value="{{ $product->id }}" @endif>
       <div class="form-group col-md-4">
         <label for="inputPassword4">Thương hiệu</label>
         <select id="inputState" class="form-control" name="thuongHieu">
             @foreach($thuongHieu as $brand)
-                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                <option value="{{ $brand->id }}" @if($type == 'edit' && $product->type_id == $brand->id) selected @endif>{{ $brand->name }}</option>
             @endforeach
         </select>
       </div>
@@ -41,9 +35,9 @@
         <label for="inputState">Giới tính</label>
         <select id="inputState" class="form-control" name="gioiTinh">
             @foreach($gioiTinh as $gender)
-                @if($gender->type == 0)<option value="{{ $gender->type }}">Nam</option>
+                @if($gender->type == 0)<option value="{{ $gender->type }}"@if($type == 'edit' && $product->gender == $gender->type) selected @endif>Nam</option>
                 @else
-                    <option value="{{ $gender->type }}">Nữ</option>
+                    <option value="{{ $gender->type }}" @if($type == 'edit' && $product->gender == $gender->type) selected @endif>Nữ</option>
                 @endif
             @endforeach
         </select>
@@ -54,7 +48,7 @@
            <label for="inputPassword4">Loại dây</label>
            <select id="inputState" class="form-control" name="loaiDay">
                @foreach($loaiDay as $day)
-                   <option value="{{ $day->id }}">{{ $day->strap_name }}</option>
+                   <option value="{{ $day->id }}" @if($type == 'edit' && $product->strap_id == $day->id) selected @endif>{{ $day->strap_name }}</option>
                @endforeach
            </select>
        </div>
@@ -63,7 +57,7 @@
            <label for="inputPassword4">Loại vỏ</label>
            <select id="inputState" class="form-control" name="loaiVo">
                @foreach($loaiVo as $vo)
-                   <option value="{{ $vo->id }}">{{ $vo->material_name }}</option>
+                   <option value="{{ $vo->id }}" @if($type == 'edit' && $product->case_material_id == $vo->id) selected @endif>{{ $vo->material_name }}</option>
                @endforeach
            </select>
        </div>
@@ -71,7 +65,7 @@
            <label for="inputPassword4">Trạng thái sản phẩm</label>
            <select id="inputState" class="form-control" name="trangThaiSP">
                @foreach($trangThaiSP as $trangThai)
-                   <option value="{{ $trangThai->id }}">{{ $trangThai->product_status_name }}</option>
+                   <option value="{{ $trangThai->id }}" @if($type == 'edit' && $product->product_status_id == $trangThai->id) selected @endif>{{ $trangThai->product_status_name }}</option>
                @endforeach
            </select>
        </div>
@@ -79,29 +73,31 @@
    <div class="form-row">
        <div class="form-group col-md-4">
            <label for="inputCity">Giá gốc</label>
-           <input type="text" class="form-control" id="inputCity" placeholder="Bắt buộc nhập" name="giaGoc">
+           <input type="text" class="form-control" @if($type == 'edit') value="{{ $product->unit_price }}" @endif id="inputCity" placeholder="Bắt buộc nhập" name="giaGoc">
        </div>
 
        <div class="form-group col-md-4">
            <label for="inputAddress">Giá sale</label>
-           <input type="text" class="form-control" id="inputAddress" placeholder="Bắt buộc nhập" name="giaSale">
+           <input type="text" class="form-control" @if($type == 'edit') value="{{ $product->promotion_price }}" @endif id="inputAddress" placeholder="Bắt buộc nhập" name="giaSale">
        </div>
 
        <div class="form-group col-md-4">
            <label for="inputAddress">Mô tả ngắn</label>
-           <input type="text" class="form-control" id="inputAddress" placeholder="Viết vào đây...">
+           <input type="text" class="form-control" name="moTa" id="inputAddress" placeholder="Viết vào đây...">
        </div>
    </div>
+      @if($type == 'add')
       <div class="form-group">
           <label for="exampleFormControlFile1">Thêm ảnh</label>
-          <input type="file" required="true" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
+          <input type="file" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
       </div>
+      @endif
     <div class="form-group">
       <label for="inputAddress2">Bài viết</label>
-      <textarea name="productPost" id="productReview"></textarea>
+      <textarea name="productPost" id="productPost"></textarea>
     </div>
-    
-    <button type="submit" class="btn btn-primary">Thêm</button>
+
+    <button class="btn btn-primary save">Lưu</button>
 
     <!-- Edit Modal HTML -->
     {{--<div id="addEmployeeModal" class="modal fade">--}}
@@ -138,7 +134,7 @@
         {{--</div>--}}
 
       {{--</div>--}}
-      </form>
+
   </div>
       <!-- Edit Modal HTML -->
     <!-- <div id="editEmployeeModal" class="modal fade">
