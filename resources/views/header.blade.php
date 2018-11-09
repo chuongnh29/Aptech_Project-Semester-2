@@ -5,21 +5,21 @@
             <div class="col-lg-3">
                 <div class="top_header_left">
                     <div class="selector">
-                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="public/source/assets/dest/img/icon/flag-vi.jpg"
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;" onchange="location = this.value;">
+                            <option value='/LuxuryWatchShop/change-language/vi' data-image="public/source/assets/dest/img/icon/flag-vi.jpg"
                                     data-imagecss="flag yt"
-                                    data-title="Vietnam">Vietnam
+                                    data-title="Vietnam" {{\Illuminate\Support\Facades\Session::get('locale')=='vi'?'selected':''}}>Vietnam
                             </option>
-                            <option value='yu' data-image="public/source/assets/dest/img/icon/flag-en.png"
+                            <option value='/LuxuryWatchShop/change-language/en' data-image="public/source/assets/dest/img/icon/flag-en.png"
                                     data-imagecss="flag yu"
-                                    data-title="English">English
+                                    data-title="English" {{\Illuminate\Support\Facades\Session::get('locale')=='en'?'selected':''}}>English
                             </option>
                         </select>
                     </div>
 
                     <div class="input-group">
                         <form role="search" method="get" action="{{route('search')}}">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Search">
+                            <input type="text" class="form-control" placeholder="{{__('message.search')}}" aria-label="Search">
                             <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit"><i class="icon-magnifier"></i></button>
                                 </span>
@@ -40,27 +40,23 @@
                     <li class="account">
                         @if(Auth::check())
                             <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
-                                Tài khoản của tôi
+                                {{__('message.myaccount')}}
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @else
                             <a href="#">
-                                Đăng nhập | Đăng ký
+                                {{__('message.login')}} | {{__('message.register')}}
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @endif
 
                         <ul class="account_selection">
                             @if(Auth::check())
-                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
-                                        nhập</a></li>
-                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
-                                        xuất</a></li>
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{__('message.login')}}</a></li>
+                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>{{__('message.logout')}}</a></li>
                             @else
-                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
-                                        nhập</a></li>
-                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng
-                                        ký</a></li>
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{__('message.login')}}</a></li>
+                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>{{__('message.register')}}</a></li>
                             @endif
                         </ul>
                     </li>
@@ -89,14 +85,14 @@
                     <li class="nav-item dropdown submenu active">
                         <a class="nav-link dropdown-toggle" href="{{route('home')}}" role="button" aria-haspopup="true"
                            aria-expanded="false">
-                            Trang chủ
+                            {{__('message.home')}}
                         </a>
 
                     </li>
                     <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nam
+                            {{__('message.menwatch')}}
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -112,7 +108,7 @@
                     <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonu')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nữ
+                            {{__('message.womenwatch')}}
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -127,9 +123,9 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
+                        <a class="nav-link" href="{{route('about')}}">{{__('message.aboutus')}}</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">{{__('message.contact')}}</a></li>
                 </ul>
             </div>
         </nav>

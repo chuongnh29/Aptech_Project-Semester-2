@@ -2,7 +2,7 @@
 ============================================================================================ */
 .header_top_area{
     padding-bottom: 50px;
-       
+
 }
 .top_header_left{
     padding-top: 20px;
@@ -62,7 +62,7 @@
                     }
                 }
             }
-        } 
+        }
         &:before{
             content: "";
             height: 13px;
@@ -108,10 +108,10 @@
                 color: #000;
                 font-size: 15px;
                 margin: 0px;
-            }    
+            }
         }
     }
-} 
+}
 
 .usd_select.bootstrap-select{
     max-width: 64px;
@@ -166,7 +166,7 @@
 }
 
 .top_header_middle{
-    text-align: center; 
+    text-align: center;
     a{
         font-size: 13px;
         font-family: $pop;
@@ -199,7 +199,7 @@
         }
     }
     img{
-        margin-top: 25px; 
+        margin-top: 25px;
     }
 }
 .top_right_header{
@@ -214,14 +214,14 @@
             color: #000;
             line-height: 54px;
             @include transition;
-        }  
+        }
         &:last-child{
             margin-right: 0px;
         }
         &:hover{
             a{
                 color: #cccccc;
-            }    
+            }
         }
     }
 }
@@ -294,7 +294,7 @@
                         position: relative;
                         top: 4px;
                     }
-                } 
+                }
                 .dropdown-menu{
                     padding: 0px;
                     border-radius: 0px;
@@ -322,8 +322,8 @@
                     }
                 }
             }
-        }    
-    }    
+        }
+    }
 }
 
 .shop_header_area{
@@ -430,7 +430,7 @@
                 &:hover, &.active{
                     a{
                         color: $baseColor;
-                    }    
+                    }
                 }
                 &.submenu{
                     .dropdown-menu{
@@ -484,7 +484,7 @@
                 }
             }
         }
-    }    
+    }
 }
 
 /* Main title css
@@ -493,7 +493,7 @@
 /* Carousel Header css
 ============================================================================================ */
 .carousel_top_header{
-    
+
 }
 .carousel_top_h_inner{
     display: block;
@@ -619,7 +619,7 @@
             border: none;
             .navbar-brand{
                 padding-top: 0px;
-                
+
             }
             .collapse{
                 text-align: right;
@@ -649,7 +649,7 @@
                     &:last-child{
                         a{
                             margin-right: 0px;
-                            
+
                         }
                     }
                 }
@@ -683,7 +683,7 @@
             .ddChild{
                 background: #fff;
             }
-        } 
+        }
         &:before{
             content: "";
             height: 13px;
@@ -776,7 +776,7 @@
                 .ddChild{
                     background: #fff;
                 }
-            } 
+            }
             &:before{
                 content: "";
                 height: 13px;
@@ -865,7 +865,7 @@
                 @include transition;
                 &:after{
                     display: none;
-                }    
+                }
                 i{
                     float: right;
                     line-height: 48px;
@@ -886,7 +886,7 @@
                 position: inherit;
                 .dropdown-menu{
                     @media(min-width: 992px){
-                        position: fixed; 
+                        position: fixed;
                         left: 15%;
                         display: block;
                         top: 0px;
@@ -1026,7 +1026,7 @@
                             position: relative;
                             top: 4px;
                         }
-                    } 
+                    }
                     .dropdown-menu{
                         padding: 0px;
                         border-radius: 0px;

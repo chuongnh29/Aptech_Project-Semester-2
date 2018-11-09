@@ -7,14 +7,23 @@ use App\ProductType;
 use App\Slide;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
+    public function changeLanguage($locale)
+    {
+        Session::put('locale',$locale);
+        return Redirect::back();
+    }
+
     public function getIndex()
     {
+        //App::setLocale(Session::get('locale'));
         $slide = Slide::all();
         $loai_sp_nam = ProductType::where('type', 0)->get();
         $new_product = Products::where('new', 1)->paginate(8);
