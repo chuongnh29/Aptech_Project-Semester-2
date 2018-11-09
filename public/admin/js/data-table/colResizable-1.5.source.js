@@ -356,7 +356,7 @@
 				//events:
 				onDrag: null, 					//callback function to be fired during the column resizing process if liveDrag is enabled
 				onResize: null					//callback function fired when the dragging process is over
-            }			
+            };			
 			var options =  $.extend(defaults, options);			
             return this.each(function() {				
              	init( this, options);             

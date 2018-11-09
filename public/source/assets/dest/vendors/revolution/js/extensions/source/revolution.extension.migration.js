@@ -29,8 +29,8 @@ var prepOptions = function(o) {
 	
 	// PARALLAX FALLBACKS
 	if (o.parallaxLevels || o.parallaxBgFreeze) {
-		var p = new Object();		
-		p.type = o.parallax
+		var p = {};		
+		p.type = o.parallax;
 		p.levels = o.parallaxLevels;
 		p.bgparallax = o.parallaxBgFreeze == "on" ? "off" : "on";
 
@@ -61,9 +61,9 @@ var prepOptions = function(o) {
 
 	// NAVIGATION ARROW FALLBACKS
 	if (o.navigation===undefined) {
-		var n = new Object();
+		var n = {};
 		if (o.navigationArrows=="solo" || o.navigationArrows=="nextto") {
-			var a = new Object();
+			var a = {};
 			a.enable = true;
 			a.style = o.navigationStyle || "";
 			a.hide_onmobile = o.hideArrowsOnMobile==="on" ? true : false; 														
@@ -87,7 +87,7 @@ var prepOptions = function(o) {
 			n.arrows = a;
 		}
 		if (o.navigationType=="bullet") {
-			var b = new Object();
+			var b = {};
 			b.style = o.navigationStyle || "";
 			b.enable=true;
 			b.hide_onmobile = o.hideArrowsOnMobile==="on" ? true : false; 														
@@ -105,7 +105,7 @@ var prepOptions = function(o) {
 			n.bullets = b;
 		}
 		if (o.navigationType=="thumb") {
-			var t = new Object();
+			var t = {};
 			t.style=o.navigationStyle || "";
 			t.enable=true;
 			t.width=o.thumbWidth || 100;
@@ -156,11 +156,11 @@ var prepOptions = function(o) {
 
 	return o;
 
-}
+};
 	
 var prepLayerAnimations = function(container,opt) {
 			
-	var c = new Object(),
+	var c = {},
 		cw = container.width(),
 		ch = container.height();
 
@@ -177,7 +177,7 @@ var prepLayerAnimations = function(container,opt) {
 	c.lft = "y:left;o:0";
 	c.lfb = "y:right;o:0";
 	c.fade = "o:0";
-	var src = (Math.random()*720-360)
+	var src = (Math.random()*720-360);
 	
 	
 	container.find('.tp-caption').each(function() {		
@@ -191,59 +191,59 @@ var prepLayerAnimations = function(container,opt) {
 			ncc = cp.attr('class');
 		c.randomrotate = "x:{-400,400};y:{-400,400};sX:{0,2};sY:{0,2};rZ:{-180,180};rX:{-180,180};rY:{-180,180};o:0;";	
 		
-		if (ncc.match("randomrotate")) cp.data('transform_in',c.randomrotate) 
+		if (ncc.match("randomrotate")) cp.data('transform_in',c.randomrotate); 
 			else
-		if (ncc.match(/\blfl\b/)) cp.data('transform_in',c.lfl) 
+		if (ncc.match(/\blfl\b/)) cp.data('transform_in',c.lfl); 
 			else
-		if (ncc.match(/\blfr\b/)) cp.data('transform_in',c.lfr) 
+		if (ncc.match(/\blfr\b/)) cp.data('transform_in',c.lfr); 
 			else
-		if (ncc.match(/\blft\b/)) cp.data('transform_in',c.lft) 
+		if (ncc.match(/\blft\b/)) cp.data('transform_in',c.lft); 
 			else
-		if (ncc.match(/\blfb\b/)) cp.data('transform_in',c.lfb) 
+		if (ncc.match(/\blfb\b/)) cp.data('transform_in',c.lfb); 
 			else
-		if (ncc.match(/\bsfl\b/)) cp.data('transform_in',c.sfl) 
+		if (ncc.match(/\bsfl\b/)) cp.data('transform_in',c.sfl); 
 			else
-		if (ncc.match(/\bsfr\b/)) cp.data('transform_in',c.sfr) 
+		if (ncc.match(/\bsfr\b/)) cp.data('transform_in',c.sfr); 
 			else
-		if (ncc.match(/\bsft\b/)) cp.data('transform_in',c.sft) 
+		if (ncc.match(/\bsft\b/)) cp.data('transform_in',c.sft); 
 			else
-		if (ncc.match(/\bsfb\b/)) cp.data('transform_in',c.sfb) 
+		if (ncc.match(/\bsfb\b/)) cp.data('transform_in',c.sfb); 
 			else
-		if (ncc.match(/\bskewfromleftshort\b/)) cp.data('transform_in',c.skewfromleftshort) 
+		if (ncc.match(/\bskewfromleftshort\b/)) cp.data('transform_in',c.skewfromleftshort); 
 			else
-		if (ncc.match(/\bskewfromrightshort\b/)) cp.data('transform_in',c.skewfromrightshort) 
+		if (ncc.match(/\bskewfromrightshort\b/)) cp.data('transform_in',c.skewfromrightshort); 
 			else 
-		if (ncc.match(/\bskewfromleft\b/)) cp.data('transform_in',c.skewfromleft) 
+		if (ncc.match(/\bskewfromleft\b/)) cp.data('transform_in',c.skewfromleft); 
 			else
-		if (ncc.match(/\bskewfromright\b/)) cp.data('transform_in',c.skewfromright) 
+		if (ncc.match(/\bskewfromright\b/)) cp.data('transform_in',c.skewfromright); 
 			else
 		if (ncc.match(/\bfade\b/)) cp.data('transform_in',c.fade);
 
-		if (ncc.match(/\brandomrotateout\b/)) cp.data('transform_out',c.randomrotate) 
+		if (ncc.match(/\brandomrotateout\b/)) cp.data('transform_out',c.randomrotate); 
 			else
-		if (ncc.match(/\bltl\b/)) cp.data('transform_out',c.lfl) 
+		if (ncc.match(/\bltl\b/)) cp.data('transform_out',c.lfl); 
 			else
-		if (ncc.match(/\bltr\b/)) cp.data('transform_out',c.lfr) 
+		if (ncc.match(/\bltr\b/)) cp.data('transform_out',c.lfr); 
 			else
-		if (ncc.match(/\bltt\b/)) cp.data('transform_out',c.lft) 
+		if (ncc.match(/\bltt\b/)) cp.data('transform_out',c.lft); 
 			else
-		if (ncc.match(/\bltb\b/)) cp.data('transform_out',c.lfb) 
+		if (ncc.match(/\bltb\b/)) cp.data('transform_out',c.lfb); 
 			else
-		if (ncc.match(/\bstl\b/)) cp.data('transform_out',c.sfl) 
+		if (ncc.match(/\bstl\b/)) cp.data('transform_out',c.sfl); 
 			else
-		if (ncc.match(/\bstr\b/)) cp.data('transform_out',c.sfr) 
+		if (ncc.match(/\bstr\b/)) cp.data('transform_out',c.sfr); 
 			else
-		if (ncc.match(/\bstt\b/)) cp.data('transform_out',c.sft) 
+		if (ncc.match(/\bstt\b/)) cp.data('transform_out',c.sft); 
 			else
-		if (ncc.match(/\bstb\b/)) cp.data('transform_out',c.sfb) 
+		if (ncc.match(/\bstb\b/)) cp.data('transform_out',c.sfb); 
 			else
-		if (ncc.match(/\bskewtoleftshortout\b/)) cp.data('transform_out',c.skewfromleftshort) 
+		if (ncc.match(/\bskewtoleftshortout\b/)) cp.data('transform_out',c.skewfromleftshort); 
 			else
-		if (ncc.match(/\bskewtorightshortout\b/)) cp.data('transform_out',c.skewfromrightshort) 
+		if (ncc.match(/\bskewtorightshortout\b/)) cp.data('transform_out',c.skewfromrightshort); 
 			else
-		if (ncc.match(/\bskewtoleftout\b/)) cp.data('transform_out',c.skewfromleft) 
+		if (ncc.match(/\bskewtoleftout\b/)) cp.data('transform_out',c.skewfromleft); 
 			else
-		if (ncc.match(/\bskewtorightout\b/)) cp.data('transform_out',c.skewfromright) 
+		if (ncc.match(/\bskewtorightout\b/)) cp.data('transform_out',c.skewfromright); 
 			else
 		if (ncc.match(/\bfadeout\b/)) cp.data('transform_out',c.fade);
 

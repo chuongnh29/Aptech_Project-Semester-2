@@ -5,19 +5,19 @@
 @endsection
 
 @section('content')
-    <!--================Categories Banner Area =================-->
-    <section class="categories_banner_area men">
-        <div class="container">
-            <div class="c_banner_inner">
-                <h3>Tìm kiếm</h3>
-                <ul>
-                    <li><a href="{{route('home')}}">Trang chủ</a></li>
-                    <li class="current"><a href="#">Tìm kiếm</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!--================End Categories Banner Area =================-->
+    {{--<!--================Categories Banner Area =================-->--}}
+    {{--<section class="categories_banner_area men">--}}
+        {{--<div class="container">--}}
+            {{--<div class="c_banner_inner">--}}
+                {{--<h3>Tìm kiếm</h3>--}}
+                {{--<ul>--}}
+                    {{--<li><a href="{{route('home')}}">Trang chủ</a></li>--}}
+                    {{--<li class="current"><a href="#">Tìm kiếm</a></li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
+    {{--<!--================End Categories Banner Area =================-->--}}
 
     <!--================Categories Product Area =================-->
     <section class="categories_product_main p_80">

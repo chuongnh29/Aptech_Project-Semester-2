@@ -9,20 +9,20 @@
 	 jQuery myTab
 	------------------------------ */
 	$('#myTab a').click(function (e) {
-		  e.preventDefault()
+		  e.preventDefault();
 		  $(this).tab('show')
 		});
 		$('#myTab3 a').click(function (e) {
-		  e.preventDefault()
+		  e.preventDefault();
 		  $(this).tab('show')
 		});
 		$('#myTab4 a').click(function (e) {
-		  e.preventDefault()
+		  e.preventDefault();
 		  $(this).tab('show')
 		});
 
 	  $('#single-product-tab a').click(function (e) {
-		  e.preventDefault()
+		  e.preventDefault();
 		  $(this).tab('show')
 		});
 	

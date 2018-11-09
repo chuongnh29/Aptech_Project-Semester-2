@@ -661,7 +661,7 @@
     }
     $("#tech").change(function() {
         console.log("by jquery: ", this.value);
-    })
+    });
     
     
     $(document).ready(function() {
@@ -697,5 +697,5 @@
     
     
     
-})(jQuery)
+})(jQuery);
 

@@ -30,7 +30,7 @@ jQuery.extend(true,_R, {
 			punchgs.TweenLite.set(opt.c,{overflow:_.ddd_overflow});
 			punchgs.TweenLite.set(opt.ul,{overflow:_.ddd_overflow});		
 			if (opt.sliderType!="carousel" && _.ddd_shadow=="on") {
-				opt.c.prepend('<div class="dddwrappershadow"></div>')
+				opt.c.prepend('<div class="dddwrappershadow"></div>');
 				punchgs.TweenLite.set(opt.c.find('.dddwrappershadow'),{force3D:"auto",transformPerspective:1600,transformOrigin:"50% 50%", width:"100%",height:"100%",position:"absolute",top:0,left:0,zIndex:0});			
 			}
 		}
@@ -68,10 +68,10 @@ jQuery.extend(true,_R, {
 			punchgs.TweenLite.set(opt.c.find('.tp-static-layers'),{top:0, left:0,width:"100%",height:"100%"});
 			setDDDInContainer(opt.c.find('.tp-static-layers'));
 		}
-		_.pcontainers = new Array();
-		_.pcontainer_depths = new Array();
-		_.bgcontainers = new Array();
-		_.bgcontainer_depths = new Array();
+		_.pcontainers = [];
+		_.pcontainer_depths = [];
+		_.bgcontainers = [];
+		_.bgcontainer_depths = [];
 
 		opt.c.find('.tp-revslider-slidesli .slotholder, .tp-revslider-slidesli .rs-background-video-layer').each(function() {
 			var t = jQuery(this),
@@ -81,7 +81,7 @@ jQuery.extend(true,_R, {
 				_.bgcontainers.push(t);
 				_.bgcontainer_depths.push(opt.parallax.levels[parseInt(l,0)-1]/100);
 			}
-		})
+		});
 
 		
 
@@ -90,7 +90,7 @@ jQuery.extend(true,_R, {
 				var pw = jQuery(this),
 					tpw = pw.closest('.tp-parallax-wrap');												
 				
-				tpw.data('parallaxlevel',_.levels[i-1])
+				tpw.data('parallaxlevel',_.levels[i-1]);
 				tpw.addClass("tp-parallax-container");
 				_.pcontainers.push(tpw);
 				_.pcontainer_depths.push(_.levels[i-1]);
@@ -152,9 +152,8 @@ jQuery.extend(true,_R, {
 							punchgs.TweenLite.to(pc,s,{force3D:"auto",x:offsh,ease:punchgs.Power3.easeOut,overwrite:"all"});
 						else
 							punchgs.TweenLite.to(pc,s,{force3D:"auto",x:offsh,y:offsv,ease:punchgs.Power3.easeOut,overwrite:"all"});
-				};
-
-				if (_.type=="3D" || _.type=="3d") {
+                }
+                if (_.type=="3D" || _.type=="3d") {
 					var sctor = '.tp-revslider-slidesli .dddwrapper, .dddwrappershadow, .tp-revslider-slidesli .dddwrapper-layer, .tp-static-layers .dddwrapper-layer';
 					if (opt.sliderType==="carousel") sctor = ".tp-revslider-slidesli .dddwrapper, .tp-revslider-slidesli .dddwrapper-layer, .tp-static-layers .dddwrapper-layer";
 					opt.c.find(sctor).each(function() {										
@@ -269,7 +268,7 @@ jQuery.extend(true,_R, {
 				
 		// COLLECT ALL ELEMENTS WHICH NEED FADE IN/OUT ON PARALLAX SCROLL
 		var _s = opt.scrolleffect;
-		_s.bgs = new Array();		
+		_s.bgs = [];		
 
 		if (_s.on) {		
 			if (_s.on_slidebg==="on")

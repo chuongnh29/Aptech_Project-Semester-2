@@ -7,23 +7,14 @@ use App\ProductType;
 use App\Slide;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
-    public function changeLanguage($locale)
-    {
-        Session::put('locale',$locale);
-        return Redirect::back();
-    }
-
     public function getIndex()
     {
-        //App::setLocale(Session::get('locale'));
         $slide = Slide::all();
         $loai_sp_nam = ProductType::where('type', 0)->get();
         $new_product = Products::where('new', 1)->paginate(8);
@@ -33,14 +24,14 @@ class PagesController extends Controller
 
     public function getMenWatch()
     {
-        $sp_nam = Products::all();
+        $sp_nam = Products::where('type_gender', 0)->get();
         $loai_sp_nam = ProductType::where('type', 0)->get();
         return view('pages.men_watch', compact('sp_nam', 'loai_sp_nam'));
     }
 
     public function getWomenWatch()
     {
-        $sp_nu = Products::all();
+        $sp_nu = Products::where('type_gender', 1)->get();
         $loai_sp_nu = ProductType::where('type', 1)->get();
         return view('pages.women_watch', compact('sp_nu', 'loai_sp_nu'));
     }
@@ -55,7 +46,8 @@ class PagesController extends Controller
     public function getProductDetail(Request $req)
     {
         $sanpham = Products::where('id', $req->id)->first();
-        return view('pages.product_detail', compact('sanpham'));
+        $sp_tuongtu = Products::where('type_id', $sanpham->type_id)->paginate(4);
+        return view('pages.product_detail', compact('sanpham', 'sp_tuongtu'));
     }
 
     public function getAbout()
@@ -148,7 +140,7 @@ class PagesController extends Controller
 
     public function getSearch(Request $req)
     {
-        $product = Products::where('name', 'like', '%' . $req->key . '%')->get();
+        $product = Products::where('name', 'like', '%' . $req->key_word . '%')->get();
         $loai_sp = ProductType::where('type', 0)->get();
         return view('pages.search', compact('product', 'loai_sp'));
     }

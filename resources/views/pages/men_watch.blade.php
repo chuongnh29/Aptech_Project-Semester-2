@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    {{__('message.menwatch')}}
+    Đồng hồ nam
 @endsection
 
 @section('content')
@@ -9,11 +9,11 @@
     <section class="categories_banner_area men">
         <div class="container">
             <div class="c_banner_inner">
-                <h3>{{__('message.menwatch')}}</h3>
+                <h3>đồng hồ nam</h3>
                 <ul>
-                    <li><a href="{{route('home')}}">{{__('message.home')}}</a></li>
-                    <li><a href="#">{{__('watchpage.product_page')}}</a></li>
-                    <li class="current"><a href="#">{{__('watchpage.man_watch_page')}}</a></li>
+                    <li><a href="{{route('home')}}">Trang chủ</a></li>
+                    <li><a href="#">Sản phẩm</a></li>
+                    <li class="current"><a href="#">Đồng hồ nam</a></li>
                 </ul>
             </div>
         </div>
@@ -29,15 +29,15 @@
                         <div class="showing_fillter">
                             <div class="row m0">
                                 <div class="first_fillter">
-                                    <h4>{{__('watchpage.product_display')}} {{count($sp_nam)}} {{__('watchpage.product_display2')}}</h4>
+                                    <h4>Hiện có {{count($sp_nam)}} sản phẩm</h4>
                                 </div>
                                 <div class="secand_fillter">
-                                    <h4>{{__('watchpage.sorted_by')}}</h4>
+                                    <h4>SẮP XẾP THEO:</h4>
                                     <select class="selectpicker">
-                                        <option>{{__('watchpage.price_decreases')}}</option>
-                                        <option>{{__('watchpage.price_increases')}}</option>
-                                        <option>{{__('watchpage.from_a_z')}}</option>
-                                        <option>{{__('watchpage.from_z_a')}}</option>
+                                        <option>Giá giảm dần</option>
+                                        <option>Giá tăng dần</option>
+                                        <option>Tên sản phẩm (từ A - Z)</option>
+                                        <option>Tên sản phẩm (từ Z - A)</option>
                                     </select>
                                 </div>
                                 <div class="third_fillter">
@@ -98,7 +98,7 @@
                     <div class="col-lg-3 float-md-right">
                         <aside class="l_widgest l_menufacture_widget">
                             <div class="l_w_title">
-                                <h3>{{__('watchpage.brand_page')}}</h3>
+                                <h3>Thương hiệu</h3>
                             </div>
                             <ul>
                                 @foreach($loai_sp_nam as $loai)

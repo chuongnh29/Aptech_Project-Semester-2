@@ -21,7 +21,7 @@ jQuery(document).ready(function($)
 	*/
 
 	var header = $('.header');
-	var topNav = $('.top_nav')
+	var topNav = $('.top_nav');
 	var hamburger = $('.hamburger_container');
 	var menu = $('.hamburger_menu');
 	var menuActive = false;
@@ -332,7 +332,7 @@ jQuery(document).ready(function($)
 			    ]
 			  }
 			]
-    	}
+    	};
 
     	// Initialize a map with options
     	map = new google.maps.Map(document.getElementById('map'), mapOptions);

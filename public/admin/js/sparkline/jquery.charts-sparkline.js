@@ -235,7 +235,7 @@ $(document).ready(function() {
         });
         
    
-   }
+   };
     var sparkResize;
  
         $(window).resize(function(e) {

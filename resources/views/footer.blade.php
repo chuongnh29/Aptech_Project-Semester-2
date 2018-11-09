@@ -6,7 +6,8 @@
                 <div class="col-lg-4 col-md-4 col-6">
                     <aside class="f_widget f_about_widget">
                         <img src="public/source/assets/dest/img/logo.png" alt="" height="57px" width="300px">
-                        <p>{{__('message.luxury_watch')}}</p>
+                        <p>Tự hào là nhà phân phối các thương hiệu đồng hồ Thụy Sĩ chính hãng siêu xa xỉ duy nhất tại
+                            Việt Nam</p>
                         <h6>Social:</h6>
                         <ul>
                             <li><a target="_blank" href="https://www.facebook.com/luxurywatchofficial/"><i
@@ -27,52 +28,52 @@
                 <div class="col-lg-2 col-md-4 col-6">
                     <aside class="f_widget link_widget f_info_widget">
                         <div class="f_w_title">
-                            <h3>{{__('message.information')}}</h3>
+                            <h3>Thông tin</h3>
                         </div>
                         <ul>
-                            <li><a href="#">{{__('message.about_us_footer')}}</a></li>
-                            <li><a href="#">{{__('message.transport_info')}}</a></li>
-                            <li><a href="#">{{__('message.terms')}}</a></li>
-                            <li><a href="{{route('contact')}}">{{__('message.contact_footer')}}</a></li>
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Thông tin vận chuyển</a></li>
+                            <li><a href="#">Điều khoản và Điều kiện</a></li>
+                            <li><a href="{{route('contact')}}">Liên hệ chúng tôi</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6">
                     <aside class="f_widget link_widget f_service_widget">
                         <div class="f_w_title">
-                            <h3>{{__('message.services')}}</h3>
+                            <h3>Dịch vụ</h3>
                         </div>
                         <ul>
                             <li><a href="{{route('login')}}">Tài khoản của tôi</a></li>
                             <li><a href="#">Lịch sử đơn hàng</a></li>
                             <li><a href="#">Danh sách mong muốn</a></li>
-                            <li><a href="#">{{__('message.help_center')}}</a></li>
+                            <li><a href="#">Trung tâm trợ giúp</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6">
                     <aside class="f_widget link_widget f_extra_widget">
                         <div class="f_w_title">
-                            <h3>{{__('message.additional')}}</h3>
+                            <h3>Bổ sung</h3>
                         </div>
                         <ul>
-                            <li><a href="#">{{__('message.brand')}}</a></li>
-                            <li><a href="#">{{__('message.gift_certificate')}}</a></li>
-                            <li><a href="#">{{__('message.agency')}}</a></li>
-                            <li><a href="#">{{__('message.special_offer')}}</a></li>
+                            <li><a href="#">Nhãn hiệu</a></li>
+                            <li><a href="#">Phiếu quà tặng</a></li>
+                            <li><a href="#">Đại lý</a></li>
+                            <li><a href="#">Ưu đãi đặc biệt</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-lg-2 col-md-4 col-6">
                     <aside class="f_widget link_widget f_account_widget">
                         <div class="f_w_title">
-                            <h3>{{__('message.account_footer')}}</h3>
+                            <h3>Tài khoản</h3>
                         </div>
                         <ul>
-                            <li><a href="#">{{__('message.my_account_footer')}}</a></li>
-                            <li><a href="#">{{__('message.order_history')}}</a></li>
-                            <li><a href="#">{{__('message.wish_list')}}</a></li>
-                            <li><a href="#">{{__('message.news')}}</a></li>
+                            <li><a href="#">Tài khoản của tôi</a></li>
+                            <li><a href="#">Lịch sử đơn hàng</a></li>
+                            <li><a href="#">Danh sách mong muốn</a></li>
+                            <li><a href="#">Bản tin</a></li>
                         </ul>
                     </aside>
                 </div>
@@ -81,7 +82,7 @@
         <div class="footer_copyright">
             <h5>©
                 <script>document.write(new Date().getFullYear());</script>
-                Copyright by CTC Group - FPT Academy International | All rights reserved | Contact Us
+                Bản quyền thuộc về CTC Group - FPT Academy International | Bảo lưu mọi quyền | <a style="color: #999999"  href="{{route('contact')}}">Liên hệ chúng tôi</a>
             </h5>
         </div>
     </div>

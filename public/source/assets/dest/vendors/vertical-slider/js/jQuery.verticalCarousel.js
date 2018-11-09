@@ -84,7 +84,7 @@
 			carouselUp = $(this).find("." + carouselGoUpClass);
 			carouselDown = $(this).find("." + carouselGoDownClass);
 			totalItems = $(carouselGroup).children().length;
-			updateNavigation()
+			updateNavigation();
 			setContainerHeight();
 			setOffset();
 			$(carouselUp).on("click", function(e){

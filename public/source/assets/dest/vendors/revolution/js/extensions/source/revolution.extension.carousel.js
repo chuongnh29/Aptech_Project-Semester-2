@@ -72,7 +72,7 @@ jQuery.extend(true,_R, {
 
 		direction = direction === undefined  || direction=="down" || direction=="up" || direction===null || jQuery.isEmptyObject(direction) ? "left" : direction;
 		var _ = opt.carousel,
-			slidepositions = new Array(),
+			slidepositions = [],
 			len = _.slides.length,
 			leftlimit = _.horizontal_align ==="right" ? opt.width : 0;
 		
@@ -97,7 +97,7 @@ jQuery.extend(true,_R, {
 				pos = pos<0-_.inneroffset-_.slide_width ? direction=="left" ? pos + _.maxwidth :  direction==="right" ? slidepositions[len-1] + ((i+1)*_.slide_width) : pos : pos;			
 			}
 
-			var tr= new Object();	
+			var tr= {};	
 
 			tr.left = pos + _.inneroffset;
 
@@ -120,7 +120,7 @@ jQuery.extend(true,_R, {
 			// SET VISIBILITY OF ELEMENT		
 			if (_.fadeout==="on") 			
 				if (_.vary_fade==="on")
-					tr.autoAlpha = 1-Math.abs(((1/Math.ceil(_.maxVisibleItems/ha))*d))
+					tr.autoAlpha = 1-Math.abs(((1/Math.ceil(_.maxVisibleItems/ha))*d));
 				else 
 					switch(_.horizontal_align) {
 						case "center":
@@ -220,7 +220,7 @@ var defineCarouselElements = function(opt) {
 	if (_.border_radius!==undefined && parseInt(_.border_radius,0) >0) {
 		punchgs.TweenLite.set(opt.c.find('.tp-revslider-slidesli'),{borderRadius:_.border_radius});
 	}		
-}
+};
 
 var setCarouselDefaults = function(opt) {	
 	
@@ -278,13 +278,14 @@ var setCarouselDefaults = function(opt) {
 
 	
 
-}
+};
 
 
 // DIRECTION CHECK
-var dircheck = function(d,b) {		
-	return d===null || jQuery.isEmptyObject(d) ? b : d === undefined ?  "right" : d;;
-}
+var dircheck = function(d,b) {
+    
+return d === null || jQuery.isEmptyObject(d) ? b : d === undefined ? "right" : d;
+};
 
 // ANIMATE THE CAROUSEL WITH OFFSETS
 var animateCarousel = function(opt,direction,nsae,speed) {
@@ -292,7 +293,7 @@ var animateCarousel = function(opt,direction,nsae,speed) {
 	var _ = opt.carousel;
 	direction = _.lastdirection = dircheck(direction,_.lastdirection);		
 	
-	var animobj = new Object(),
+	var animobj = {},
 		_ease = nsae ? punchgs.Power2.easeOut : _.easing;
 
 	animobj.from = 0;
@@ -319,12 +320,12 @@ var animateCarousel = function(opt,direction,nsae,speed) {
 			opt.c.find('.next-revslide').removeClass("next-revslide");
 			if (nsae) _R.callingNewSlide(opt.c,li.data('index'));
 		}, ease:_ease});	
-}
+};
 
 
 var breduc = function(a,m) {	
 	return Math.abs(a)>Math.abs(m) ? a>0 ? a - Math.abs(Math.floor(a/(m))*(m)) : a + Math.abs(Math.floor(a/(m))*(m)) : a;
-}
+};
 
 // CAROUSEL INFINITY MODE, DOWN OR UP ANIMATION
 var getBestDirection = function(a,b,max) {		
@@ -333,7 +334,7 @@ var getBestDirection = function(a,b,max) {
 		dira = breduc(dira,max);
 		dirb = breduc(dirb,max);		
 		return Math.abs(dira)>Math.abs(dirb) ? dirb : dira;
-	}
+	};
 
 // GET OFFSETS BEFORE ANIMATION
 var getActiveCarouselOffset = function(opt) {

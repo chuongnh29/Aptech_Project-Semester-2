@@ -535,7 +535,7 @@ var initMouseScroll = function(container,opt) {
 			e.preventDefault(e);    		
 			return false;
 		} else {			
-			return;
+			
 		}
 	});
 };
@@ -569,9 +569,9 @@ var swipeAction = function(container,opt,vertical) {
 	if (!jQuery.fn.swipetp) jQuery.fn.swipetp = jQuery.fn.swipe;
 	if (!jQuery.fn.swipetp.defaults || !jQuery.fn.swipetp.defaults.excludedElements) 
 		if (!jQuery.fn.swipetp.defaults) 
-			jQuery.fn.swipetp.defaults = new Object();
+			jQuery.fn.swipetp.defaults = {};
 
-	jQuery.fn.swipetp.defaults.excludedElements = "label, button, input, select, textarea, .noSwipe"
+	jQuery.fn.swipetp.defaults.excludedElements = "label, button, input, select, textarea, .noSwipe";
 
 
 	SwipeOn.swipetp({			
@@ -831,7 +831,7 @@ var initArrows = function(container,o,opt) {
 	}
 	// SHORTCUTS
 	o.right.j = container.find('.tp-rightarrow.tparrows');
-	o.left.j = container.find('.tp-leftarrow.tparrows')
+	o.left.j = container.find('.tp-leftarrow.tparrows');
 	
 	// OUTTUER PADDING DEFAULTS
 	o.padding_top = parseInt((opt.carousel.padding_top||0),0),
@@ -955,7 +955,7 @@ var addBullet = function(container,o,li,opt) {
 		 linkto = li.data('index'),
 		 inst = o.tmp;
 
-	jQuery.each(opt.thumbs[li.index()].params,function(i,obj) { inst = inst.replace(obj.from,obj.to);})
+	jQuery.each(opt.thumbs[li.index()].params,function(i,obj) { inst = inst.replace(obj.from,obj.to);});
 
 
 	bw.append('<div class="justaddedbullet tp-bullet">'+inst+'</div>');
@@ -1036,7 +1036,7 @@ var addThumb = function(container,o,li,what,opt) {
 			addcontent = '<div class="'+what+'s '+spanw+" "+o.position+" "+o.style+'"><div class="'+what+'-mask"><div class="'+what+'s-inner-wrapper" style="position:relative;"></div></div></div>';
 	
 		if (o.position==="outer-top")
-			container.parent().prepend(addcontent)
+			container.parent().prepend(addcontent);
 		else
 		if (o.position==="outer-bottom") 
 			container.after(addcontent);
@@ -1062,7 +1062,7 @@ var addThumb = function(container,o,li,what,opt) {
 		inst = o.tmp;
 		jQuery.each(opt.thumbs[li.index()].params,function(i,obj) {
 			inst = inst.replace(obj.from,obj.to);
-		})	
+		});	
 	
 
 		tw.append('<div data-liindex="'+li.index()+'" data-liref="'+linkto+'" class="justaddedthumb '+what+'" style="width:'+o.width+'px;height:'+o.height+'px;">'+inst+'</div>');
@@ -1135,7 +1135,7 @@ var setONHeights = function(o) {
 // HIDE NAVIGATION ON PURPOSE
 var biggerNav = function(el,a,b,c) {				
 	if (a>b || b>c) 
-		el.addClass("tp-forcenotvisible")
+		el.addClass("tp-forcenotvisible");
 	else
 		el.removeClass("tp-forcenotvisible");
 };

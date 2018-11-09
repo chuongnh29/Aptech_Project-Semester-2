@@ -59,7 +59,7 @@ jQuery.extend(true,_R, {
 						th = h * f,
 						hd = Math.abs(cw-tw),
 						vd = Math.abs(ch-th),
-						s = new Object();
+						s = {};
 					s.l = (0-ho)*hd;
 					s.r = s.l + tw;			
 					s.t = (0-vo)*vd;
@@ -79,7 +79,7 @@ jQuery.extend(true,_R, {
 				vo = parseInt(vo,0)/100 || 0;
 
 
-				var sides = new Object();
+				var sides = {};
 
 
 				sides.start = getKBSides(o.start.width,o.start.height,o.start.scale,cw,ch,ho,vo);
@@ -96,7 +96,7 @@ jQuery.extend(true,_R, {
 				d.bgposition = d.bgposition == "center center" ? "50% 50%" : d.bgposition;
 				
 				
-				var o = new Object(),
+				var o = {},
 					sw = cw*f,
 					sh = sw/d.owidth * d.oheight,
 					ew = cw*fe,
@@ -104,10 +104,10 @@ jQuery.extend(true,_R, {
 
 
 				
-				o.start = new Object();		
-				o.starto = new Object();
-				o.end = new Object();
-				o.endo = new Object();
+				o.start = {};		
+				o.starto = {};
+				o.end = {};
+				o.endo = {};
 				
 				o.start.width = cw;
 				o.start.height = o.start.width / d.owidth * d.oheight;		

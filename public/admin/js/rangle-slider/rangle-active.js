@@ -3,10 +3,10 @@
 				
 				var initialSpark = 60;
 			var sparkTooltip = function(event, ui) {
-				var curSpark = ui.value  || initialSpark
+				var curSpark = ui.value  || initialSpark;
 				var sparktip = '<span class="slider-tip">' + curSpark + '</span>';
 				$(this).find('.ui-slider-handle').html(sparktip);
-			}			
+			};			
 			
 			$("#slider9").slider({
 				orientation: "vertical",
@@ -68,10 +68,10 @@
 				
 				var initialYear = 1980;
 				var yearTooltip = function(event, ui) {
-					var curYear = ui.value || initialYear
+					var curYear = ui.value || initialYear;
 					var yeartip = '<span class="slider-tip">' + curYear + '</span>';
 					$(this).find('.ui-slider-handle').html(yeartip);
-				}
+				};
 				
 				$("#slider10").slider({
 					value: initialYear,

@@ -480,7 +480,7 @@ jQuery.extend(true,_R, {
 			case "html5":
 
 				if (videocontrols!="controls") videocontrols="";
-				var tag = "video"
+				var tag = "video";
 
 				//_nc.data('audio',"html5");
 				if (_.audio=="html5") {
@@ -509,7 +509,7 @@ jQuery.extend(true,_R, {
 										  hfm+
 										  '</div>');
 				
-				_nc.data('videomarkup',apptxt)
+				_nc.data('videomarkup',apptxt);
 				_nc.append(apptxt);
 
 				// START OF HTML5 VIDEOS
@@ -556,7 +556,7 @@ jQuery.extend(true,_R, {
 			 	if (orig.length>1) {
 			 		vida_new = orig[0]+'origin='+httpprefix+'://';
 			 		if (self.location.href.match(/www/gi) && !orig[1].match(/www/gi)) 						 	 						 		
-			 				vida_new=vida_new+"www."
+			 				vida_new=vida_new+"www.";
 			 		vida_new=vida_new+orig[1];
 			 	} else {
 			 		vida_new = vida;
@@ -624,8 +624,7 @@ jQuery.extend(true,_R, {
 
 function getStartSec(st) {						
 	return st == undefined ? -1 :jQuery.isNumeric(st) ? st : st.split(":").length>1 ? parseInt(st.split(":")[0],0)*60 + parseInt(st.split(":")[1],0) : st;
-};
-
+}
 // 	-	VIMEO ADD EVENT /////
 var addEvent = function(element, eventName, callback) {
 	if (element.addEventListener)
@@ -640,7 +639,7 @@ var getVideoDatas = function(p,t,d) {
 	a.videotype = t;
 	a.settings = d;
 	return a;
-}
+};
 
 
 var addVideoListener = function(_nc,opt,startnow) {
@@ -767,7 +766,7 @@ var addVideoListener = function(_nc,opt,startnow) {
 								 if (!_ISM) {
 									 player.playVideo();
 								}
-							})
+							});
 
 							if (_nc.data('startvideonow')) {
 								
@@ -821,14 +820,14 @@ var addVideoListener = function(_nc,opt,startnow) {
 						else
 							opt.videoplaying=false;
 						if (_nc.data('volume')=="mute" || _R.lastToggleState(_nc.data('videomutetoggledby')) || opt.globalmute===true)
-						  f.api('setVolume',"0")
+						  f.api('setVolume',"0");
 						else
 						  f.api('setVolume',(parseInt(_nc.data('volume'),0)/100 || 0.75));
 						_R.toggleState(_.videotoggledby);
 					});
 
 					f.addEvent('playProgress',function(data) {					
-						var et = getStartSec(_nc.data('videoendat'))							
+						var et = getStartSec(_nc.data('videoendat'));							
 						
 						_nc.data('currenttime',data.seconds);
 						if (et!=0 && (Math.abs(et-data.seconds) <0.3 && et>data.seconds) && _nc.data('nextslidecalled') != 1) {																
@@ -887,7 +886,7 @@ var addVideoListener = function(_nc,opt,startnow) {
 						 	f.api("play");
 						 	return false;
 						 }
-					})
+					});
 					if (_nc.data('startvideonow')) {	
 							
 							f.api("play");
@@ -918,7 +917,7 @@ var addVideoListener = function(_nc,opt,startnow) {
 			break;
 		}
 	}
-}
+};
 
 
 var exitFullscreen = function() {
@@ -929,7 +928,7 @@ var exitFullscreen = function() {
   } else if(document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
   }
-}
+};
 
 
 var checkfullscreenEnabled = function() {
@@ -950,7 +949,7 @@ var checkfullscreenEnabled = function() {
 	  } catch(e) {
 
 	  }
-  }
+  };
 /////////////////////////////////////////	HTML5 VIDEOS 	///////////////////////////////////////////	
 
 var htmlvideoevents = function(_nc,opt,startnow) {
@@ -1231,13 +1230,13 @@ var htmlvideoevents = function(_nc,opt,startnow) {
 		
 		
 	});		
-}
+};
 
 
 
 var addVidtoList = function(_nc,opt) {
 
-	if (opt.playingvideos == undefined) opt.playingvideos = new Array();		
+	if (opt.playingvideos == undefined) opt.playingvideos = [];		
 	
 	// STOP OTHER VIDEOS
 	if (_nc.data('stopallvideos')) {		
@@ -1251,7 +1250,7 @@ var addVidtoList = function(_nc,opt) {
 	opt.playingvideos.push(_nc);	
 	opt.currentLayerVideoIsPlaying = _nc;		
 	
-}
+};
 
 
 var remVidfromList = function(_nc,opt) {			

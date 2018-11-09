@@ -29,7 +29,7 @@ $(document).ready(function(){
         console.log('alo');
         if(!isDelete){
             e.preventDefault();
-        };
+        }
     });
 
     // function changeCategory (url, category) {

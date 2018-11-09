@@ -28,7 +28,7 @@ jQuery(document).ready(function($)
 	*/
 
 	var header = $('.header');
-	var topNav = $('.top_nav')
+	var topNav = $('.top_nav');
 	var hamburger = $('.hamburger_container');
 	var menu = $('.hamburger_menu');
 	var menuActive = false;
@@ -260,8 +260,8 @@ jQuery(document).ready(function($)
 					{
 						$(stars[x]).find('i').removeClass('fa-star-o');
 						$(stars[x]).find('i').addClass('fa-star');
-					};
-				});
+                    }
+                });
 			});
 		}
 	}

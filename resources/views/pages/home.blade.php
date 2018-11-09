@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    {{__('message.homepage')}}
+    Trang chủ
 @endsection
 @section('content')
     <!--================Home Carousel Area =================-->
@@ -13,7 +13,8 @@
                         <div class="carousel_hover">
                             <h4>{{$sl->name}}</h4>
                             <h3>{{$sl->description}}</h3>
-                            <a class="discover_btn" href="{{route('producttype', $sl->name_id)}}">{{__('message.discover')}}</a>
+                            <a class="discover_btn" href="{{route('producttype', $sl->name_id)}}">khám phá
+                                ngay</a>
 
                         </div>
                     </div>
@@ -27,12 +28,12 @@
     <section class="fillter_latest_product">
         <div class="container">
             <div class="single_c_title">
-                <h2>{{__('message.latest')}}</h2>
+                <h2>SẢN PHẨM MỚI NHẤT</h2>
             </div>
             <div class="fillter_l_p_inner">
                 <ul class="fillter_l_p">
-                    <li class="active" data-filter="*"><a href="#">{{__('message.menwatch')}}</a></li>
-                    <li data-filter=".woman"><a href="#">{{__('message.womenwatch')}}</a></li>
+                    <li class="active" data-filter="*"><a href="#">đồng hồ nam</a></li>
+                    <li data-filter=".woman"><a href="#">đồng hồ nữ</a></li>
                 </ul>
                 <div class="row isotope_l_p_inner">
                     @foreach($new_product as $new)
@@ -46,13 +47,13 @@
                                                                                  height="320px"></a>
                                     <h5 class="new">New</h5>
                                     @if($new->promotion_price != 0)
-                                        <h5 class="sale">{{__('message.sale')}}</h5>
+                                        <h5 class="sale">Sale</h5>
                                     @endif
                                 </div>
                                 <div class="l_p_text">
                                     <ul>
-                                        <li><a class="add_cart_btn" href="#">{{__('message.add_to_cart')}}</a></li>
-                                        <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">{{__('message.details')}}</a>
+                                        <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                        <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a>
                                         </li>
                                     </ul>
                                     <h4>{{$new->name}}</h4>
@@ -77,7 +78,7 @@
     <section class="our_latest_product">
         <div class="container">
             <div class="s_m_title">
-                <h2>{{__('message.product_sale')}}</h2>
+                <h2>SẢN PHẨM GIẢM GIÁ</h2>
             </div>
             <div class="l_product_slider owl-carousel">
                 @foreach($new_product as $new)
@@ -92,8 +93,8 @@
                             </div>
                             <div class="l_p_text">
                                 <ul>
-                                    <li><a class="add_cart_btn" href="#">{{__('message.add_to_cart')}}</a></li>
-                                    <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">{{__('message.details')}}</a></li>
+                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                    <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a></li>
                                 </ul>
                                 <h4>{{$new->name}}</h4>
                                 <h5>@if($new->promotion_price != 0)
@@ -197,7 +198,7 @@
                     <div class="col-lg-3">
                         <div class="f_product_left">
                             <div class="s_m_title">
-                                <h2>{{__('message.featured_products')}}</h2>
+                                <h2>Sản phẩm nổi bật</h2>
                             </div>
                             <div class="f_product_inner">
                                 @foreach($featured_product as $featured)
@@ -220,8 +221,8 @@
                     <div class="col-lg-9">
                         <div class="fillter_slider_inner">
                             <ul class="portfolio_filter">
-                                <li class="active" data-filter="*"><a href="#">{{__('message.menwatch')}}</a></li>
-                                <li data-filter=".woman"><a href="#">{{__('message.womenwatch')}}</a></li>
+                                <li class="active" data-filter="*"><a href="#">ĐỒNG HỒ NAM</a></li>
+                                <li data-filter=".woman"><a href="#">ĐỒNG HỒ NỮ</a></li>
                             </ul>
                             <div class="fillter_slider owl-carousel">
                                 @foreach($new_product as $new)
@@ -267,34 +268,34 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <div class="from_blog_item">
-                            <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/f-blog-1.jpg"
-                                 alt="">
+                            <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/hublot.jpg"
+                                 alt="" height="255px" width="370px">
                             <div class="f_blog_text">
                                 <h5>hublot</h5>
-                                <p>Neque porro quisquam est qui dolorem ipsum</p>
-                                <h6>21.09.2017</h6>
+                                <p>Đồng hồ xa xỉ chính hãng Thụy Sĩ</p>
+                                <h6>11.11.2018</h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="from_blog_item">
-                            <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/f-blog-2.jpg"
-                                 alt="">
+                            <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/rolex.jpg"
+                                 alt="" height="255px" width="370px">
                             <div class="f_blog_text">
                                 <h5>rolex</h5>
-                                <p>Neque porro quisquam est qui dolorem ipsum</p>
-                                <h6>21.09.2017</h6>
+                                <p>Đồng hồ xa xỉ chính hãng Thụy Sĩ</p>
+                                <h6>11.11.2018</h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="from_blog_item">
-                            <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/f-blog-3.jpg"
-                                 alt="">
+                            <img class="img-fluid" src="public/source/assets/dest/img/blog/from-blog/tissot.jpg"
+                                 alt="" height="255px" width="370px">
                             <div class="f_blog_text">
                                 <h5>tissot</h5>
-                                <p>Neque porro quisquam est qui dolorem ipsum</p>
-                                <h6>21.09.2017</h6>
+                                <p>Đồng hồ xa xỉ chính hãng Thụy Sĩ</p>
+                                <h6>11.11.2018</h6>
                             </div>
                         </div>
                     </div>

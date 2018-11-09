@@ -66,7 +66,7 @@ if (as)
 					_tnc = jQuery(_tnc);
 					var videotoggledby = _tnc.data('videotoggledby');
 					if (videotoggledby == undefined)
-						videotoggledby = new Array();
+						videotoggledby = [];
 					videotoggledby.push(_nc);					
 					_tnc.data('videotoggledby',videotoggledby)				
 				});
@@ -76,7 +76,7 @@ if (as)
 					_tnc = jQuery(_tnc);
 					var layertoggledby = _tnc.data('layertoggledby');
 					if (layertoggledby == undefined)
-						layertoggledby = new Array();
+						layertoggledby = [];
 					layertoggledby.push(_nc);					
 					_tnc.data('layertoggledby',layertoggledby);
 					_tnc.data('triggered_startstatus',a.layerstatus);		
@@ -88,7 +88,7 @@ if (as)
 					_tnc = jQuery(_tnc);
 					var videomutetoggledby = _tnc.data('videomutetoggledby');
 					if (videomutetoggledby == undefined)
-						videomutetoggledby = new Array();
+						videomutetoggledby = [];
 					videomutetoggledby.push(_nc);					
 					_tnc.data('videomutetoggledby',videomutetoggledby);				
 				});
@@ -98,17 +98,17 @@ if (as)
 					_tnc = jQuery(_tnc);
 					var videomutetoggledby = _tnc.data('videomutetoggledby');
 					if (videomutetoggledby == undefined)
-						videomutetoggledby = new Array();
+						videomutetoggledby = [];
 					videomutetoggledby.push(_nc);					
 					_tnc.data('videomutetoggledby',videomutetoggledby);				
 				});
 			break;
 			case "toggleslider":
-				if (opt.slidertoggledby == undefined) opt.slidertoggledby = new Array();
+				if (opt.slidertoggledby == undefined) opt.slidertoggledby = [];
 					opt.slidertoggledby.push(_nc);
 			break;
 			case "togglefullscreen":								
-				if (opt.fullscreentoggledby == undefined) opt.fullscreentoggledby = new Array();
+				if (opt.fullscreentoggledby == undefined) opt.fullscreentoggledby = [];
 				opt.fullscreentoggledby.push(_nc);													
 			break;
 
@@ -187,7 +187,7 @@ if (as)
 			break;
 		}
 	})				
-}
+};
 
 function getScrollRoot(){
     var html = document.documentElement, body = document.body,
@@ -219,7 +219,7 @@ var actionSwitches = function(tnc,opt,a,_nc) {
 			off =  off - aof || 0;				
 			opt.scrollRoot = opt.scrollRoot === undefined ? getScrollRoot() : opt.scrollRoot;			
 			var sobj = {_y:opt.scrollRoot.scrollTop};
-			punchgs.TweenLite.to(sobj,a.speed/1000,{_y:(opt.c.offset().top+(jQuery(opt.li[0]).height())-off), ease:a.ease, onUpdate:function() { opt.scrollRoot.scrollTop = sobj._y}})			
+			punchgs.TweenLite.to(sobj,a.speed/1000,{_y:(opt.c.offset().top+(jQuery(opt.li[0]).height())-off), ease:a.ease, onUpdate:function() { opt.scrollRoot.scrollTop = sobj._y}});			
 		break;
 		case "callback":
 			eval(a.callback);							
@@ -377,7 +377,7 @@ var actionSwitches = function(tnc,opt,a,_nc) {
 			opt.c.trigger('layeraction',[obj]);
 		break;
 	}
-}
+};
 
 var getOffContH = function(c) {
 	if (c==undefined) return 0;		

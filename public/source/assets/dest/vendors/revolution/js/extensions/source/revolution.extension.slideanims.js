@@ -197,7 +197,7 @@ var _R = jQuery.fn.revolution,
 						}
 					break;
 				}
-		}
+		};
 
 
 
@@ -236,7 +236,7 @@ var getSliderTransitionParameters = function(container,comingtransition,nextsh,s
 		specials = 1,
 		STAindex = 0,
 		indexcounter =0,
-		STA = new Array,
+		STA = [],
 		transitionsArray = [ ['boxslide' , 0, 1, 10, 0,'box',false,null,0,p1o,p1o,500,6],
 							 ['boxfade', 1, 0, 10, 0,'box',false,null,1,p1io,p1io,700,5],
 							 ['slotslide-horizontal', 2, 0, 0, 200,'horizontal',true,false,2,p2io,p2io,700,3],
@@ -390,14 +390,14 @@ var getSliderTransitionParameters = function(container,comingtransition,nextsh,s
 
 
 
-	var obj = new Object();
+	var obj = {};
 	obj.nexttrans = nexttrans;
 	obj.STA = transitionsArray[STAindex]; // PREPARED DEFAULT SETTINGS PER TRANSITION
 	obj.specials = specials;	
 	return obj;
 
 
-}
+};
 
 
 /*************************************
@@ -408,7 +408,7 @@ var gSlideTransA = function(a,i) {
 	if (i==undefined || jQuery.isNumeric(a)) return a;
 	if (a==undefined) return a;
 	return a.split(",")[i];
-}
+};
 
 var animateSlideIntern = function(nexttrans, comingtransition, container, nextli, actli, nextsh, actsh,  mtl) {
 
@@ -1077,8 +1077,8 @@ var animateSlideIntern = function(nexttrans, comingtransition, container, nextli
 				ooh = container.height();
 
 
-			actli.find('.tp-half-one .defaultimg').wrap('<div class="tp-papercut" style="width:'+oow+'px;height:'+ooh+'px;"></div>')
-			actli.find('.tp-half-two .defaultimg').wrap('<div class="tp-papercut" style="width:'+oow+'px;height:'+ooh+'px;"></div>')
+			actli.find('.tp-half-one .defaultimg').wrap('<div class="tp-papercut" style="width:'+oow+'px;height:'+ooh+'px;"></div>');
+			actli.find('.tp-half-two .defaultimg').wrap('<div class="tp-papercut" style="width:'+oow+'px;height:'+ooh+'px;"></div>');
 			actli.find('.tp-half-two .defaultimg').css({position:'absolute',top:'-50%'});
 			actli.find('.tp-half-two .tp-caption').wrapAll('<div style="position:absolute;top:-50%;left:0px;"></div>');
 
@@ -1235,7 +1235,7 @@ var animateSlideIntern = function(nexttrans, comingtransition, container, nextli
 				},100);
 				
 				if (slidedirection==1) {
-				   var ofx = -opt.width
+				   var ofx = -opt.width;
 				   var rot  =80;
 				   var torig = "20% 70% -"+opt.height/2;
 				} else {
@@ -1263,7 +1263,7 @@ var animateSlideIntern = function(nexttrans, comingtransition, container, nextli
 						d = j>0 ?  d + masterspeed/9000 : 0;
 
 					if (slidedirection!=1) {
-					   var ofx = -opt.width/2
+					   var ofx = -opt.width/2;
 					   var rot  =30;
 					   var torig = "20% 70% -"+opt.height/2;
 					} else {
@@ -1309,7 +1309,7 @@ var animateSlideIntern = function(nexttrans, comingtransition, container, nextli
 					ofx = opt.width;
 					rot = -90;
 					if (nexttrans==25) {
-				   	 var torig = "center bottom 0"
+				   	 var torig = "center bottom 0";
 				   	 rot2 = -rot;
 				   	 rot = opt.rotate;
 				   } else {
@@ -1330,11 +1330,11 @@ var animateSlideIntern = function(nexttrans, comingtransition, container, nextli
 
 
 				if (slidedirection!=1) {
-				   	ofx = -opt.width
+				   	ofx = -opt.width;
 				   	rot  = 90;
 
 				   if (nexttrans==25) {
-				   	 torig = "center top 0"
+				   	 torig = "center top 0";
 				   	 rot2 = -rot;
 				   	 rot = opt.rotate;
 				   } else {
@@ -1346,7 +1346,7 @@ var animateSlideIntern = function(nexttrans, comingtransition, container, nextli
 					ofx = opt.width;
 					rot = -90;
 					if (nexttrans==25) {
-				   	 torig = "center bottom 0"
+				   	 torig = "center bottom 0";
 				   	 rot2 = -rot;
 				   	 rot = opt.rotate;
 				   } else {

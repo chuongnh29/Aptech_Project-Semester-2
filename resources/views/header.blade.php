@@ -5,21 +5,22 @@
             <div class="col-lg-3">
                 <div class="top_header_left">
                     <div class="selector">
-                        <select class="language_drop" name="countries" id="countries" style="width:300px;" onchange="location = this.value;">
-                            <option value='/LuxuryWatchShop/change-language/vi' data-image="public/source/assets/dest/img/icon/flag-vi.jpg"
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                            <option value='yt' data-image="public/source/assets/dest/img/icon/flag-vi.jpg"
                                     data-imagecss="flag yt"
-                                    data-title="Vietnam" {{\Illuminate\Support\Facades\Session::get('locale')=='vi'?'selected':''}}>Vietnam
+                                    data-title="Vietnam">Vietnam
                             </option>
-                            <option value='/LuxuryWatchShop/change-language/en' data-image="public/source/assets/dest/img/icon/flag-en.png"
+                            <option value='yu' data-image="public/source/assets/dest/img/icon/flag-en.png"
                                     data-imagecss="flag yu"
-                                    data-title="English" {{\Illuminate\Support\Facades\Session::get('locale')=='en'?'selected':''}}>English
+                                    data-title="English">English
                             </option>
                         </select>
                     </div>
 
                     <div class="input-group">
                         <form role="search" method="get" action="{{route('search')}}">
-                            <input type="text" class="form-control" placeholder="{{__('message.search')}}" aria-label="Search">
+                            <input type="text" name="key_word" class="form-control" placeholder="Tìm kiếm ..."
+                                   aria-label="Search">
                             <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit"><i class="icon-magnifier"></i></button>
                                 </span>
@@ -30,7 +31,7 @@
             <div class="col-lg-6">
                 <div class="top_header_middle">
                     <a href="tel:0988211231"><i class="fa fa-phone"></i> Hotline: <span>+84 988 666 999</span></a>
-                    <a href="mailto:chuongnhd00645@fpt.edu.v"><i class="fa fa-envelope"></i> Email: <span>ctcgroup@fpt.edu.vn</span></a>
+                    <a href="mailto:luxurywatch94@gmail.com"><i class="fa fa-envelope"></i> Email: <span>luxurywatch94@gmail.com</span></a>
                     <a href="{{route('home')}}"><img src="public/source/assets/dest/img/logo.png" alt="" height="74px"
                                                      width="400px"></a>
                 </div>
@@ -40,29 +41,42 @@
                     <li class="account">
                         @if(Auth::check())
                             <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
-                                {{__('message.myaccount')}}
+                                Tài khoản của tôi
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @else
                             <a href="#">
-                                {{__('message.login')}} | {{__('message.register')}}
+                                Đăng nhập | Đăng ký
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @endif
 
                         <ul class="account_selection">
                             @if(Auth::check())
-                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{__('message.login')}}</a></li>
-                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>{{__('message.logout')}}</a></li>
+                                <li><a href="{{route('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
+                                        xuất</a></li>
                             @else
-                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{__('message.login')}}</a></li>
-                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>{{__('message.register')}}</a></li>
+                                <li><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng
+                                        nhập</a></li>
+                                <li><a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng
+                                        ký</a></li>
                             @endif
                         </ul>
                     </li>
                     <ul class="top_right">
-                        <li class="cart"><a href="{{route('cart')}}"><i class="icon-handbag icons"><span
-                                            class="cart_quantity">10</span></i></a></li>
+                        <li class="cart">
+                            <a href="{{route('cart')}}">
+                                <i class="icon-handbag icons">
+                                    <span class="cart_quantity">
+                                        @if(Session::has('cart'))
+                                            {{Session('cart')->totalQty}}
+                                        @else
+                                            0
+                                        @endif
+                                    </span>
+                                </i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,14 +99,14 @@
                     <li class="nav-item dropdown submenu active">
                         <a class="nav-link dropdown-toggle" href="{{route('home')}}" role="button" aria-haspopup="true"
                            aria-expanded="false">
-                            {{__('message.home')}}
+                            Trang chủ
                         </a>
 
                     </li>
                     <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            {{__('message.menwatch')}}
+                            Đồng hồ nam
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -108,7 +122,7 @@
                     <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonu')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
-                            {{__('message.womenwatch')}}
+                            Đồng hồ nữ
                         </a>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -123,9 +137,9 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('about')}}">{{__('message.aboutus')}}</a>
+                        <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">{{__('message.contact')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
                 </ul>
             </div>
         </nav>

@@ -25,7 +25,7 @@ jQuery.extend(true,_R, {
 				
 		var d = jQuery(layer).data();
 		if (d.start!==undefined && !d.frames_added && d.frames===undefined) {			
-			var frames = new Array(),			
+			var frames = [],			
 				oin = getAnimDatas(newAnimObject(),d.transform_in,undefined, false),
 				oout = getAnimDatas(newAnimObject(),d.transform_out,undefined, false),
 				oh =  getAnimDatas(newAnimObject(),d.transform_hover,undefined, false);
@@ -135,7 +135,7 @@ jQuery.extend(true,_R, {
 			index = nextli.data('index');
 
 		// COLLECTION OF LAYERS
-		opt.layers = opt.layers || new Object();		
+		opt.layers = opt.layers || {};		
 		opt.layers[index] = opt.layers[index] || nextli.find('.tp-caption');
 		opt.layers["static"] = opt.layers["static"] || opt.c.find('.tp-static-layers').find('.tp-caption');
 
@@ -153,8 +153,8 @@ jQuery.extend(true,_R, {
 			opt.c.find('.hglayerinfo').remove();	
 			nextli.append('<div class="helpgrid" style="width:'+(opt.gridwidth[opt.curWinRange]*opt.bw)+'px;height:'+(opt.gridheight[opt.curWinRange]*opt.bw)+'px;"></div>');
 			var hg = nextli.find('.helpgrid');
-			hg.append('<div class="hginfo">Zoom:'+(Math.round(opt.bw*100))+'% &nbsp;&nbsp;&nbsp; Device Level:'+opt.curWinRange+'&nbsp;&nbsp;&nbsp; Grid Preset:'+opt.gridwidth[opt.curWinRange]+'x'+opt.gridheight[opt.curWinRange]+'</div>')
-			opt.c.append('<div class="hglayerinfo"></div>')
+			hg.append('<div class="hginfo">Zoom:'+(Math.round(opt.bw*100))+'% &nbsp;&nbsp;&nbsp; Device Level:'+opt.curWinRange+'&nbsp;&nbsp;&nbsp; Grid Preset:'+opt.gridwidth[opt.curWinRange]+'x'+opt.gridheight[opt.curWinRange]+'</div>');
+			opt.c.append('<div class="hglayerinfo"></div>');
 			hg.append('<div class="tlhg"></div>');
 		}
 		
@@ -318,7 +318,7 @@ jQuery.extend(true,_R, {
 			internrecall = obj.recall,						
 			preset = obj.preset,
 			rtl = jQuery('body').hasClass("rtl"),
-			datas
+			datas;
 
 		_._pw = _._pw===undefined ? _nc.closest('.tp-parallax-wrap') : _._pw;
 		_._lw = _._lw===undefined ? _nc.closest('.tp-loop-wrap') : _._lw;
@@ -364,9 +364,8 @@ jQuery.extend(true,_R, {
 			obj.offsety = _._gh/2 - (opt.gridheight[opt.curWinRange]*opt.bh)/2;
 
 		if (opt.autoHeight=="on" || (opt.minHeight!=undefined && opt.minHeight>0))
-			  obj.offsety = opt.conh/2 - (opt.gridheight[opt.curWinRange]*opt.bh)/2;;
-
-		if (obj.offsety<0) obj.offsety=0;
+            obj.offsety = opt.conh / 2 - (opt.gridheight[opt.curWinRange] * opt.bh) / 2;
+        if (obj.offsety<0) obj.offsety=0;
 		
 		// LAYER GRID FOR DEBUGGING
 		if (opt.debugMode) {
@@ -395,7 +394,7 @@ jQuery.extend(true,_R, {
 		if (layervisible==="off" || (_._gw<opt.hideCaptionAtLimit && _.captionhidden=="on") || (_._gw<opt.hideAllCaptionAtLimit)) 
 			_._pw.addClass("tp-hidden-caption");											
 		else
-			_._pw.removeClass("tp-hidden-caption")
+			_._pw.removeClass("tp-hidden-caption");
 
 		_.layertype = "html";
 		
@@ -582,11 +581,11 @@ jQuery.extend(true,_R, {
 				});
 			} else  {
 			   obj.offsetx=0; obj.offsety=0;			   
-			   _nc.data('x',0)
-			   _nc.data('y',0)
+			   _nc.data('x',0);
+			   _nc.data('y',0);
 
 			   var ovhh = _._gh;
-			   if (opt.autoHeight=="on") ovhh = opt.conh
+			   if (opt.autoHeight=="on") ovhh = opt.conh;
 			   _nc.css({'width':_._gw, 'height':ovhh });			
 			}
 					
@@ -631,7 +630,7 @@ jQuery.extend(true,_R, {
 		}
 			
 			
-		_.arrobj = new Object();
+		_.arrobj = {};
 		_.arrobj.voa = makeArray(_.voffset,opt)[opt.curWinRange] || makeArray(_.voffset,opt)[0];
 		_.arrobj.hoa = makeArray(_.hoffset,opt)[opt.curWinRange] || makeArray(_.hoffset,opt)[0];
 		_.arrobj.elx = makeArray(_.x,opt)[opt.curWinRange] || makeArray(_.x,opt)[0];
@@ -746,15 +745,15 @@ jQuery.extend(true,_R, {
 		
 		
 		// COLLECTION OF TIMELINES
-		opt.timelines = opt.timelines || new Object();				
+		opt.timelines = opt.timelines || {};				
 				
 		function addTimeLineWithLabel(layer,opt,parentobject,slideid) {			
 			var timeline = new punchgs.TimelineLite({paused:true}),
 				c;
 				
 
-			parentobject = parentobject || new Object();
-			parentobject[layer.attr('id')] = parentobject[layer.attr('id')] || new Object();
+			parentobject = parentobject || {};
+			parentobject[layer.attr('id')] = parentobject[layer.attr('id')] || {};
 			if (slideid==="staticlayers") {
 				parentobject[layer.attr('id')].firstslide = layer.data('startslide');
 				parentobject[layer.attr('id')].lastslide = layer.data('endslide');				
@@ -779,7 +778,7 @@ jQuery.extend(true,_R, {
 				index = slide.data('index');
 			opt.timelines[index] = opt.timelines[index] || {};
 			
-			opt.timelines[index].layers = opt.timelines[index].layers || new Object();
+			opt.timelines[index].layers = opt.timelines[index].layers || {};
 			
 
 			// COLLECT LAYERS
@@ -882,9 +881,9 @@ jQuery.extend(true,_R, {
 							if (frame.speed===0) _.inhoverinanimation= false;
 					 		_.hovertimelines.pwhoveranim = punchgs.TweenLite.to(_._pw,frame.speed/1000,{overwrite:"auto",zIndex:_.hoverzIndex});
 					 		_.hovertimelines.pwhoveranim.eventCallback("onComplete",function(_) {
-					 			
-				 			_.inhoverinanimation=false;;
-				 		},[_])
+                                
+_.inhoverinanimation = false;
+                            },[_])
 					 	}
 					 	if ($svg.svg)  					 		
 					 		_.hovertimelines.svghoveranim = punchgs.TweenLite.to([$svg.svg, $svg.svg.find('path')],frame.speed/1000,_.hoversvg.anim);							 	
@@ -909,9 +908,9 @@ jQuery.extend(true,_R, {
 				 	
 				 		if (frame.speed==0) _.inhoveroutanimation= false;				 		
 				 		_.hovertimelines.item.eventCallback("onComplete",function(_) {
-				 	
-				 			_.inhoveroutanimation=false;;
-				 		},[_])
+                            
+_.inhoveroutanimation = false;
+                        },[_]);
 				 		if (_.hovertimelines.pwhoveranim!==undefined) _.hovertimelines.pwhoveranim = punchgs.TweenLite.to(_._pw,frame.speed/1000,{overwrite:"auto",zIndex:_.basiczindex}); 
 				 		if ($svg.svg) punchgs.TweenLite.to([$svg.svg, $svg.svg.find('path')],frame.speed/1000,_.idlesvg.anim);	 
 				 	}
@@ -978,7 +977,7 @@ jQuery.extend(true,_R, {
 				_nc_timeline.time(_.current_timeline_time);
 		}
 					
-		return;					
+							
 	},
 
 	/////////////////////////////////////
@@ -1121,8 +1120,8 @@ jQuery.extend(true,_R, {
 		}
 						
 		if ((frame_index===0 && $mask_from && $mask_from!==false && !obj.fromcurrentstate) || (frame_index===0 && obj.ignorefirstframe)) {
-			$mask_to =  new Object();
-			$mask_to.anim = new Object();
+			$mask_to =  {};
+			$mask_to.anim = {};
 			$mask_to.anim.overwrite = "auto";	
 			$mask_to.anim.ease = $to.anim.ease;					
 			$mask_to.anim.x = $mask_to.anim.y = 0;
@@ -1335,7 +1334,7 @@ jQuery.extend(true,_R, {
 		if (_R.compare_version(extension).check==="stop") return false;	
 		var removetime = 0,
 			index = actli.data('index'),	
-			allcaptions = new Array;
+			allcaptions = [];
 		
 		// COLLECT ALL CAPTIONS		
 		if (opt.layers[index])
@@ -1401,15 +1400,15 @@ var getTLInfos = function(obj) {
  	}
 
 	return _;
-}
+};
 
 
 /////////////////////////////////////
 //	-	CREATE ANIMATION OBJECT	-  //
 /////////////////////////////////////
 var newAnimObject = function(a) {
-	a = a===undefined ? new Object() : a;	
-	a.anim = a.anim===undefined ? new Object() : a.anim;
+	a = a===undefined ? {} : a;	
+	a.anim = a.anim===undefined ? {} : a.anim;
 	a.anim.x = a.anim.x===undefined ? 0 : a.anim.x;
 	a.anim.y = a.anim.y===undefined ? 0 : a.anim.y;
 	a.anim.z = a.anim.z===undefined ? 0 : a.anim.z;
@@ -1435,24 +1434,24 @@ var newAnimObject = function(a) {
 
 
 	return a;
-}
+};
 
 var newSVGHoverAnimObject = function() {
-	var a = new Object();
-	a.anim = new Object();
+	var a = {};
+	a.anim = {};
 	
 	a.anim.stroke="none";
 	a.anim.strokeWidth=0;
 	a.anim.strokeDasharray="none";
 	a.anim.strokeDashoffset="0";
 	return a;
-}
+};
 
 var setSVGAnimObject = function(data,a) {
 	var customarray = data.split(';');	
 	if (customarray)	
 		jQuery.each(customarray,function(index,pa) {
-			var p = pa.split(":")
+			var p = pa.split(":");
 			var w = p[0],
 				v = p[1];
 			
@@ -1463,25 +1462,25 @@ var setSVGAnimObject = function(data,a) {
 		});
 
 	return a;
-}
+};
 
 
 
 var newEndAnimObject = function() {
-	var a = new Object();
-	a.anim = new Object();	
+	var a = {};
+	a.anim = {};	
 	a.anim.x=0;
 	a.anim.y=0;	
 	a.anim.z=0;
 	return a;
-}
+};
 
 var newHoverAnimObject = function() {
-	var a = new Object();
-	a.anim = new Object();		
+	var a = {};
+	a.anim = {};		
 	a.speed = 0.2;						
 	return a;
-}
+};
 
 var animDataTranslator = function(val,defval) {
 
@@ -1498,7 +1497,7 @@ var animDataTranslator = function(val,defval) {
 		val = Math.random()*(max-min) + min;		
 	}	
 	return val;	
-}	
+};	
 
 var getBorderDirections = function (x,o,w,h,top,left,direction) {		
 			
@@ -1519,13 +1518,13 @@ var getBorderDirections = function (x,o,w,h,top,left,direction) {
 	
 
 	return x;
-}
+};
 
 ///////////////////////////////////////////////////
 // ANALYSE AND READ OUT DATAS FROM HTML CAPTIONS //
 ///////////////////////////////////////////////////
 var getAnimDatas = function(frm,data,reversed) {		
-	var o = new Object();
+	var o = {};
 	o = jQuery.extend(true,{},o, frm);
 	if (data === undefined) 
 		return o;		
@@ -1536,7 +1535,7 @@ var getAnimDatas = function(frm,data,reversed) {
 	
 	if (customarray)	
 		jQuery.each(customarray,function(index,pa) {
-			var p = pa.split(":")
+			var p = pa.split(":");
 			var w = p[0],
 				v = p[1];				
 			
@@ -1580,7 +1579,7 @@ var getAnimDatas = function(frm,data,reversed) {
 				//if (w=="ease" || w=="e") o.anim.ease = v;				
 			}
 
-		})	
+		});	
 	if (tmpf!=="") {
 		o.anim['-webkit-filter'] = tmpf;
 		o.anim['filter'] = tmpf;
@@ -1588,7 +1587,7 @@ var getAnimDatas = function(frm,data,reversed) {
 
 	
 	return o;
-}
+};
 
 
 
@@ -1599,12 +1598,12 @@ var getMaskDatas = function(d) {
 	if (d === undefined)
 		return false;
 
-	var o = new Object();	
-	o.anim = new Object();
-	var s = d.split(';')
+	var o = {};	
+	o.anim = {};
+	var s = d.split(';');
 	if (s)
 		jQuery.each(s,function(index,param) {
-			param = param.split(":")
+			param = param.split(":");
 			var w = param[0],
 				v = param[1];
 			if (w=="x") o.anim.x = v;
@@ -1614,7 +1613,7 @@ var getMaskDatas = function(d) {
 		});
 
 	return o;
-}
+};
 	
 
 
@@ -1631,7 +1630,7 @@ var makeArray = function(obj,opt,show) {
 		obj = obj.replace("[","");
 		obj = obj.replace("]","");
 		var newobj = obj.match(/'/g) ? obj.split("',") : obj.split(",");
-		obj = new Array();
+		obj = [];
 		if (newobj)
 			jQuery.each(newobj,function(index,element) {
 				element = element.replace("'","");
@@ -1641,7 +1640,7 @@ var makeArray = function(obj,opt,show) {
 	} else {
 		var tempw = obj;			
 		if (!jQuery.isArray(obj) ) {
-			obj = new Array();				
+			obj = [];				
 			obj.push(tempw);				
 		} 
 	}
@@ -1654,7 +1653,7 @@ var makeArray = function(obj,opt,show) {
 		}
 	}
 	return obj;
-}
+};
 
 
 /* CREATE SHARP CORNERS */
@@ -1683,10 +1682,10 @@ var convertHoverStyle = function(t,s) {
 			var attr = cont.split(":");
 			if (attr[0].length>0)
 				t.anim[attr[0]] = attr[1];		
-		})				
+		});				
 	return t;
 
-}
+};
 
 
 ////////////////////////////////////////////////
@@ -1694,7 +1693,7 @@ var convertHoverStyle = function(t,s) {
 ////////////////////////////////////////////////
 var getcssParams = function(nc,level) {
 	
-	var obj = new Object(),
+	var obj = {},
 		gp = false,
 		pc;
 	
@@ -1796,18 +1795,18 @@ var getcssParams = function(nc,level) {
 		obj.styleProps.color = nc.css("color");		
 
 	return obj;
-}
+};
 
 // READ SINGLE OR ARRAY VALUES OF OBJ CSS ELEMENTS
 var setResponsiveCSSValues = function(obj,opt) {
-	var newobj = new Object();
+	var newobj = {};
 	if (obj)
 		jQuery.each(obj,function(key,val){						
 			var res_a = makeArray(val,opt)[opt.curWinRange];
 			newobj[key] = res_a!==undefined  ? res_a : obj[key];		
 		});	
 	return newobj;
-}
+};
 
 var minmaxconvert = function(a,m,r,fr) {
 	
@@ -1815,7 +1814,7 @@ var minmaxconvert = function(a,m,r,fr) {
 	a = a==="full" ? fr : a==="auto" || a==="none" ? r : a;
 	return a;
 
-}
+};
 
 /////////////////////////////////////////////////////////////////
 //	-	CALCULATE THE RESPONSIVE SIZES OF THE CAPTIONS	-	  //
@@ -2018,7 +2017,7 @@ var calcCaptionResponsive = function(nc,opt,level,responsive) {
 		    nc.css("transition", nc.data('ani'));
 		},30);									
 	}
-}
+};
 
 
 var setColumnBgDimension = function(nc,opt) {
@@ -2057,7 +2056,7 @@ var setColumnBgDimension = function(nc,opt) {
 		});
 		
 	}
-}
+};
 
 //////////////////////
 //	CAPTION LOOPS	//
@@ -2154,7 +2153,7 @@ var callCaptionLoops = function(el,factor) {
 				speed = el.data('speed')==undefined ? -20 : el.data('speed'),
 				origin = el.data('origin')==undefined ? "50% 50%" : el.data('origin'),
 				ors = origin.split(" "),
-				oo = new Object();
+				oo = {};
 
 				if (ors.length>=1) {
 					oo.x = ors[0];
@@ -2188,7 +2187,7 @@ var callCaptionLoops = function(el,factor) {
 			_._loop_timeline.append(waveanim);
 		}
 	}
-}
+};
 
 var killCaptionLoops = function(nextcaption) {
 	// SOME LOOPING ANIMATION ON INTERNAL ELEMENTS

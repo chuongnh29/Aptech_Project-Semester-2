@@ -46,7 +46,7 @@ function isNodeName(el,tag){return(el.nodeName||'').toLowerCase()===tag.toLowerC
 function directionCheck(x,y){x=(x>0)?1:-1;y=(y>0)?1:-1;if(direction.x!==x||direction.y!==y){direction.x=x;direction.y=y;que=[];lastScroll=0;}}
 var deltaBufferTimer;if(window.localStorage&&localStorage.SS_deltaBuffer){deltaBuffer=localStorage.SS_deltaBuffer.split(',');}
 function isTouchpad(deltaY){if(!deltaY)return;if(!deltaBuffer.length){deltaBuffer=[deltaY,deltaY,deltaY];}
-deltaY=Math.abs(deltaY)
+deltaY=Math.abs(deltaY);
 deltaBuffer.push(deltaY);deltaBuffer.shift();clearTimeout(deltaBufferTimer);deltaBufferTimer=setTimeout(function(){if(window.localStorage){localStorage.SS_deltaBuffer=deltaBuffer.join(',');}},1000);return!allDeltasDivisableBy(120)&&!allDeltasDivisableBy(100);}
 function isDivisible(n,divisor){return(Math.floor(n/divisor)==n/divisor);}
 function allDeltasDivisableBy(divisor){return(isDivisible(deltaBuffer[0],divisor)&&isDivisible(deltaBuffer[1],divisor)&&isDivisible(deltaBuffer[2],divisor));}
@@ -66,7 +66,7 @@ function SmoothScroll(optionsToSet){for(var key in optionsToSet)
 if(defaultOptions.hasOwnProperty(key))
 options[key]=optionsToSet[key];}
 SmoothScroll.destroy=cleanup;if(window.SmoothScrollOptions)
-SmoothScroll(window.SmoothScrollOptions)
+SmoothScroll(window.SmoothScrollOptions);
 if(typeof define==='function'&&define.amd)
 define(function(){return SmoothScroll;});else if('object'==typeof exports)
 module.exports=SmoothScroll;else

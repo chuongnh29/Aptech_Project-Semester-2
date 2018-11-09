@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    {{__('message.womenwatch')}}
+    Đồng hồ nữ
 @endsection
 
 @section('content')
