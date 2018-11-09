@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 02, 2018 lúc 07:29 PM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 7.2.10
+-- Host: 127.0.0.1
+-- Generation Time: Nov 09, 2018 at 10:31 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `db_ecommerce`
+-- Database: `db_ecommerce`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bills`
+-- Table structure for table `bills`
 --
 
 CREATE TABLE `bills` (
@@ -44,7 +44,7 @@ CREATE TABLE `bills` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill_detail`
+-- Table structure for table `bill_detail`
 --
 
 CREATE TABLE `bill_detail` (
@@ -58,7 +58,7 @@ CREATE TABLE `bill_detail` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Đang đổ dữ liệu cho bảng `bill_detail`
+-- Dumping data for table `bill_detail`
 --
 
 INSERT INTO `bill_detail` (`id`, `bill_id`, `product_id`, `quantity`, `unit_price`, `created_at`, `updated_at`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `bill_detail` (`id`, `bill_id`, `product_id`, `quantity`, `unit_pric
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill_status`
+-- Table structure for table `bill_status`
 --
 
 CREATE TABLE `bill_status` (
@@ -85,7 +85,7 @@ CREATE TABLE `bill_status` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `case_material`
+-- Table structure for table `case_material`
 --
 
 CREATE TABLE `case_material` (
@@ -96,7 +96,7 @@ CREATE TABLE `case_material` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
@@ -112,7 +112,7 @@ CREATE TABLE `customer` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `customer`
+-- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`id`, `name`, `gender`, `email`, `address`, `phone_number`, `note`, `created_at`, `updated_at`) VALUES
@@ -125,7 +125,7 @@ INSERT INTO `customer` (`id`, `name`, `gender`, `email`, `address`, `phone_numbe
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -137,7 +137,7 @@ CREATE TABLE `migrations` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -150,7 +150,7 @@ CREATE TABLE `news` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `image`, `create_at`, `update_at`) VALUES
@@ -163,7 +163,7 @@ INSERT INTO `news` (`id`, `title`, `content`, `image`, `create_at`, `update_at`)
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -175,7 +175,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -188,32 +188,67 @@ CREATE TABLE `products` (
   `promotion_price` float DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `new` tinyint(4) DEFAULT '0',
-  `post` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `post` longtext COLLATE utf8_unicode_ci,
   `case_material_id` int(10) DEFAULT NULL,
-  `strap_id` int(10) NOT NULL,
-  `product_status_id` int(10) NOT NULL,
+  `strap_id` int(10) DEFAULT NULL,
+  `product_status_id` int(10) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `type_id`, `type_gender`, `description`, `unit_price`, `promotion_price`, `image`, `new`, `post`, `case_material_id`, `strap_id`, `product_status_id`, `created_at`, `updated_at`) VALUES
-(1, 'Richard Mille RM 51-01 Tourbillon Tiger and	Dragon', 1, 0, 'Bánh crepe sầu riêng nhà làm', 900000, 850000, 'Richard Mille RM 51-01.jpg', 1, NULL, NULL, 0, 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
-(2, 'Patek Philippe Grand Complications 6002G-001', 2, 0, '', 3000000, 2500000, 'Patek Philippe 6002G-001.jpg', 1, NULL, NULL, 0, 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
-(3, 'Hublot Big Bang King Power Gold Ceramic 48mm', 5, 0, '', 90000, 87000, 'Hublot Big Bang King.jpg', 1, NULL, NULL, 0, 0, '2016-10-12 02:00:00', '2016-10-27 02:24:00'),
-(4, 'Rolex Cosmograph Daytona Rainbow 116595RBOW', 4, 0, '', 300000, 260000, 'Rolex Cosmograph Daytona.jpg', 1, NULL, NULL, 0, 0, '2016-10-12 02:00:00', '2016-10-27 02:24:00'),
-(5, 'Franck Muller Long Island 1002', 3, 0, '', 30000, 0, 'Franck Muller Long Island 1002.jpg', 1, NULL, NULL, 0, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
-(6, 'Rolex Cosmograph Daytona 116500LN', 4, 0, '', 31000, 0, 'Rolex Cosmograph Daytona 116500LN.jpg', 1, NULL, NULL, 0, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
-(7, 'Richard Mille RM 11-02 Flyback Chronograph Dual Time', 1, 0, '', 200000, 195000, 'ichard Mille Flyback Chronograph Dual Time Zone.jpg', 1, NULL, NULL, 0, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
-(8, 'Patek Philippe Grand Complications 5074P-001', 2, 0, '', 645000, 0, 'Patek Philippe Grand Complications 5074P-001.jpg', 1, NULL, NULL, 0, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00');
+(1, 'Richard Mille RM 51-01 Tourbillon Tiger and	Dragon', 1, 0, 'Đồng hồ chính hãng', 900000, 850000, 'Richard Mille RM 51-01.jpg', 1, NULL, NULL, 1, 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
+(2, 'Patek Philippe Grand Complications 6002G-001', 2, 0, '', 3000000, 2500000, 'Patek Philippe 6002G-001.jpg', 1, NULL, NULL, 1, 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
+(3, 'Hublot Big Bang King Power Gold Ceramic 48mm', 5, 0, '', 90000, 87000, 'Hublot Big Bang King.jpg', 1, NULL, NULL, 1, 0, '2016-10-12 02:00:00', '2016-10-27 02:24:00'),
+(4, 'Rolex Cosmograph Daytona Rainbow 116595RBOW', 4, 0, '', 300000, 260000, 'Rolex Cosmograph Daytona 116500LN.jpg', 1, NULL, NULL, 1, 0, '2016-10-12 02:00:00', '2016-10-27 02:24:00'),
+(5, 'Franck Muller Long Island 1002', 3, 0, '', 30000, 0, 'Franck Muller Long Island 1002.jpg', 1, NULL, NULL, 1, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
+(6, 'Rolex Cosmograph Daytona 116500LN', 4, 0, '', 31000, 0, 'Rolex Cosmograph Daytona 116500LN.jpg', 1, NULL, NULL, 1, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
+(7, 'Richard Mille RM 11-02 Flyback Chronograph Dual Time', 1, 0, '', 200000, 195000, 'Richard Mille Flyback Chronograph Dual Time Zone.jpg', 1, NULL, NULL, 1, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
+(8, 'Patek Philippe Grand Complications 5074P-001', 2, 0, '', 645000, 0, 'Patek Philippe Grand Complications 5074P-001.jpg', 1, NULL, NULL, 1, 0, '2016-10-13 02:20:00', '2016-10-19 03:20:00'),
+(17, 'Richard Mille RM 030 Automatic With Declutchable Rotor', 1, 0, NULL, 180000, 150000, 'Richard Mille RM 030 Automatic With Declutchable Rotor.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 'Richard Mille RM 004 Split Seconds Chronograph', 1, 0, NULL, 200000, 195000, 'Richard Mille RM 004 Split Seconds Chronograph.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'Richard Mille RM 029 Automatic With Oversize Date', 1, 0, NULL, 130000, 128000, 'Richard Mille RM 029 Automatic With Oversize Date.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'Richard Mille Rafael Nadal Shock Resistance 10,000g\'s RM 27-03', 1, 0, NULL, 785000, 782000, 'Richard Mille Rafael Nadal Shock Resistance 10,000g\'s RM 27-03.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 'Richard Mille Automatic Flyback Chronograph RM 11-03 McLaren', 1, 0, NULL, 384000, 382000, 'Richard Mille Automatic Flyback Chronograph RM 11-03 McLaren.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 'Richard Mille Automatic Flyback Chronograph RM 11-03 Jean Todt', 1, 0, NULL, 340000, 325000, 'Richard Mille Automatic Flyback Chronograph RM 11-03 Jean Todt.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'Richard Mille Flyback Chronograph Dual Time Zone RM 11-02 Carbon', 1, 0, NULL, 226000, 0, 'Richard Mille Flyback Chronograph Dual Time Zone RM 11-02 Carbon.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'Patek Philippe Grand Complications 5102G-001', 2, 0, NULL, 194000, 0, 'Patek Philippe Grand Complications 5102G-001.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 'Patek Philippe Complications 7130R-011', 2, 0, NULL, 85000, 82500, 'Patek Philippe Complications 7130R-011.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 'Patek Philippe Complications 5975R-001', 2, 0, NULL, 98000, 96400, 'Patek Philippe Complications 5975R-001.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 'Patek Philippe Grand Complications 5496P-015', 2, 0, NULL, 87800, 0, 'Patek Philippe Grand Complications 5496P-015.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 'Patek Philippe Grand Complications 6104R-001', 2, 0, NULL, 380000, 362000, 'Patek Philippe Grand Complications 6104R-001.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 'Patek Philippe Grand Complications 6102P-001', 2, 0, NULL, 290000, 288000, 'Patek Philippe Grand Complications 6102P-001.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 'Patek Philippe Grand Complications 5159R-001', 2, 0, NULL, 88000, 84000, 'Patek Philippe Grand Complications 5159R-001.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 'Franck Muller Vanguard Yachting V 45 SC DT TT BR NR', 3, 0, NULL, 6500, 6200, 'Franck Muller Long Island 1002.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(53, 'Franck Muller Master Calendar 6850', 3, 0, NULL, 35000, 32700, 'Franck Muller Long Island 1002.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(54, 'Franck Muller Master Banker 6850 Mb', 3, 0, NULL, 6800, 6650, 'Franck Muller Long Island 1002.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 'Rolex Day-Date 118348 Mặt Số Xanh Lá Nạm Kim Cương', 4, 0, NULL, 55000, 52000, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 'Rolex Cosmograph Daytona 116576TBR Mặt Số Khảm Kim Cương', 4, 0, NULL, 145000, 142000, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 'Rolex Yacht-Master 268655 Mặt Số Đính Kim Cương', 4, 0, NULL, 38000, 36300, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 'Rolex Day-Date 228345RBR Mặt Số Chocolate Cọc Kim Cương', 4, 0, NULL, 49000, 47500, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(60, 'Rolex Submariner Date 116618LB', 4, 0, NULL, 31000, 29000, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(61, 'Rolex Yacht-Master 116695 Mặt Số Khảm Kim Cương', 4, 0, NULL, 110000, 108000, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(62, 'Hublot Big Bang Gold Blue Diamonds 41mm', 5, 0, NULL, 55000, 52000, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(63, 'Rolex Yacht-Master II 116688', 4, 0, NULL, 38000, 37500, 'Rolex Cosmograph Daytona 116500LN.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(70, 'Hublot Big Bang Sang Bleu Titanium Pave 45mm', 5, 0, NULL, 38000, 34500, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(71, 'Hublot Big Bang Gold Ceramic 44mm', 5, 0, NULL, 25000, 24000, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 'Hublot Big Bang Unico Perpetual Calendar Sapphire 45mm', 5, 0, NULL, 98000, 97000, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(78, 'Hublot Classic Fusion Tourbillon Titanium Opalin 45mm', 5, 0, NULL, 31000, 28000, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(79, 'Hublot Big Bang Unico Black Magic 45mm', 5, 0, NULL, 19900, 15000, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(80, 'Hublot Big Bang Steel White Chronograph 41mm', 5, 0, NULL, 12500, 11000, 'Hublot Big Bang King.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(83, 'Rolex Lady-Datejust 179138 Mặt Số Vỏ Trai Trắng Nạm Kim Cương', 7, 1, NULL, 35000, 27000, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(84, 'Rolex Lady-Datejust 279381RBR Mặt Số Chocolate Nạm Kim Cương Dây Đeo Oyster', 7, 1, NULL, 18000, 15130, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(85, 'Rolex Lady-Datejust 178271 Mặt Số Vi Tính Hồng', 7, 1, NULL, 12000, 11500, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(86, 'Rolex Pearlmaster 81315 Mặt Số Vỏ Trai Trắng Nạm Kim Cương', 7, 1, NULL, 30000, 26130, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_images`
+-- Table structure for table `product_images`
 --
 
 CREATE TABLE `product_images` (
@@ -225,7 +260,7 @@ CREATE TABLE `product_images` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_status`
+-- Table structure for table `product_status`
 --
 
 CREATE TABLE `product_status` (
@@ -236,7 +271,7 @@ CREATE TABLE `product_status` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_types`
+-- Table structure for table `product_types`
 --
 
 CREATE TABLE `product_types` (
@@ -251,7 +286,7 @@ CREATE TABLE `product_types` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product_types`
+-- Dumping data for table `product_types`
 --
 
 INSERT INTO `product_types` (`id`, `name_id`, `type`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
@@ -270,7 +305,7 @@ INSERT INTO `product_types` (`id`, `name_id`, `type`, `name`, `description`, `im
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `slide`
+-- Table structure for table `slide`
 --
 
 CREATE TABLE `slide` (
@@ -283,7 +318,7 @@ CREATE TABLE `slide` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `slide`
+-- Dumping data for table `slide`
 --
 
 INSERT INTO `slide` (`id`, `name_id`, `name`, `description`, `link`, `image`) VALUES
@@ -296,7 +331,7 @@ INSERT INTO `slide` (`id`, `name_id`, `name`, `description`, `link`, `image`) VA
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `strap_types`
+-- Table structure for table `strap_types`
 --
 
 CREATE TABLE `strap_types` (
@@ -304,18 +339,39 @@ CREATE TABLE `strap_types` (
   `strap_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `strap_types`
+--
+
+INSERT INTO `strap_types` (`id`, `strap_name`) VALUES
+(1, 'Dây kim loại'),
+(2, 'Dây da');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `tag_name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `full_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -323,11 +379,20 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `fullname`, `email`, `password`, `phone_number`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'admin', 'Nguyễn Hồng Chương', 'chuongnhd00645@fpt.edu.vn', '$2y$10$alZJgvsLxjPsIQ5eUTSa2O00E9LVWSR.txEpPSxtRyyxXCCBcMNn.', '0988211231', NULL, '3U39A4FxiWIFii5YlxB7GBs23ot1ohOfrsJkN2Cfkds8I5rhXfowessBNo3p', '2018-11-03 17:33:19', '2018-11-03 17:33:19'),
+(3, 'chuongnguyen', 'Chương', 'nguyenhong@gmail.com', '$2y$10$NNPny0KXICEX9rAfRTHwPu1EWGL9LHKspumvj7/eCIFkfxZWHTNIO', '0988211231', NULL, NULL, '2018-11-04 15:30:35', '2018-11-04 15:30:35'),
+(4, 'admin1', 'fgsjglkdfj', 'fdsfdsfdsfs@gmail.com', '$2y$10$o65uXjT2V8MiI5F07eeC3uVLu5gI0ivDnRiIdrBHr8hvAlXqMr1We', '0934291994', NULL, 'sur7pSOzn4SkDXbAqMTfqKk66hVHuXf5IveH4brKzVun8QSxrqAep76Y047S', '2018-11-04 15:53:17', '2018-11-04 15:53:17');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `bills`
+-- Indexes for table `bills`
 --
 ALTER TABLE `bills`
   ADD PRIMARY KEY (`id`),
@@ -335,44 +400,44 @@ ALTER TABLE `bills`
   ADD KEY `FK_bill_status` (`status_id`);
 
 --
--- Chỉ mục cho bảng `bill_detail`
+-- Indexes for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `bill_detail_ibfk_2` (`product_id`);
 
 --
--- Chỉ mục cho bảng `bill_status`
+-- Indexes for table `bill_status`
 --
 ALTER TABLE `bill_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `case_material`
+-- Indexes for table `case_material`
 --
 ALTER TABLE `case_material`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -382,132 +447,144 @@ ALTER TABLE `products`
   ADD KEY `FK_material_products` (`case_material_id`);
 
 --
--- Chỉ mục cho bảng `product_images`
+-- Indexes for table `product_images`
 --
 ALTER TABLE `product_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `product_status`
+-- Indexes for table `product_status`
 --
 ALTER TABLE `product_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `product_types`
+-- Indexes for table `product_types`
 --
 ALTER TABLE `product_types`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name_id` (`name_id`);
 
 --
--- Chỉ mục cho bảng `slide`
+-- Indexes for table `slide`
 --
 ALTER TABLE `slide`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name_id` (`name_id`);
 
 --
--- Chỉ mục cho bảng `strap_types`
+-- Indexes for table `strap_types`
 --
 ALTER TABLE `strap_types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `bills`
+-- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT cho bảng `bill_detail`
+-- AUTO_INCREMENT for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT cho bảng `bill_status`
+-- AUTO_INCREMENT for table `bill_status`
 --
 ALTER TABLE `bill_status`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `case_material`
+-- AUTO_INCREMENT for table `case_material`
 --
 ALTER TABLE `case_material`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `customer`
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT cho bảng `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT cho bảng `product_images`
+-- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `product_status`
+-- AUTO_INCREMENT for table `product_status`
 --
 ALTER TABLE `product_status`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `product_types`
+-- AUTO_INCREMENT for table `product_types`
 --
 ALTER TABLE `product_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `slide`
+-- AUTO_INCREMENT for table `slide`
 --
 ALTER TABLE `slide`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `strap_types`
+-- AUTO_INCREMENT for table `strap_types`
 --
 ALTER TABLE `strap_types`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `FK_material_products` FOREIGN KEY (`case_material_id`) REFERENCES `case_material` (`id`),
@@ -516,7 +593,7 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_id_type_foreign` FOREIGN KEY (`type_id`) REFERENCES `product_types` (`id`);
 
 --
--- Các ràng buộc cho bảng `slide`
+-- Constraints for table `slide`
 --
 ALTER TABLE `slide`
   ADD CONSTRAINT `FK_product_slide` FOREIGN KEY (`name_id`) REFERENCES `product_types` (`name_id`);
