@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Trang chủ
+    {{__('message.homepage')}}
 @endsection
 @section('content')
     <!--================Home Carousel Area =================-->
@@ -13,8 +13,7 @@
                         <div class="carousel_hover">
                             <h4>{{$sl->name}}</h4>
                             <h3>{{$sl->description}}</h3>
-                            <a class="discover_btn" href="{{route('producttype', $sl->name_id)}}">khám phá
-                                ngay</a>
+                            <a class="discover_btn" href="{{route('producttype', $sl->name_id)}}">{{__('message.discover')}}</a>
 
                         </div>
                     </div>
@@ -28,12 +27,12 @@
     <section class="fillter_latest_product">
         <div class="container">
             <div class="single_c_title">
-                <h2>SẢN PHẨM MỚI NHẤT</h2>
+                <h2>{{__('message.latest')}}</h2>
             </div>
             <div class="fillter_l_p_inner">
                 <ul class="fillter_l_p">
-                    <li class="active" data-filter="*"><a href="#">đồng hồ nam</a></li>
-                    <li data-filter=".woman"><a href="#">đồng hồ nữ</a></li>
+                    <li class="active" data-filter="*"><a href="#">{{__('message.menwatch')}}</a></li>
+                    <li data-filter=".woman"><a href="#">{{__('message.womenwatch')}}</a></li>
                 </ul>
                 <div class="row isotope_l_p_inner">
                     @foreach($new_product as $new)
@@ -47,13 +46,13 @@
                                                                                  height="320px"></a>
                                     <h5 class="new">New</h5>
                                     @if($new->promotion_price != 0)
-                                        <h5 class="sale">Sale</h5>
+                                        <h5 class="sale">{{__('message.sale')}}</h5>
                                     @endif
                                 </div>
                                 <div class="l_p_text">
                                     <ul>
-                                        <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
-                                        <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a>
+                                        <li><a class="add_cart_btn" href="#">{{__('message.add_to_cart')}}</a></li>
+                                        <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">{{__('message.details')}}</a>
                                         </li>
                                     </ul>
                                     <h4>{{$new->name}}</h4>
@@ -78,7 +77,7 @@
     <section class="our_latest_product">
         <div class="container">
             <div class="s_m_title">
-                <h2>SẢN PHẨM GIẢM GIÁ</h2>
+                <h2>{{__('message.product_sale')}}</h2>
             </div>
             <div class="l_product_slider owl-carousel">
                 @foreach($new_product as $new)
@@ -93,8 +92,8 @@
                             </div>
                             <div class="l_p_text">
                                 <ul>
-                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
-                                    <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a></li>
+                                    <li><a class="add_cart_btn" href="#">{{__('message.add_to_cart')}}</a></li>
+                                    <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">{{__('message.details')}}</a></li>
                                 </ul>
                                 <h4>{{$new->name}}</h4>
                                 <h5>@if($new->promotion_price != 0)
@@ -198,7 +197,7 @@
                     <div class="col-lg-3">
                         <div class="f_product_left">
                             <div class="s_m_title">
-                                <h2>Sản phẩm nổi bật</h2>
+                                <h2>{{__('message.featured_products')}}</h2>
                             </div>
                             <div class="f_product_inner">
                                 @foreach($featured_product as $featured)
@@ -221,8 +220,8 @@
                     <div class="col-lg-9">
                         <div class="fillter_slider_inner">
                             <ul class="portfolio_filter">
-                                <li class="active" data-filter="*"><a href="#">ĐỒNG HỒ NAM</a></li>
-                                <li data-filter=".woman"><a href="#">ĐỒNG HỒ NỮ</a></li>
+                                <li class="active" data-filter="*"><a href="#">{{__('message.menwatch')}}</a></li>
+                                <li data-filter=".woman"><a href="#">{{__('message.womenwatch')}}</a></li>
                             </ul>
                             <div class="fillter_slider owl-carousel">
                                 @foreach($new_product as $new)
