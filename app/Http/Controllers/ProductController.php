@@ -59,7 +59,7 @@ class ProductController extends Controller
 
             foreach ($anhs as $anh){
                 $imgName = $anh->hashName();
-                $anh->store('public/img/product');
+                $anh->move('public/source/img/test', $imgName);
                 $image = new ProductImages;
                 $image->product_id = $id;
                 $image->name_image = $imgName;

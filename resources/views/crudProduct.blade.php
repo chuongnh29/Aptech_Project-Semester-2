@@ -93,7 +93,7 @@
             @foreach($products as $product)
             <tr>
 
-                <td><img src="public/storage/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
+                <td><img src="public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->name_type }}</td>
                 @if($product->gender == 0)
