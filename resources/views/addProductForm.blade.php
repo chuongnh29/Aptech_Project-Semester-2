@@ -1,160 +1,145 @@
 <div class="container crud-table">
   <div class="table-wrapper">
+      <form action="{{ route('addProduct') }}" method="post">
+          {{ csrf_field() }}
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
-          <h2>Manage <b>Employees</b></h2>
+          <h2>Thêm sản phẩm</h2>
         </div>
         <div class="col-sm-6">
-          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-          <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>                        
+          
+          {{--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm ảnh</span></a>--}}
+          <!-- <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>  -->                       
         </div>
       </div>
     </div>
-    <form class="form-horizontal">
-      <fieldset>
 
-        <!-- Form Name -->
-        <legend>PRODUCTS</legend>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_id">PRODUCT ID</label>  
-          <div class="col-md-4">
-            <input id="product_id" name="product_id" placeholder="PRODUCT ID" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
-          <div class="col-md-4">
-            <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>  
-          <div class="col-md-4">
-            <input id="product_name_fr" name="product_name_fr" placeholder="PRODUCT DESCRIPTION FR" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Select Basic -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_categorie">PRODUCT CATEGORY</label>
-          <div class="col-md-4">
-            <select id="product_categorie" name="product_categorie" class="form-control">
-            </select>
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="available_quantity">AVAILABLE QUANTITY</label>  
-          <div class="col-md-4">
-            <input id="available_quantity" name="available_quantity" placeholder="AVAILABLE QUANTITY" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_weight">PRODUCT WEIGHT</label>  
-          <div class="col-md-4">
-            <input id="product_weight" name="product_weight" placeholder="PRODUCT WEIGHT" class="form-control input-md" required="" type="text">
-
-          </div>
-        </div>
-
-        <!-- Textarea -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION</label>
-          <div class="col-md-4">                     
-            <textarea class="form-control" id="product_description" name="product_description"></textarea>
-          </div>
-        </div>
-
-        <!-- Textarea -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION FR</label>
-          <div class="col-md-4">                     
-            <textarea class="form-control" id="product_name_fr" name="product_name_fr"></textarea>
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="approuved_by">APPROUVED BY</label>  
-          <div class="col-md-4">
-            <input id="approuved_by" name="approuved_by" placeholder="APPROUVED BY" class="form-control input-md" required="" type="text">
-
-            <!-- File Button --> 
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="filebutton">main_image</label>
-              <div class="col-md-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
               </div>
-            </div>
-            <!-- File Button --> 
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="filebutton">auxiliary_images</label>
-              <div class="col-md-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
-              </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
-              <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
-              </div>
-            </div>
-
-          </fieldset>
-        </form>
+          @endif
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputEmail4">Tên sản phẩm</label>
+        <input type="" class="form-control" id="" name="tenSP" placeholder="Bắt buộc nhập">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Thương hiệu</label>
+        <select id="inputState" class="form-control" name="thuongHieu">
+            @foreach($thuongHieu as $brand)
+                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+            @endforeach
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">Giới tính</label>
+        <select id="inputState" class="form-control" name="gioiTinh">
+            @foreach($gioiTinh as $gender)
+                @if($gender->type == 0)<option value="{{ $gender->type }}">Nam</option>
+                @else
+                    <option value="{{ $gender->type }}">Nữ</option>
+                @endif
+            @endforeach
+        </select>
       </div>
     </div>
+   <div class="form-row">
+       <div class="form-group col-md-4">
+           <label for="inputPassword4">Loại dây</label>
+           <select id="inputState" class="form-control" name="loaiDay">
+               @foreach($loaiDay as $day)
+                   <option value="{{ $day->id }}">{{ $day->strap_name }}</option>
+               @endforeach
+           </select>
+       </div>
+
+       <div class="form-group col-md-4">
+           <label for="inputPassword4">Loại vỏ</label>
+           <select id="inputState" class="form-control" name="loaiVo">
+               @foreach($loaiVo as $vo)
+                   <option value="{{ $vo->id }}">{{ $vo->material_name }}</option>
+               @endforeach
+           </select>
+       </div>
+       <div class="form-group col-md-4">
+           <label for="inputPassword4">Trạng thái sản phẩm</label>
+           <select id="inputState" class="form-control" name="trangThaiSP">
+               @foreach($trangThaiSP as $trangThai)
+                   <option value="{{ $trangThai->id }}">{{ $trangThai->product_status_name }}</option>
+               @endforeach
+           </select>
+       </div>
+   </div>
+   <div class="form-row">
+       <div class="form-group col-md-4">
+           <label for="inputCity">Giá gốc</label>
+           <input type="text" class="form-control" id="inputCity" placeholder="Bắt buộc nhập" name="giaGoc">
+       </div>
+
+       <div class="form-group col-md-4">
+           <label for="inputAddress">Giá sale</label>
+           <input type="text" class="form-control" id="inputAddress" placeholder="Bắt buộc nhập" name="giaSale">
+       </div>
+
+       <div class="form-group col-md-4">
+           <label for="inputAddress">Mô tả ngắn</label>
+           <input type="text" class="form-control" id="inputAddress" placeholder="Viết vào đây...">
+       </div>
+   </div>
+      <div class="form-group">
+          <label for="exampleFormControlFile1">Thêm ảnh</label>
+          <input type="file" required="true" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
+      </div>
+    <div class="form-group">
+      <label for="inputAddress2">Bài viết</label>
+      <textarea name="productPost" id="productReview"></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Thêm</button>
+
     <!-- Edit Modal HTML -->
-    <!-- <div id="addEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">                      
-                        <h4 class="modal-title">Add Employee</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">                    
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
-                        </div>                  
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
-                    </div>
-                </form>
-            </div>
-        </div>
-      </div> -->
+    {{--<div id="addEmployeeModal" class="modal fade">--}}
+        {{--<div class="modal-dialog">--}}
+            {{--<div class="modal-content">--}}
+                    {{--<div class="modal-header">                      --}}
+                        {{--<h4 class="modal-title">Thêm ảnh</h4>--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-body">                    --}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Name</label>--}}
+                            {{--<input type="text" class="form-control" required>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Email</label>--}}
+                            {{--<input type="email" class="form-control" required>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Address</label>--}}
+                            {{--<textarea class="form-control" required></textarea>--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group">--}}
+                            {{--<label>Phone</label>--}}
+                            {{--<input type="text" class="form-control" required>--}}
+                        {{--</div>                  --}}
+                    {{--</div>--}}
+                    {{--<div class="modal-footer">--}}
+                        {{--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">--}}
+                        {{--<input type="submit" class="btn btn-success" value="Add">--}}
+                    {{--</div>--}}
+            {{--</div>--}}
+
+        {{--</div>--}}
+
+      {{--</div>--}}
+      </form>
+  </div>
       <!-- Edit Modal HTML -->
     <!-- <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">
