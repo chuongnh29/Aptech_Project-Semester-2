@@ -17,6 +17,11 @@
           <div class="errors">
             @include('errorValidate')
           </div>
+      <div class="form-group">
+          <label for="exampleFormControlFile1">Ảnh đại diện</label>
+          <img id="anhDaiDien" src="" alt="your image" style="width: 8rem; height: 8rem; display: block;">
+          <input type="file" name="anhDaiDien" class="form-control-file">
+      </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
