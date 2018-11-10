@@ -65,7 +65,7 @@
                     <select id="inputState" class="form-control" name="trangThaiSP">
                         <option value="none" selected>Có thể chọn</option>
                         @foreach($trangThaiSP as $trangThai)
-                            <option value="{{ $trangThai->id }}">{{ $trangThai->ten_trang_thai }}</option>
+                            <option value="{{ $trangThai->id }}">{{ $trangThai->product_status_name }}</option>
                         @endforeach
                     </select>
                 </div>
