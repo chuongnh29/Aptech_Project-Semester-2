@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductImages;
 use DB;
 use App\LoaiDay;
 use App\LoaiVo;
@@ -30,6 +31,11 @@ class AdminController extends Controller
     	// $paginateURL = $request;
     	$products = null;
 
+    	$imagesName = [];
+        $images = ProductImages::where('status_id',1)->get();
+        foreach ($images as $image){
+            $imagesName = array_add($imagesName,$image->product_id, $image->name_image);
+        }
     	switch ($type){
             case 'timKiem':
                 $products = $this->timKiemSanPham($request);
@@ -58,7 +64,8 @@ class AdminController extends Controller
             'loaiDay' => $loaiDay,
             'trangThaiSP' => $trangThaiSanPham,
             'thuongHieu' => $thuongHieu,
-            'gioiTinh' => $gioiTinh
+            'gioiTinh' => $gioiTinh,
+            'imagesName'=>$imagesName
     	]);
     }
 
@@ -89,6 +96,7 @@ class AdminController extends Controller
                     'products.strap_id', 'products.case_material_id', 'product_types.type as gender')
                 ->where('products.id', (int) $id)
                 ->first();
+            $anhDaiDien = ProductImages::where([['product_id','=',(int) $id],['status_id','=', 1]])->first();
             return view('pages.editProduct',[
                 'loaiDay'=>$loaiDay,
                 'loaiVo'=>$loaiVo,
@@ -96,7 +104,8 @@ class AdminController extends Controller
                 'thuongHieu'=>$thuongHieu,
                 'gioiTinh'=>$gioiTinh,
                 'product'=>$product,
-                'type'=>'edit'
+                'type'=>'edit',
+                'anhDaiDien'=>$anhDaiDien
             ]);
         }
     }

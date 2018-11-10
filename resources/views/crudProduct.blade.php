@@ -6,8 +6,7 @@
                     <h2><b>Sản phẩm</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="{{ route('addProductForm') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>                        
+
                 </div>
             </div>
 
@@ -71,7 +70,11 @@
                     </select>
                 </div>
             </div>
-            <div style="text-align: center;"><button type="submit" class="btn btn-primary">Tìm kiếm</button></div>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                <a href="{{ route('addProductForm') }}" class="btn btn-success"><span>Thêm sản phẩm mới</span></a>
+                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span>Delete</span></a>
+            </div>
         </form>
       <table class="table table-striped table-hover" style="margin-top: 50px;">
         <thead>
@@ -93,8 +96,8 @@
             @foreach($products as $product)
             <tr>
 
-                <td><img src="public/source/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
-                <td>{{ $product->name }}</td>
+                <td><img src="public/source/img/product/{{ array_get($imagesName, $product->id) }}" style="max-width: 4rem; max-height: 4rem;"></td>
+                <td><a href="{{ route('editProductForm',['id'=>$product->id]) }}">{{ $product->name }}</a></td>
                 <td>{{ $product->name_type }}</td>
                 @if($product->gender == 0)
                     <td>Nam</td>

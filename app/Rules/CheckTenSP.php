@@ -8,14 +8,16 @@ use Illuminate\Contracts\Validation\Rule;
 class CheckTenSP implements Rule
 {
     protected $name;
+    protected $id;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($name, $id)
     {
         $this->name = $name;
+        $this->id = $id;
     }
 
     /**
@@ -27,11 +29,27 @@ class CheckTenSP implements Rule
      */
     public function passes($attribute, $value)
     {
-        $product = Products::where('name',$this->name)->first();
-        if($product){
-            return false;
+        $isPass = true;
+        if($this->id == null){
+            $product = Products::where('name',$this->name)->first();
+            if($product){
+                $isPass = false;
+            }
+        }else{
+            $product = Products::where('id', (int) $this->id)->first();
+            $nameProduct = $product->name;
+
+            if($this->name == $nameProduct){
+                $isPass = true;
+            }else{
+                $product = Products::where('name',$this->name)->first();
+                if($product){
+                    $isPass = false;
+                }
+            }
         }
-        return true;
+
+        return $isPass;
     }
 
     /**

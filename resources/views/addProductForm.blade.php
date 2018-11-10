@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-6">
           
-          {{--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm ảnh</span></a>--}}
+          @if($type == 'edit')<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Sửa ảnh</span></a>@endif
           <!-- <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>  -->                       
         </div>
       </div>
@@ -17,17 +17,25 @@
           <div class="errors">
             @include('errorValidate')
           </div>
-      <div class="form-group">
-          <label for="exampleFormControlFile1">Ảnh đại diện</label>
-          <img id="anhDaiDien" src="" alt="your image" style="width: 8rem; height: 8rem; display: block;">
-          <input type="file" name="anhDaiDien" class="form-control-file">
+      {{--<div class="form-group">--}}
+          {{--<label for="exampleFormControlFile1">Ảnh đại diện</label>--}}
+          {{--<img id="anhDaiDien" src="" alt="your image" style="width: 8rem; height: 8rem; display: block;">--}}
+          {{--<input type="file" name="anhDaiDien" class="form-control-file">--}}
+      {{--</div>--}}
+      <label for="exampleFormControlFile1">Ảnh đại diện</label>
+      <div class="card" style="width: 18rem;">
+          <img class="card-img-top" id="anhDaiDien" src="@if($type == 'edit')public/source/img/product/{{ $anhDaiDien->name_image }}@endif" alt="your image" alt="Card image cap" style="width: 8rem; height: 9rem; display: block;">
+          <div class="card-body">
+              <input type="file" name="anhDaiDien" class="form-control-file">
+          </div>
       </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
-        <input type="" class="form-control" @if($type == 'edit') value="{{ $product->name }}" @endif id="" name="tenSP" placeholder="Bắt buộc nhập">
+        <input type="text" class="form-control" @if($type == 'edit') value="{{ $product->name }}" @endif id="" name="tenSP" placeholder="Bắt buộc nhập">
       </div>
-        <input type="hidden" name="productID" @if($type == 'edit') value="{{ $product->id }}" @endif>
+        @if($type == 'edit')<input type="hidden" name="productID"  value="{{ $product->id }}" >@endif
+        <input type="hidden" name="type" id="" value="{{ $type }}">
       <div class="form-group col-md-4">
         <label for="inputPassword4">Thương hiệu</label>
         <select id="inputState" class="form-control" name="thuongHieu">
@@ -105,40 +113,40 @@
     <button class="btn btn-primary save">Lưu</button>
 
     <!-- Edit Modal HTML -->
-    {{--<div id="addEmployeeModal" class="modal fade">--}}
-        {{--<div class="modal-dialog">--}}
-            {{--<div class="modal-content">--}}
-                    {{--<div class="modal-header">                      --}}
-                        {{--<h4 class="modal-title">Thêm ảnh</h4>--}}
-                        {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
-                    {{--</div>--}}
-                    {{--<div class="modal-body">                    --}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Name</label>--}}
-                            {{--<input type="text" class="form-control" required>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Email</label>--}}
-                            {{--<input type="email" class="form-control" required>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Address</label>--}}
-                            {{--<textarea class="form-control" required></textarea>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Phone</label>--}}
-                            {{--<input type="text" class="form-control" required>--}}
-                        {{--</div>                  --}}
-                    {{--</div>--}}
-                    {{--<div class="modal-footer">--}}
-                        {{--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">--}}
-                        {{--<input type="submit" class="btn btn-success" value="Add">--}}
-                    {{--</div>--}}
-            {{--</div>--}}
+    <div id="addEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm ảnh</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="button" class="btn btn-success" data-dismiss="modal" value="Add">
+                    </div>
+            </div>
 
-        {{--</div>--}}
+        </div>
 
-      {{--</div>--}}
+      </div>
 
   </div>
       <!-- Edit Modal HTML -->

@@ -67,3 +67,5 @@ Route::get('admin/edit/{id}', 'AdminController@getAddProduct')->name('editProduc
 
 Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->name('getPost');
 
+Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editProduct');
+
