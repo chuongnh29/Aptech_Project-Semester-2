@@ -79,7 +79,12 @@
       <table class="table table-striped table-hover" style="margin-top: 50px;">
         <thead>
             <tr>
-
+                <th>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="selectAll">
+                        <label for="selectAll"></label>
+                    </span>
+                </th>
                 <th>Ảnh</th>
                 <th>Tên <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
                 <th>Thương hiệu</th>
@@ -89,13 +94,18 @@
                 <th>Loại dây</th>
                 <th>Loại vỏ</th>
                 <th>Trạng thái hàng</th>
-                <th>Actions</th>
+                <th>Thao tác</th>
             </tr>
         </thead>
         <tbody>
             @foreach($products as $product)
             <tr>
-
+                <td>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="checkbox1" name="options[]" value="$product->id">
+                        <label for="checkbox1"></label>
+                    </span>
+                </td>
                 <td><img src="public/source/img/product/{{ array_get($imagesName, $product->id) }}" style="max-width: 4rem; max-height: 4rem;"></td>
                 <td><a href="{{ route('editProductForm',['id'=>$product->id]) }}">{{ $product->name }}</a></td>
                 <td>{{ $product->name_type }}</td>
@@ -110,8 +120,8 @@
                 <td>{{ $product->loai_vo }}</td>
                 <td>{{ $product->product_status }}</td>
                 <td class="edit-delete-block">
-                    <a href="{{ route('editProductForm',['id'=>$product->id]) }}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
-                    <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                    <a href="{{ route('editProductForm',['id'=>$product->id]) }}" class="edit"><i class="material-icons" title="Sửa">&#xE254;</i></a>
+                    <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Xóa">&#xE872;</i></a>
                     <input type="hidden" name="name" value="{{ $product->name }}">
                 </td>
             </tr>

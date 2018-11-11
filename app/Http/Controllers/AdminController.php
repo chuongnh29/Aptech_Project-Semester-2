@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
+use App\BillStatus;
 use App\ProductImages;
 use DB;
 use App\LoaiDay;
@@ -149,5 +151,56 @@ class AdminController extends Controller
             ->paginate(5);
 
         return $products;
+    }
+
+    public function getBills(Request $request){
+        $url = $request->fullUrl();
+        $dangCho = count(Bill::where('status_id', 1)->get());
+        $daXacNhan = count(Bill::where('status_id', 2)->get());
+        $dangXuLy = count(Bill::where('status_id', 3)->get());
+        $daGiao = count(Bill::where('status_id', 4)->get());
+        $daHuy = count(Bill::where('status_id', 5)->get());
+        $trangThaiDonHang = BillStatus::all();
+        $dieuKienTimKiem = $this->getSearchCondition($request);
+        $ngayTaoDon = DB::table('bills')->select('bills.date_order')->groupBy('date_order')->get();
+        $bills = DB::table('bills')
+            ->leftJoin('bill_status','bills.status_id','=','bill_status.id')
+            ->leftJoin('customer','bills.customer_id','=','customer.id')
+            ->select('bills.id','customer.address','bills.date_order','bills.total', 'bill_status.bill_status_name','bills.note','customer.name as customer_name','customer.phone_number')
+            ->where($dieuKienTimKiem)
+            ->paginate(5);
+        $bills->withPath($url);
+        return view('pages.adminBills',[
+            'Bills'=>$bills,
+            'BillStatus'=>$trangThaiDonHang,
+            'DateOrders'=>$ngayTaoDon,
+            'dangCho' => $dangCho,
+            'daXacNhan' =>$daXacNhan,
+            'dangXuLy' => $dangXuLy,
+            'daGiao' => $daGiao,
+            'daHuy' => $daHuy
+        ]);
+    }
+
+    public function getSearchCondition($request){
+        $tenKhachHang = $request->tenKhachHang;
+        $idDonHang = $request->idDonHang;
+        $trangThaiDonHang = $request->trangThaiDonHang;
+        $ngay = $request->ngay;
+        $dieuKienTimKiem = [];
+        if($tenKhachHang != null){
+            $dieuKienTimKiem[] = ['customer.name','like','%'.$tenKhachHang.'%'];
+        }
+        if($trangThaiDonHang != null && $trangThaiDonHang != 'none'){
+            $dieuKienTimKiem[] = ['bills.status_id','=', (int) $trangThaiDonHang];
+        }
+        if($ngay != null && $ngay != 'none'){
+            $dieuKienTimKiem[] = ['bills.date_order','=', $ngay];
+        }
+        if($idDonHang != null){
+            $dieuKienTimKiem[] = ['bills.id','=',$idDonHang];
+        }
+
+        return $dieuKienTimKiem;
     }
 }
