@@ -12,7 +12,7 @@ class LanguageController extends Controller
 {
     public function changeLanguage($locale)
     {
-        Session::put('locale',$locale);
+        Session::put('locale', $locale);
         return Redirect::back();
     }
 }
