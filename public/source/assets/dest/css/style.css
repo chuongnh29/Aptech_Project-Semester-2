@@ -5669,13 +5669,13 @@ i:before {
     color: #0b1033;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    text-transform: capitalize;
+    text-transform: uppercase;
     letter-spacing: .60px;
     padding: 30px 0px 15px 0px;
 }
 
 .emty_cart_area .emty_cart_inner h4 {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     color: #666666;
