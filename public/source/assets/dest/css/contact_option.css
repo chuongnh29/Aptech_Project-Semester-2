@@ -1,6 +1,6 @@
 .contact_details {
     /*background-image: url("public\source\img\contact_bg.png");*/
-    background-image: url("../../../img/contact_bg.png");
+    background-image: url("../../../img/contact_bg.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -10,17 +10,17 @@
     padding: 10px !important;
 }
 
-.info_option{
-margin: 0px 80px 0px 80px;
+.info_option {
+    margin: 0px 80px 0px 80px;
 }
 
 .contact_col_1 {
-    padding-left: 55px;
-    padding-top: 30px;
+    padding-left: 50px;
+    padding-top: 20px;
 }
 
-.contact_col_1 p,a {
-    font-size: 18px !important;
+.contact_col_1 p, a {
+    font-size: 16px !important;
     color: #0b0b0b !important;
 }
 
@@ -30,9 +30,26 @@ margin: 0px 80px 0px 80px;
     margin-right: 0px !important;
 }
 
+.contact_col_2 input, textarea {
+    font-size: 16px !important;
+    opacity: 0.8;
+    color: #040000 !important;
+}
+
+.m-text26 {
+    margin-bottom: 10px;
+    font-family: Tahoma;
+    font-size: 25px;
+    color: #bee5eb;
+    line-height: 1.2;
+}
+
+.contact_col_2 .form-group {
+    margin-bottom: 20px !important;
+}
+
 .maps_option {
     margin: 30px 0px;
-    border: 1px solid;
 }
 
 /* Button Area css

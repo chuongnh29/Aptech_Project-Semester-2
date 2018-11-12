@@ -71,3 +71,7 @@ Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->name('ge
 
 //code xử lý multi language.
 Route::get('change-language/{locale}', 'LanguageController@changeLanguage');
+
+//code xử lý gửi mail trong form contact us.
+Route::get('message/send', 'PagesController@getFeedback');
+Route::post('message/send', 'PagesController@postFeedback');

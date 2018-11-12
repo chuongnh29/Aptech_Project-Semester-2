@@ -71,7 +71,7 @@
 <script src="public/source/assets/dest/js/theme.js"></script>
 {{--Use Google Maps Api--}}
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes&callback=initMap">
 </script>
 <script src="public/source/assets/dest/js/googlemaps.js"></script>
 <script>
