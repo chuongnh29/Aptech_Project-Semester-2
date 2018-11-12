@@ -25,7 +25,7 @@ Route::get('dong-ho-nu', ['as' => 'donghonu', 'uses' => 'PagesController@getWome
 
 //Route::get('products/{id}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
 
-Route::get('product-detail/{id}', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
+Route::get('product-detail', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
 
 Route::get('about', ['as' => 'about', 'uses' => 'PagesController@getAbout']);
 
@@ -55,8 +55,6 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBy
 
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
-Route::get('change-language/{locale}', 'PagesController@changeLanguage');
-
 Route::get('admin/index', 'AdminController@getIndex');
 
 Route::get('admin/getproduct', 'AdminController@getProductManager');
@@ -80,3 +78,10 @@ Route::post('admin/products/add', 'ProductController@create')->name('addProduct'
 Route::get('admin/edit/{id}', 'AdminController@getAddProduct')->name('editProductForm');
 
 Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->name('getPost');
+
+Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editProduct');
+
+Route::get('admin/bills', 'AdminController@getBills')->name('bills');
+
+Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
+

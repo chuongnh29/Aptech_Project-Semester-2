@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\CheckGiaGocGiaSale;
 use App\Rules\CheckPositiveNum;
+use App\Rules\CheckTenSP;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddProductRequest extends FormRequest
@@ -29,7 +30,7 @@ class AddProductRequest extends FormRequest
             'tenSP' => [
                 'required',
                 'max:255',
-
+                new CheckTenSP($this->tenSP, null)
             ],
             'giaGoc' => [
                 'required',
@@ -42,7 +43,20 @@ class AddProductRequest extends FormRequest
                 new CheckPositiveNum($this->giaSale, 'Giá sale'),
                 new CheckGiaGocGiaSale($this->giaGoc, $this->giaSale)
             ],
-            'anh' => ['image']
+            'anh' => ['required']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tenSP.required' => 'Nhập tên sản phẩm',
+            'giaGoc.required'  => 'Nhập giá gốc',
+            'giaSale.required'  => 'Nhập giá sale',
+            'giaGoc.integer'  => 'Giá gốc phải là số lớn hơn 0',
+            'giaSale.integer'  => 'Giá sale phải là số lớn hơn 0 và nhỏ hơn hoặc bằng giá gốc',
+            'anh.image'  => 'File phải là file ảnh',
+            'anh.required' => 'Phải chọn ảnh'
         ];
     }
 
