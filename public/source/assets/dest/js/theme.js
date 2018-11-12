@@ -1,27 +1,43 @@
 ;(function($) {
     "use strict";
-    
-//    var nav_offset_top = $('header').height(); 
-//    /*-------------------------------------------------------------------------------
-//	  Navbar 
-//	-------------------------------------------------------------------------------*/
-//
-//	//* Navbar Fixed  
-//    function navbarFixed(){
-//        if ( $('.main_menu_area, .search_area').length ){ 
-//            $(window).scroll(function() {
-//                var scroll = $(window).scrollTop();   
-//                if (scroll >= nav_offset_top ) {
-//                    $(".main_menu_area, .search_area").addClass("navbar_fixed");
-//                } else {
-//                    $(".main_menu_area, .search_area").removeClass("navbar_fixed");
-//                }
-//            });
-//        };
-//    };
-//    navbarFixed();
-    
-    
+
+    /*[ Show header dropdown ]
+    ===========================================================*/
+    $('.js-show-header-dropdown').on('click', function(){
+        $(this).parent().find('.header-dropdown')
+    });
+
+    var menu = $('.js-show-header-dropdown');
+    var sub_menu_is_showed = -1;
+
+    for(var i=0; i<menu.length; i++){
+        $(menu[i]).on('click', function(){
+
+            if(jQuery.inArray( this, menu ) == sub_menu_is_showed){
+                $(this).parent().find('.header-dropdown').toggleClass('show-header-dropdown');
+                sub_menu_is_showed = -1;
+            }
+            else {
+                for (var i = 0; i < menu.length; i++) {
+                    $(menu[i]).parent().find('.header-dropdown').removeClass("show-header-dropdown");
+                }
+
+                $(this).parent().find('.header-dropdown').toggleClass('show-header-dropdown');
+                sub_menu_is_showed = jQuery.inArray( this, menu );
+            }
+        });
+    }
+
+    $(".js-show-header-dropdown, .header-dropdown").click(function(event){
+        event.stopPropagation();
+    });
+
+    $(window).on("click", function(){
+        for (var i = 0; i < menu.length; i++) {
+            $(menu[i]).parent().find('.header-dropdown').removeClass("show-header-dropdown");
+        }
+        sub_menu_is_showed = -1;
+    });
     
     /*----------------------------------------------------*/
     /*  Main Slider js

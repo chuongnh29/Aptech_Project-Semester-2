@@ -1,4 +1,9 @@
 @extends('master')
+
+@section('title')
+{{$sanpham->name}}
+@endsection
+
 @section('content')
 
 
@@ -85,10 +90,10 @@
                             <a href="#">5 Đánh giá</a>
                             <a href="#">Đánh giá của bạn</a>
                         </div>
-                        <h6>Trạng thái <span>Còn <hàng></hàng></span></h6>
+                        <h6>Trạng thái <span>Còn hàng</span></h6>
                         <h4>@if($sanpham->promotion_price != 0)
-                                <del>$ {{number_format($sanpham->unit_price)}}</del>
                                 $ {{number_format($sanpham->promotion_price)}}
+                                <del>$ {{number_format($sanpham->unit_price)}}</del>
                             @else
                                 $ {{number_format($sanpham->unit_price)}}
                             @endif

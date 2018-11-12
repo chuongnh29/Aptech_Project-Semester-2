@@ -9,7 +9,6 @@
     <section class="solid_banner_area">
         <div class="container">
             <div class="solid_banner_inner">
-                {{--<h3>GIỎ HÀNG TRỐNG</h3>--}}
                 <ul>
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
                     <li><a>Giỏ hàng</a></li>

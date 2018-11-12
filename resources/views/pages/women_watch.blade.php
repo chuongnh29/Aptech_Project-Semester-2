@@ -58,22 +58,22 @@
                                                 <img src="public/source/img/product/{{$nu->image}}" alt=""
                                                      width="270px"
                                                      height="320px">
-                                                <h5 class="new">New</h5>
+                                                <div class="new"><p>New</p></div>
                                                 @if($nu->promotion_price != 0)
-                                                    <h5 class="sale">Sale</h5>
+                                                    <div class="sale"><p>Sale</p></div>
                                                 @endif
                                             </div>
                                             <div class="l_p_text">
                                                 <ul>
-                                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                                    <li><a class="add_cart_btn" href="{{route('addtocart', $nu->id)}}">Thêm giỏ hàng</a></li>
                                                     <li><a class="add_cart_btn" href="{{route('detail', $nu->id)}}">Chi
                                                             tiết</a>
                                                     </li>
                                                 </ul>
                                                 <h4>{{$nu->name}}</h4>
                                                 <h5>@if($nu->promotion_price != 0)
-                                                        <del>$ {{number_format($nu->unit_price)}}</del>
                                                         $ {{number_format($nu->promotion_price)}}
+                                                        <del>$ {{number_format($nu->unit_price)}}</del>
                                                     @else
                                                         $ {{number_format($nu->unit_price)}}
                                                     @endif
