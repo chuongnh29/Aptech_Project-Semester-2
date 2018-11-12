@@ -12,6 +12,7 @@
                 <ul>
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
                     <li class="current"><a href="#">Đồng hồ chính hãng</a></li>
+                    {{--<li class="current"><a href="#">{{$loai_sp->name}}</a></li>--}}
                 </ul>
             </div>
         </div>

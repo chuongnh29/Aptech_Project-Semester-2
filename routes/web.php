@@ -13,7 +13,7 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getIndex']);
 
-Route::get('products', ['as'=>'products', 'uses'=>'PagesController@getProduct']);
+Route::get('products', ['as' => 'products', 'uses' => 'PagesController@getProduct']);
 
 Route::get('products/{id}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
 
@@ -25,7 +25,7 @@ Route::get('dong-ho-nu', ['as' => 'donghonu', 'uses' => 'PagesController@getWome
 
 //Route::get('products/{id}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
 
-Route::get('product-detail', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
+Route::get('product-detail/{id}', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
 
 Route::get('about', ['as' => 'about', 'uses' => 'PagesController@getAbout']);
 
@@ -45,7 +45,7 @@ Route::get('search', ['as' => 'search', 'uses' => 'PagesController@getSearch']);
 
 Route::get('shopping-cart', ['as' => 'cart', 'uses' => 'PagesController@getCart']);
 
-Route::get('empty-cart', ['as' => 'emptycart', 'uses'=>'PagesController@getEmptyCart']);
+Route::get('empty-cart', ['as' => 'emptycart', 'uses' => 'PagesController@getEmptyCart']);
 
 Route::get('add-to-cart/{id}', ['as' => 'addtocart', 'uses' => 'PagesController@getAddToCart']);
 
@@ -83,5 +83,4 @@ Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editPro
 
 Route::get('admin/bills', 'AdminController@getBills')->name('bills');
 
-Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
-
+Route::post('admin/bills/editstatus', 'BillsController@editBillsStatus')->name('editBillsStatus');
