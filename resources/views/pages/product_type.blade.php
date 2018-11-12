@@ -1,10 +1,22 @@
 @extends('master')
 @section('title')
-    Sản phẩm
+    Đồng hồ chính hãng
 @endsection
+
 @section('content')
 
-
+    <!--================Categories Banner Area =================-->
+    <section class="categories_banner_area">
+        <div class="container">
+            <div class="c_banner_inner">
+                <ul>
+                    <li><a href="{{route('home')}}">Trang chủ</a></li>
+                    <li class="current"><a href="#">Đồng hồ chính hãng</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--================End Categories Banner Area =================-->
     <!--================Categories Product Area =================-->
     <section class="categories_product_main p_80">
         <div class="container">
@@ -43,22 +55,26 @@
                                                 <img src="public/source/img/product/{{$sp->image}}" alt=""
                                                      width="270px"
                                                      height="320px">
-                                                <h5 class="new">New</h5>
+                                                <div class="new">
+                                                    <p>New</p>
+                                                </div>
                                                 @if($sp->promotion_price != 0)
-                                                    <h5 class="sale">Sale</h5>
+                                                    <div class="sale">
+                                                        <p>Sale</p>
+                                                    </div>
                                                 @endif
                                             </div>
                                             <div class="l_p_text">
                                                 <ul>
-                                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                                    <li><a class="add_cart_btn" href="{{route('addtocart', $sp->id)}}">Thêm giỏ hàng</a></li>
                                                     <li><a class="add_cart_btn" href="{{route('detail', $sp->id)}}">Chi
                                                             tiết</a>
                                                     </li>
                                                 </ul>
                                                 <h4>{{$sp->name}}</h4>
                                                 <h5>@if($sp->promotion_price != 0)
-                                                        <del>$ {{number_format($sp->unit_price)}}</del>
                                                         $ {{number_format($sp->promotion_price)}}
+                                                        <del>$ {{number_format($sp->unit_price)}}</del>
                                                     @else
                                                         $ {{number_format($sp->unit_price)}}
                                                     @endif
@@ -81,78 +97,38 @@
                         </div>
                     </div>
                     <div class="col-lg-3 float-md-right">
-                        <aside class="l_widgest l_menufacture_widget">
-                            <div class="l_w_title">
-                                <h3>Thương hiệu</h3>
-                            </div>
-                            <ul>
-                                @foreach($loai_sp as $loai)
-                                    <li><a href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        </aside>
+
                         <div class="categories_sidebar">
                             <aside class="l_widgest l_p_categories_widget">
                                 <div class="l_w_title">
-                                    <h3>Categories</h3>
+                                    <h3>Đồng hồ nam</h3>
                                 </div>
                                 <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Men’s Fashion
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Women’s Fashion
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li class="nav-item"><a class="nav-link" href="#">Hoodies & Sweatshirts</a>
-                                            </li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Jackets & Coats</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Phone & Accessories
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Electronic Appliance
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Computer & Networking
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">TV, Audiio & Gaming
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">Office Supplies
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">All Categories
-                                            <i class="icon_plus" aria-hidden="true"></i>
-                                            <i class="icon_minus-06" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
+                                    @foreach($sp_nam as $nam)
+                                        <li class="nav-item">
+
+                                            <a class="nav-link" href="{{route('donghonam')}}">{{$nam->name}}
+                                                <i class="icon_plus" aria-hidden="true"></i>
+                                                <i class="icon_minus-06" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </aside>
+                            <aside class="l_widgest l_p_categories_widget">
+                                <div class="l_w_title">
+                                    <h3>Đồng hồ nữ</h3>
+                                </div>
+                                <ul class="navbar-nav">
+                                    @foreach($sp_nu as $nu)
+                                        <li class="nav-item">
+
+                                            <a class="nav-link" href="#">{{$nu->name}}
+                                                <i class="icon_plus" aria-hidden="true"></i>
+                                                <i class="icon_minus-06" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </aside>
                             <aside class="l_widgest l_fillter_widget">
@@ -196,18 +172,5 @@
     <!--================End Categories Product Area =================-->
 
 
-    <!--================Categories Banner Area =================-->
-    <section class="categories_banner_area">
-        <div class="container">
-            <div class="c_banner_inner">
-                <h3>shop grid with left sidebar</h3>
-                <ul>
-                    <li><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li class="current"><a href="#">Shop Grid with Left Sidebar</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!--================End Categories Banner Area =================-->
+
 @endsection

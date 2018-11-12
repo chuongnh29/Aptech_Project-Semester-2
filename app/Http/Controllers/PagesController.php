@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Products;
 use App\ProductType;
 use App\Slide;
@@ -18,11 +19,37 @@ class PagesController extends Controller
         $slide = Slide::all();
         $loai_sp_nam = ProductType::where('type', 0)->get();
         $new_product = Products::where('new', 1)->paginate(8);
+        $sale_product = Products::where('promotion_price', '<>', 0)->get();
         $featured_product = Products::where('new', 1)->paginate(4);
-        return view('pages.home', compact('slide', 'loai_sp_nam', 'new_product', 'featured_product'));
+        return view('pages.home', compact('slide', 'loai_sp_nam', 'new_product', 'sale_product', 'featured_product'));
+    }
+
+    public function getProduct()
+    {
+        $sp_theoloai = Products::all();
+        $loai_sp = ProductType::all();
+        $sp_nam = ProductType::where('type', 0)->get();
+        $sp_nu = ProductType::where('type', 1)->get();
+        return view('pages.product_type', compact('sp_theoloai', 'loai_sp', 'sp_nam', 'sp_nu'));
+    }
+
+    public function getProductType($type)
+    {
+        $sp_theoloai = Products::where('type_id', $type)->get();
+        $loai_sp = ProductType::all();
+        $sp_nam = ProductType::where('type', 0)->get();
+        $sp_nu = ProductType::where('type', 1)->get();
+        return view('pages.product_type', compact('sp_theoloai', 'loai_sp', 'sp_nam', 'sp_nu'));
     }
 
     public function getMenWatch()
+    {
+        $sp_nam = Products::where('type_gender', 0)->get();
+        $loai_sp_nam = ProductType::where('type', 0)->get();
+        return view('pages.men_watch', compact('sp_nam', 'loai_sp_nam'));
+    }
+
+    public function getMenWatchType($type)
     {
         $sp_nam = Products::where('type_gender', 0)->get();
         $loai_sp_nam = ProductType::where('type', 0)->get();
@@ -34,13 +61,6 @@ class PagesController extends Controller
         $sp_nu = Products::where('type_gender', 1)->get();
         $loai_sp_nu = ProductType::where('type', 1)->get();
         return view('pages.women_watch', compact('sp_nu', 'loai_sp_nu'));
-    }
-
-    public function getProductType($type)
-    {
-        $sp_theoloai = Products::where('type_id', $type)->get();
-        $loai_sp = ProductType::where('type', 0)->get();
-        return view('pages.product_type', compact('sp_theoloai', 'loai_sp'));
     }
 
     public function getProductDetail(Request $req)
@@ -77,7 +97,8 @@ class PagesController extends Controller
                 'password.required' => 'Vui lòng nhập mật khẩu'
             ]
         );
-        $credentials = array('username' => $req->username, 'password' => $req->password);
+//        $credentials = array('username' => $req->username, 'password' => $req->password);
+        $credentials = array('email' => $req->email, 'password' => $req->password);
         if (Auth::attempt($credentials)) {
             return redirect()->route('home');
         } else {
@@ -101,11 +122,11 @@ class PagesController extends Controller
 
         $this->validate($req,
             [
-                'username' => 'required|min:6|max:20|unique:users,username',
+                'username' => 'required|min:5|max:20|unique:users,username',
                 'email' => 'required|email|unique:users,email',
                 'fullname' => 'required',
 //                'phone_number' => 'required|number',
-                'password' => 'required|min:6|max:20',
+                'password' => 'required|min:5|max:20',
                 're_password' => 'required|same:password'
             ],
             [
@@ -131,6 +152,43 @@ class PagesController extends Controller
         $user->save();
         return redirect('login')->with('Register Success', 'Bạn đã tạo tài khoản thành công, vui lòng đăng nhập để tiếp tục.');
 
+    }
+
+    public function getAddToCart(Request $req, $id)
+    {
+        $product = Products::find($id);
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id);
+        $req->session()->put('cart', $cart);
+        return redirect()->back();
+    }
+
+    public function getDelItemCart($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+        return redirect()->back();
+    }
+
+    public function getEmptyCart()
+    {
+        return view('pages.empty_cart');
+    }
+
+    public function getCart()
+    {
+        if (Session::has('cart')) {
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            return view('pages.shopping_cart', ['product_cart' => $cart->items, 'totalPrice' => $cart->totalPrice, 'totalQty' => $cart->totalQty]);
+        }
     }
 
     public function getCheckOut()

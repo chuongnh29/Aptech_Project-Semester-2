@@ -45,21 +45,26 @@
                                                                                  alt=""
                                                                                  width="270px"
                                                                                  height="320px"></a>
-                                    <h5 class="new">New</h5>
+                                    <div class="new">
+                                        <p>New</p>
+                                    </div>
                                     @if($new->promotion_price != 0)
-                                        <h5 class="sale">Sale</h5>
+                                        <div class="sale">
+                                            <p>Sale</p>
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="l_p_text">
                                     <ul>
-                                        <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                        <li><a class="add_cart_btn" href="{{route('addtocart', $new->id)}}">Thêm giỏ
+                                                hàng</a></li>
                                         <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a>
                                         </li>
                                     </ul>
                                     <h4>{{$new->name}}</h4>
                                     <h5>@if($new->promotion_price != 0)
-                                            <del>$ {{number_format($new->unit_price)}}</del>
                                             $ {{number_format($new->promotion_price)}}
+                                            <del>$ {{number_format($new->unit_price)}}</del>
                                         @else
                                             $ {{number_format($new->unit_price)}}
                                         @endif
@@ -81,35 +86,36 @@
                 <h2>SẢN PHẨM GIẢM GIÁ</h2>
             </div>
             <div class="l_product_slider owl-carousel">
-                @foreach($new_product as $new)
+                @foreach($sale_product as $sale)
                     <div class="item">
                         <div class="l_product_item">
                             <div class="l_p_img">
-                                <a href="{{route('detail', $new->id)}}"><img
-                                            src="public/source/img/product/{{$new->image}}" alt=""></a>
-                                @if($new->promotion_price != 0)
-                                    <h5 class="sale">Sale</h5>
+                                <a href="{{route('detail', $sale->id)}}"><img
+                                            src="public/source/img/product/{{$sale->image}}" alt=""></a>
+                                @if($sale->promotion_price != 0)
+                                    <div class="sale">
+                                        <p>Sale</p>
+                                    </div>
                                 @endif
                             </div>
                             <div class="l_p_text">
                                 <ul>
-                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
-                                    <li><a class="add_cart_btn" href="{{route('detail', $new->id)}}">Chi tiết</a></li>
+                                    <li><a class="add_cart_btn" href="{{route('addtocart', $sale->id)}}">Thêm giỏ hàng</a></li>
+                                    {{--<li><a class="add_cart_btn" onclick="addToCart({{$sale->id}})">Thêm giỏ hàng</a></li>--}}
+                                    <li><a class="add_cart_btn" href="{{route('detail', $sale->id)}}">Chi tiết</a></li>
                                 </ul>
-                                <h4>{{$new->name}}</h4>
-                                <h5>@if($new->promotion_price != 0)
-                                        <del>$ {{number_format($new->unit_price)}}</del>
-                                        $ {{number_format($new->promotion_price)}}
+                                <h4>{{$sale->name}}</h4>
+                                <h5>@if($sale->promotion_price != 0)
+                                        $ {{number_format($sale->promotion_price)}}
+                                        <del>$ {{number_format($sale->unit_price)}}</del>
                                     @else
-                                        $ {{number_format($new->unit_price)}}
+                                        $ {{number_format($sale->unit_price)}}
                                     @endif
                                 </h5>
                             </div>
                         </div>
-
                     </div>
                 @endforeach
-
             </div>
         </div>
     </section>
@@ -232,15 +238,15 @@
                                                 <a href="{{route('detail', $new->id)}}"><img
                                                             src="public/source/img/product/{{$new->image}}" alt=""></a>
                                                 @if($new->promotion_price != 0)
-                                                    <h5 class="sale">Sale</h5>
+                                                    <div class="sale"><p>Sale</p></div>
                                                 @endif
                                             </div>
                                             <div class="f_p_text">
                                                 <h5><a style="color: #0b0b0b; opacity: 0.8;"
                                                        href="{{route('detail', $new->id)}}">{{$new->name}}</a></h5>
                                                 <h4>@if($new->promotion_price != 0)
-                                                        <del>$ {{number_format($new->unit_price)}}</del>
                                                         $ {{number_format($new->promotion_price)}}
+                                                        <del>$ {{number_format($new->unit_price)}}</del>
                                                     @else
                                                         $ {{number_format($new->unit_price)}}
                                                     @endif
