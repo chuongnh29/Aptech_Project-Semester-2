@@ -85,6 +85,11 @@
             <a class="dropdown-item" href="blank.html">Blank Page</a>
           </div>
         </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('bills') }}">
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Đơn hàng</span></a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
