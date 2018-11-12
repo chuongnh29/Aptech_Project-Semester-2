@@ -48,12 +48,6 @@
                             </div>
 
                             <div class="col-lg-6 form-group">
-                                <label for="email">Số điện thoại <span>*</span></label>
-                                <input class="form-control" type="text" name="phone_number"
-                                       placeholder="Nhập số điện thoại" required>
-                            </div>
-
-                            <div class="col-lg-6 form-group">
                                 <label for="email">Email <span>*</span></label>
                                 <input class="form-control" type="email" name="email" placeholder="Nhập địa chỉ email"
                                        required>
@@ -66,15 +60,21 @@
                             </div>
 
                             <div class="col-lg-6 form-group">
+                                <label for="email">Xác nhận mật khẩu <span>*</span></label>
+                                <input class="form-control" type="password" name="re_password"
+                                       placeholder="Nhập lại mật khẩu" required>
+                            </div>
+
+                            <div class="col-lg-6 form-group">
                                 <label for="email">Họ tên <span>*</span></label>
                                 <input class="form-control" type="text" name="fullname"
                                        placeholder="Nhập họ tên đầy đủ" required>
                             </div>
 
                             <div class="col-lg-6 form-group">
-                                <label for="email">Xác nhận mật khẩu <span>*</span></label>
-                                <input class="form-control" type="password" name="re_password"
-                                       placeholder="Nhập lại mật khẩu" required>
+                                <label for="email">Số điện thoại <span>*</span></label>
+                                <input class="form-control" type="text" name="phone_number"
+                                       placeholder="Nhập số điện thoại" required>
                             </div>
 
                             <div class="col-lg-6 form-group">

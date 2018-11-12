@@ -26,6 +26,7 @@
     <link href="public/source/assets/dest/vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
 
     <link href="public/source/assets/dest/css/style.css" rel="stylesheet">
+    <link href="public/source/assets/dest/css/util.css" rel="stylesheet">
     <link href="public/source/assets/dest/css/responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -45,6 +46,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="public/source/assets/dest/js/popper.min.js"></script>
 <script src="public/source/assets/dest/js/bootstrap.min.js"></script>
+<script src="public/source/assets/dest/js/demo.js"></script>
+
 
 <!-- Rev slider js -->
 <script src="public/source/assets/dest/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
