@@ -26,15 +26,7 @@
     <link href="public/source/assets/dest/vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
 
     <link href="public/source/assets/dest/css/style.css" rel="stylesheet">
-<<<<<<< HEAD
     <link href="public/source/assets/dest/css/util.css" rel="stylesheet">
-=======
-
-    <link href="public/source/assets/dest/css/contact_option.css" rel="stylesheet">
-
-    <link href="public/source/assets/dest/css/util.css" rel="stylesheet">
-
->>>>>>> a75c2a1d32eaac7719e69792df5e3aab2fa93b6d
     <link href="public/source/assets/dest/css/responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -79,11 +71,6 @@
 <script src="public/source/assets/dest/vendors/vertical-slider/js/jQuery.verticalCarousel.js"></script>
 <script src="public/source/assets/dest/vendors/jquery-ui/jquery-ui.js"></script>
 <script src="public/source/assets/dest/js/theme.js"></script>
-{{--Use Google Maps Api--}}
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
-<script src="public/source/assets/dest/js/googlemaps.js"></script>
 <script>
     $(document).ready(function ($) {
         $(window).scroll(function () {
