@@ -64,19 +64,78 @@
                         </ul>
                     </li>
                     <ul class="top_right">
-                        <li class="cart">
-                            <a href="{{route('cart')}}">
-                                <i class="icon-handbag icons">
-                                    <span class="cart_quantity">
-                                        @if(Session::has('cart'))
-                                            {{Session('cart')->totalQty}}
-                                        @else
-                                            0
-                                        @endif
+                        <div class="header-wrapicon2">
+                            @if(Session::has('cart'))
+                                <i class="icon-handbag icons js-show-header-dropdown"
+                                   alt="ICON">
+                            <span class="cart_quantity">
+                                @if(Session::has('cart'))
+                                    {{Session('cart')->totalQty}}
+                                @endif
                                     </span>
                                 </i>
-                            </a>
-                        </li>
+                                <!-- Header cart noti -->
+                                <div class="header-cart header-dropdown">
+                                    <ul class="header-cart-wrapitem">
+                                        @foreach($product_cart as $product)
+                                            <li class="header-cart-item">
+                                                <a href="{{route('delcart', $product['item']['id'])}}">
+                                                    <div class="header-cart-item-img">
+
+                                                        <img src="public/source/img/product/{{$product['item']['image']}}"
+                                                             alt="IMG">
+                                                    </div>
+                                                </a>
+                                                <div class="header-cart-item-txt">
+                                                    <a href="" class="header-cart-item-name">
+                                                        {{$product['item']['name']}}
+                                                    </a>
+
+                                                    <span class="header-cart-item-info">
+									{{$product['qty']}}
+                                                        x @if($product['item']['promotion_price'] == 0)
+                                                            $ {{number_format($product['item']['unit_price'])}}
+                                                        @else
+                                                            $ {{number_format($product['item']['promotion_price'])}}
+                                                        @endif
+								</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                                    <div class="header-cart-total">
+                                        Tổng tiền: $ {{number_format(Session('cart')->totalPrice)}}
+                                    </div>
+
+                                    <div class="header-cart-buttons">
+                                        <div class="header-cart-wrapbtn">
+                                            <!-- Button -->
+                                            <a href="{{route('cart')}}"
+                                               class="flex-c-m size1 bg1 bo-rad-5 hov1 s-text1 trans-0-4">
+                                                Xem giỏ hàng
+                                            </a>
+                                        </div>
+
+                                        <div class="header-cart-wrapbtn">
+                                            <!-- Button -->
+                                            <a href="#" class="flex-c-m size1 bg1 bo-rad-5 hov1 s-text1 trans-0-4">
+                                                Thanh toán
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <a href="{{route('emptycart')}}">
+                                    <i class="icon-handbag icons js-show-header-dropdown"
+                                       alt="ICON">
+                            <span class="cart_quantity">
+                                0
+                                    </span>
+                                    </i>
+                                </a>
+                            @endif
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -104,6 +163,22 @@
 
                     </li>
                     <li class="nav-item dropdown submenu">
+                        <a class="nav-link dropdown-toggle" href="{{route('products')}}" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            Thương hiệu
+                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <span><i class="fa fa-angle-down down_arrow" aria-hidden="true"></i></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach($loai_sp as $loai)
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="{{route('producttype', $loai->id)}}">{{$loai->name}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown submenu">
                         <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             Đồng hồ nam
@@ -114,7 +189,7 @@
                         <ul class="dropdown-menu">
                             @foreach($loai_sp_nam as $loai)
                                 <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('producttype', $loai->name_id)}}">{{$loai->name}}</a>
+                                                        href="{{route('loai_donghonam', $loai->id)}}">{{$loai->name}}</a>
                                 </li>
                             @endforeach
                         </ul>

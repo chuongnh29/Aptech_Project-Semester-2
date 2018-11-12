@@ -29,7 +29,7 @@
                         <div class="showing_fillter">
                             <div class="row m0">
                                 <div class="first_fillter">
-                                    <h4>Hiện có {{count($sp_nam)}} sản phẩm</h4>
+                                        <h4>Hiện có {{count($sp_nam)}} sản phẩm</h4>
                                 </div>
                                 <div class="secand_fillter">
                                     <h4>SẮP XẾP THEO:</h4>
@@ -58,22 +58,26 @@
                                                 <img src="public/source/img/product/{{$nam->image}}" alt=""
                                                      width="270px"
                                                      height="320px">
-                                                <h5 class="new">New</h5>
+                                                <div class="new">
+                                                    <p>New</p>
+                                                </div>
                                                 @if($nam->promotion_price != 0)
-                                                    <h5 class="sale">Sale</h5>
+                                                    <div class="sale">
+                                                        <p>Sale</p>
+                                                    </div>
                                                 @endif
                                             </div>
                                             <div class="l_p_text">
                                                 <ul>
-                                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                                    <li><a class="add_cart_btn" href="{{route('addtocart', $nam->id)}}">Thêm giỏ hàng</a></li>
                                                     <li><a class="add_cart_btn" href="{{route('detail', $nam->id)}}">Chi
                                                             tiết</a>
                                                     </li>
                                                 </ul>
                                                 <h4>{{$nam->name}}</h4>
                                                 <h5>@if($nam->promotion_price != 0)
-                                                        <del>$ {{number_format($nam->unit_price)}}</del>
                                                         $ {{number_format($nam->promotion_price)}}
+                                                        <del>$ {{number_format($nam->unit_price)}}</del>
                                                     @else
                                                         $ {{number_format($nam->unit_price)}}
                                                     @endif
