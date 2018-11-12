@@ -144,4 +144,14 @@ class PagesController extends Controller
         $loai_sp = ProductType::where('type', 0)->get();
         return view('pages.search', compact('product', 'loai_sp'));
     }
+
+    public function getFeedback()
+    {
+        return view('pages.contact');
+    }
+
+    public function postFeedback()
+    {
+        Mail::send();
+    }
 }

@@ -56,8 +56,14 @@
                                 width="600" height="470" frameborder="2" style="border:0" allowfullscreen></iframe>
                     </div>
                     <div class="row col-lg-6 contact_col_2">
-                        <form class="contact_us_form row" action="contact_process.php" method="post" id="contactForm"
+                        <form class="contact_us_form row" id="contactForm" action="{!! url('contact')!!}" method="post"
                               novalidate="novalidate">
+                            <input type="hidden" name="_token" value="!!csrf_token!!">
+                            <div class="form-group col-lg-12">
+                                <h4 class="m-text26 p-b-36 p-t-15">
+                                    CONTACT ME
+                                </h4>
+                            </div>
                             <div class="form-group col-lg-6">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                             </div>
@@ -73,7 +79,7 @@
                             </div>
                             <div class="form-group col-lg-12">
                                 <textarea class="form-control" name="message" id="message" rows="1"
-                                          placeholder="Message"></textarea>
+                                          placeholder="Message" style="height: 200px;"></textarea>
                             </div>
                             <div class="form-group col-lg-12">
                                 <button type="submit" value="submit" class="btn submit_btn form-control">Send</button>
