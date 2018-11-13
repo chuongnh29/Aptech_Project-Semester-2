@@ -43,7 +43,8 @@ class EditRequest extends FormRequest
                 new CheckPositiveNum($this->giaSale, 'Giá sale'),
                 new CheckGiaGocGiaSale($this->giaGoc, $this->giaSale)
             ],
-//            'anh' => ['required']
+            'anh' => ['required'],
+            'anhDaiDien' => ['required']
         ];
     }
 

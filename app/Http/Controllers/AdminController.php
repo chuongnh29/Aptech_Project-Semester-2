@@ -98,6 +98,7 @@ class AdminController extends Controller
                     'products.strap_id', 'products.case_material_id', 'product_types.type as gender')
                 ->where('products.id', (int) $id)
                 ->first();
+            $anhSP = ProductImages::where([['product_id','=',(int) $id],['status_id','=', 2]])->get();
             $anhDaiDien = ProductImages::where([['product_id','=',(int) $id],['status_id','=', 1]])->first();
             return view('pages.editProduct',[
                 'loaiDay'=>$loaiDay,
@@ -107,7 +108,8 @@ class AdminController extends Controller
                 'gioiTinh'=>$gioiTinh,
                 'product'=>$product,
                 'type'=>'edit',
-                'anhDaiDien'=>$anhDaiDien
+                'anhDaiDien'=>$anhDaiDien,
+                'anhSP'=>$anhSP
             ]);
         }
     }
