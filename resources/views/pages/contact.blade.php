@@ -4,88 +4,83 @@
 @endsection
 @section('content')
     <!--================Categories Banner Area =================-->
-    <section class="solid_banner_area">
+    <section class="categories_banner_area">
         <div class="container">
-            <div class="solid_banner_inner">
-                <h3>Liên hệ</h3>
+            <div class="c_banner_inner">
                 <ul>
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
-                    <li><a>Liên hệ</a></li>
+                    <li class="current"><a href="#">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
     </section>
     <!--================End Categories Banner Area =================-->
 
-    <section class="get_in_touch_area p_100">
+    <!--================Contact Area =================-->
+    <section class="contact_area p_100">
         <div class="container">
-            <div class="row get_touch_inner">
-                <div class="row contact_details">
-                    <div class="row info_option">
-                        <div class="row media contact_col_1">
-                            <div class="d-flex">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body">
-                                <p>Detech Building, 8A Tôn Thất Thuyết<br/>Mỹ Đình 2, Nam Từ Liêm, Hà Nội.</p>
-                            </div>
+            <div class="contact_title">
+                <h2>Get in Touch</h2>
+                {{--<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur--}}
+                    {{--magni dolores eos qui.</p>--}}
+            </div>
+            <div class="row contact_details">
+                <div class="col-lg-4 col-md-6">
+                    <div class="media">
+                        <div class="d-flex">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </div>
-
-                        <div class="row media contact_col_1">
-                            <div class="d-flex">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body">
-                                <a href="tel:+1109171234567">+84 988 888 666</a>
-                                <a href="tel:+1101911897654">+84 988 666 999</a>
-                            </div>
-                        </div>
-
-                        <div class="row media contact_col_1">
-                            <div class="d-flex">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body">
-                                <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
-                                <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
-                            </div>
+                        <div class="media-body">
+                            <p>Detech Building, 8A Tôn Thất Thuyết<br/>Mỹ Đình 2, Nam Từ Liêm, Hà Nội.</p>
                         </div>
                     </div>
-                    <div class="row col-lg-6 col-md-6 maps_option">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1279.185515216312!2d105.7811353948998!3d21.028648064952094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b3260b1a8b%3A0x862052392e3f478e!2zOCBUw7RuIFRo4bqldCBUaHV54bq_dCwgTeG7uSDEkMOsbmgsIFThu6sgTGnDqm0sIEjDoCBO4buZaSAxMDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1541788654309"
-                                width="600" height="470" frameborder="2" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="media">
+                        <div class="d-flex">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                            <a href="tel:+1109171234567">+84 988 888 666</a>
+                            <a href="tel:+1101911897654">+84 988 666 999</a>
+                        </div>
                     </div>
-                    <div class="row col-lg-6 contact_col_2">
-                        <form class="contact_us_form row" action="contact_process.php" method="post" id="contactForm"
-                              novalidate="novalidate">
-                            <div class="form-group col-lg-6">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="email" class="form-control" id="email" name="phone" placeholder="Phone">
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <input type="text" class="form-control" id="subject" name="subject"
-                                       placeholder="Subject*">
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <input type="text" class="form-control" id="subject" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <textarea class="form-control" name="message" id="message" rows="1"
-                                          placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <button type="submit" value="submit" class="btn submit_btn form-control">Send</button>
-                            </div>
-                        </form>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="media">
+                        <div class="d-flex">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                            <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
+                            <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row col-lg-12" style="margin: 10px">
-
+            <div class="contact_form_inner">
+                <h3>Để lại một lời nhắn</h3>
+                <form class="contact_us_form row" action="contact_process.php" method="post" id="contactForm"
+                      novalidate="novalidate">
+                    <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên *">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email *">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <textarea class="form-control" name="message" id="message" rows="1"
+                                  placeholder="Nhập lời nhắn..."></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <button type="submit" value="submit" class="btn update_btn form-control">Gửi tin nhắn</button>
+                    </div>
+                </form>
             </div>
-            <!--================End Get in Touch Area =================-->
-            <!--================End Contact Area =================-->
+        </div>
+    </section>
+    <!--================End Contact Area =================-->
 @endsection

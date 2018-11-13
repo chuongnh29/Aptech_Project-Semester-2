@@ -6,7 +6,8 @@
                     <h2><b>Sản phẩm</b></h2>
                 </div>
                 <div class="col-sm-6">
-
+                    <a href="{{ route('addProductForm') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span></a>
+                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>                        
                 </div>
             </div>
 
@@ -65,26 +66,17 @@
                     <select id="inputState" class="form-control" name="trangThaiSP">
                         <option value="none" selected>Có thể chọn</option>
                         @foreach($trangThaiSP as $trangThai)
-                            <option value="{{ $trangThai->id }}">{{ $trangThai->product_status_name }}</option>
+                            <option value="{{ $trangThai->id }}">{{ $trangThai->ten_trang_thai }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-                <a href="{{ route('addProductForm') }}" class="btn btn-success"><span>Thêm sản phẩm mới</span></a>
-                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><span>Delete</span></a>
-            </div>
+            <div style="text-align: center;"><button type="submit" class="btn btn-primary">Tìm kiếm</button></div>
         </form>
       <table class="table table-striped table-hover" style="margin-top: 50px;">
         <thead>
             <tr>
-                <th>
-                    <span class="custom-checkbox">
-                        <input type="checkbox" id="selectAll">
-                        <label for="selectAll"></label>
-                    </span>
-                </th>
+
                 <th>Ảnh</th>
                 <th>Tên <a href=""><i class="fas fa-arrow-alt-circle-down"></i></a></th>
                 <th>Thương hiệu</th>
@@ -94,20 +86,15 @@
                 <th>Loại dây</th>
                 <th>Loại vỏ</th>
                 <th>Trạng thái hàng</th>
-                <th>Thao tác</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($products as $product)
             <tr>
-                <td>
-                    <span class="custom-checkbox">
-                        <input type="checkbox" id="checkbox1" name="options[]" value="$product->id">
-                        <label for="checkbox1"></label>
-                    </span>
-                </td>
-                <td><img src="public/source/img/product/{{ array_get($imagesName, $product->id) }}" style="max-width: 4rem; max-height: 4rem;"></td>
-                <td><a href="{{ route('editProductForm',['id'=>$product->id]) }}">{{ $product->name }}</a></td>
+
+                <td><img src="public/storage/img/product/{{ $product->image }}" style="max-width: 4rem; max-height: 4rem;"></td>
+                <td>{{ $product->name }}</td>
                 <td>{{ $product->name_type }}</td>
                 @if($product->gender == 0)
                     <td>Nam</td>
@@ -120,8 +107,8 @@
                 <td>{{ $product->loai_vo }}</td>
                 <td>{{ $product->product_status }}</td>
                 <td class="edit-delete-block">
-                    <a href="{{ route('editProductForm',['id'=>$product->id]) }}" class="edit"><i class="material-icons" title="Sửa">&#xE254;</i></a>
-                    <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Xóa">&#xE872;</i></a>
+                    <a href="{{ route('editProductForm',['id'=>$product->id]) }}" class="edit"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                    <a href="{{ route('delete',['id'=>$product->id]) }}" class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
                     <input type="hidden" name="name" value="{{ $product->name }}">
                 </td>
             </tr>

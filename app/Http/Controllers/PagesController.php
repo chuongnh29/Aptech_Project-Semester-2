@@ -97,8 +97,8 @@ class PagesController extends Controller
                 'password.required' => 'Vui lòng nhập mật khẩu'
             ]
         );
-//        $credentials = array('username' => $req->username, 'password' => $req->password);
-        $credentials = array('email' => $req->email, 'password' => $req->password);
+        $credentials = array('username' => $req->username, 'password' => $req->password);
+//        $credentials = array('email' => $req->email, 'password' => $req->password);
         if (Auth::attempt($credentials)) {
             return redirect()->route('home');
         } else {

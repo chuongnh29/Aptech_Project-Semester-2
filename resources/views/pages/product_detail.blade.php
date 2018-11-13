@@ -5,7 +5,19 @@
 @endsection
 
 @section('content')
-
+    <!--================Categories Banner Area =================-->
+    <section class="categories_banner_area">
+        <div class="container">
+            <div class="c_banner_inner">
+                <ul>
+                    <li><a href="{{route('home')}}">Trang chủ</a></li>
+                    <li class="current"><a href="#">Đồng hồ chính hãng</a></li>
+                    <li class="current"><a href="#">{{$sanpham->name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--================End Categories Banner Area =================-->
 
     <!--================Product Details Area =================-->
     <section class="product_details_area">
@@ -110,7 +122,7 @@
                                 <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                         class="increase items-count" type="button"><i class="icon_plus"></i></button>
                             </div>
-                            <a class="add_cart_btn" href="#">thêm giỏ hàng</a>
+                            <a class="add_cart_btn" href="{{route('addtocart', $sanpham->id)}}">thêm giỏ hàng</a>
                         </div>
                         <div class="shareing_icon">
                             <h5>chia sẻ :</h5>
@@ -229,19 +241,4 @@
         </div>
     </section>
     <!--================End Related Product Area =================-->
-
-    <!--================Categories Banner Area =================-->
-    <section class="categories_banner_area">
-        <div class="container">
-            <div class="c_banner_inner">
-                <h3>simple product</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li class="current"><a href="#">Simple Product</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!--================End Categories Banner Area =================-->
 @endsection

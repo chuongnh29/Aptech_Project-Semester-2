@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-6">
           
-          @if($type == 'edit')<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Sửa ảnh</span></a>@endif
+          {{--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm ảnh</span></a>--}}
           <!-- <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>  -->                       
         </div>
       </div>
@@ -17,25 +17,12 @@
           <div class="errors">
             @include('errorValidate')
           </div>
-      {{--<div class="form-group">--}}
-          {{--<label for="exampleFormControlFile1">Ảnh đại diện</label>--}}
-          {{--<img id="anhDaiDien" src="" alt="your image" style="width: 8rem; height: 8rem; display: block;">--}}
-          {{--<input type="file" name="anhDaiDien" class="form-control-file">--}}
-      {{--</div>--}}
-      <label for="exampleFormControlFile1">Ảnh đại diện</label>
-      <div class="card" style="width: 18rem;">
-          <img class="card-img-top" id="anhDaiDien" src="@if($type == 'edit')public/source/img/product/{{ $anhDaiDien->name_image }}@endif" alt="your image" alt="Card image cap" style="width: 8rem; height: 9rem; display: block;">
-          <div class="card-body">
-              <input type="file" name="anhDaiDien" class="form-control-file">
-          </div>
-      </div>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputEmail4">Tên sản phẩm</label>
-        <input type="text" class="form-control" @if($type == 'edit') value="{{ $product->name }}" @endif id="" name="tenSP" placeholder="Bắt buộc nhập">
+        <input type="" class="form-control" @if($type == 'edit') value="{{ $product->name }}" @endif id="" name="tenSP" placeholder="Bắt buộc nhập">
       </div>
-        @if($type == 'edit')<input type="hidden" name="productID"  value="{{ $product->id }}" >@endif
-        <input type="hidden" name="type" id="" value="{{ $type }}">
+        <input type="hidden" name="productID" @if($type == 'edit') value="{{ $product->id }}" @endif>
       <div class="form-group col-md-4">
         <label for="inputPassword4">Thương hiệu</label>
         <select id="inputState" class="form-control" name="thuongHieu">
@@ -145,6 +132,7 @@
 
       </div>
           @endif
+
 
   </div>
       <!-- Edit Modal HTML -->

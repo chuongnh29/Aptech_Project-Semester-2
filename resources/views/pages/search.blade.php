@@ -5,19 +5,18 @@
 @endsection
 
 @section('content')
-    {{--<!--================Categories Banner Area =================-->--}}
-    {{--<section class="categories_banner_area men">--}}
-        {{--<div class="container">--}}
-            {{--<div class="c_banner_inner">--}}
-                {{--<h3>Tìm kiếm</h3>--}}
-                {{--<ul>--}}
-                    {{--<li><a href="{{route('home')}}">Trang chủ</a></li>--}}
-                    {{--<li class="current"><a href="#">Tìm kiếm</a></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
-    {{--<!--================End Categories Banner Area =================-->--}}
+    <!--================Categories Banner Area =================-->
+    <section class="categories_banner_area">
+        <div class="container">
+            <div class="c_banner_inner">
+                <ul>
+                    <li><a href="{{route('home')}}">Trang chủ</a></li>
+                    <li class="current"><a href="#">Tìm kiếm</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--================End Categories Banner Area =================-->
 
     <!--================Categories Product Area =================-->
     <section class="categories_product_main p_80">
@@ -57,14 +56,16 @@
                                                 <img src="public/source/img/product/{{$loai->image}}" alt=""
                                                      width="270px"
                                                      height="320px">
-                                                <h5 class="new">New</h5>
+                                                @if($loai->new = 1)
+                                                    <div class="new"><p>New</p></div>
+                                                @endif
                                                 @if($loai->promotion_price != 0)
-                                                    <h5 class="sale">Sale</h5>
+                                                    <div class="sale"><p>Sale</p></div>
                                                 @endif
                                             </div>
                                             <div class="l_p_text">
                                                 <ul>
-                                                    <li><a class="add_cart_btn" href="#">Thêm giỏ hàng</a></li>
+                                                    <li><a class="add_cart_btn" href="{{route('addtocart', $loai->id)}}">Thêm giỏ hàng</a></li>
                                                     <li><a class="add_cart_btn" href="{{route('detail', $loai->id)}}">Chi
                                                             tiết</a>
                                                     </li>

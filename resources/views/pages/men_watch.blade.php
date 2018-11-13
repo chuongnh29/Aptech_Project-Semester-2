@@ -6,13 +6,11 @@
 
 @section('content')
     <!--================Categories Banner Area =================-->
-    <section class="categories_banner_area men">
+    <section class="categories_banner_area">
         <div class="container">
             <div class="c_banner_inner">
-                <h3>đồng hồ nam</h3>
                 <ul>
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
-                    <li><a href="#">Sản phẩm</a></li>
                     <li class="current"><a href="#">Đồng hồ nam</a></li>
                 </ul>
             </div>

@@ -13,13 +13,19 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getIndex']);
 
+Route::get('products', ['as' => 'products', 'uses' => 'PagesController@getProduct']);
+
+Route::get('products/{id}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
+
 Route::get('dong-ho-nam', ['as' => 'donghonam', 'uses' => 'PagesController@getMenWatch']);
+
+Route::get('dong-ho-nam/{id}', ['as' => 'loai_donghonam', 'uses' => 'PagesController@getMenWatchType']);
 
 Route::get('dong-ho-nu', ['as' => 'donghonu', 'uses' => 'PagesController@getWomenWatch']);
 
-Route::get('products/{type}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
+//Route::get('products/{id}', ['as' => 'producttype', 'uses' => 'PagesController@getProductType']);
 
-Route::get('product-detail', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
+Route::get('product-detail/{id}', ['as' => 'detail', 'uses' => 'PagesController@getProductDetail']);
 
 Route::get('about', ['as' => 'about', 'uses' => 'PagesController@getAbout']);
 
@@ -37,7 +43,13 @@ Route::post('register', ['as' => 'register', 'uses' => 'PagesController@postRegi
 
 Route::get('search', ['as' => 'search', 'uses' => 'PagesController@getSearch']);
 
-Route::get('shopping-cart', ['as' => 'cart', 'uses' => 'PagesController@getCheckOut']);
+Route::get('shopping-cart', ['as' => 'cart', 'uses' => 'PagesController@getCart']);
+
+Route::get('empty-cart', ['as' => 'emptycart', 'uses' => 'PagesController@getEmptyCart']);
+
+Route::get('add-to-cart/{id}', ['as' => 'addtocart', 'uses' => 'PagesController@getAddToCart']);
+
+Route::get('del-cart/{id}', ['as' => 'delcart', 'uses' => 'PagesController@getDelItemCart']);
 
 Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBySocial');
 
@@ -71,5 +83,4 @@ Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editPro
 
 Route::get('admin/bills', 'AdminController@getBills')->name('bills');
 
-Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
-
+Route::post('admin/bills/editstatus', 'BillsController@editBillsStatus')->name('editBillsStatus');
