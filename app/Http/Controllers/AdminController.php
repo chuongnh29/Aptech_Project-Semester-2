@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\Customer;
 use App\BillStatus;
 use App\ProductImages;
 use DB;
@@ -204,5 +205,152 @@ class AdminController extends Controller
         }
 
         return $dieuKienTimKiem;
+    }
+
+    public function getList()
+    {
+        return view('Tproduct.list');
+    }
+
+    public function getadd_type_product()
+    {
+        $data = ProductType::select('id','name_id','image','name','description')->orderby('id','DESC')->get()->toArray();
+        return view('Tproduct.add',compact('data'));
+    }
+
+    public function postadd_type_product(Request $request)
+    {
+        $this->validate($request, [
+            'anh' =>  'mimes:jpeg,bmp,png',
+        ]);
+
+        $tp = new ProductType;
+        $file = $request->file('anh');
+        $tp->name = $request->nameCategory;
+        $tp->name_id = "NULL";
+        $tp->type = 1;
+        $tp->description = $request->description;
+        $tp->image = $file->getClientOriginalName();
+        $file->move('public/source/img/product', $file->getClientOriginalName());
+
+        $tp->save();
+
+        $request->session()->flash('status','Tạo danh mục thành công!');
+
+        return redirect()->route('Tproduct.getadd');
+    }
+
+
+    public function delete_type_product($id,Request $request)
+    {
+
+        $delete = ProductType::find($id);
+        $fileName= 'public/source/img/product/'.$delete->image;
+
+
+        $delete->delete($id);
+        if(file_exists($fileName)) unlink($fileName);
+
+        $request->session()->flash('status','Xóa thành công');
+
+
+        return redirect()->route('Tproduct.getadd');
+    }
+
+    public function getedit_type_product($id)
+    {
+        $data = ProductType::findOrFail($id);
+
+        return view('Tproduct.edit',compact('data'));
+    }
+
+    public function postedit_type_product(Request $request,$id)
+    {
+        $this->validate($request, [
+                'nameCategory' => 'required',
+                'description' => 'required',
+                'anh' => 'required'
+        ]);
+
+        $tp = ProductType::find($id);
+        $file = $request->file('anh');
+        $tp->name = $request->nameCategory;
+        $tp->description = $request->description;
+        $tp->image = $file->getClientOriginalName();
+        $file->move('public/source/img/product', $file->getClientOriginalName());
+
+        $tp->save();
+
+        $request->session()->flash('status','Chỉnh sửa danh mục thành công');
+
+        return redirect()->route('Tproduct.getadd');
+
+    }
+
+    public function getAdd_customer(){
+        $data = Customer::select('id','name','gender','email','address','phone_number','note')->orderby('id','DESC')->get()->toArray();
+
+        return view('customer.add',compact('data'));
+
+    }
+
+    public function postAdd_customer(Request $rq)
+    {
+
+        $this->validate($rq, [
+            'note_customer' => 'required'
+        ]);
+ 
+        $cus = new Customer;
+        $cus->name = $rq->name_customer;
+        $cus->gender = $rq->sex_customer;
+        $cus->email = $rq->email_customer;
+        $cus->address = $rq->address_customer;
+        $cus->phone_number = $rq->phone_customer;
+        $cus->note =  $rq->note_customer;
+
+        $cus->save();
+
+        $rq->session()->flash('status','Thêm mới customer thành công!!');
+
+        return redirect()->route('customer.getAdd');
+
+    }
+
+    public function getEdit_customer($id)
+    {
+        $data = Customer::findOrFail($id);
+
+        return view('customer.edit',compact('data'));
+    }
+
+    public function postEdit_customer(Request $rq,$id)
+    {
+        $cus = Customer::find($id);
+
+        $cus->name = $rq->name_customer;
+        $cus->gender = $rq->sex_customer;
+        $cus->email = $rq->email_customer;
+        $cus->address = $rq->address_customer;
+        $cus->phone_number = $rq->phone_customer;
+        $cus->note =  $rq->note_customer;
+
+        $cus->save();
+
+        $rq->session()->flash('status','Update thành công');
+
+        return redirect()->route('customer.getAdd');
+
+    }
+
+    public function getDelelte_customer(Request $rq,$id)
+    {
+        $cus = Customer::find($id);
+        $cus->delete($id);
+
+        $rq->session()->flash('status','Xóa thành công '.$cus->name);
+
+        return redirect()->route('customer.getAdd');
+
     }
 }
