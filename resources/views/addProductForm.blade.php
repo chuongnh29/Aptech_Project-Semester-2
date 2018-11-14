@@ -100,40 +100,39 @@
     <button class="btn btn-primary save">Lưu</button>
 
     <!-- Edit Modal HTML -->
-    {{--<div id="addEmployeeModal" class="modal fade">--}}
-        {{--<div class="modal-dialog">--}}
-            {{--<div class="modal-content">--}}
-                    {{--<div class="modal-header">                      --}}
-                        {{--<h4 class="modal-title">Thêm ảnh</h4>--}}
-                        {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
-                    {{--</div>--}}
-                    {{--<div class="modal-body">                    --}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Name</label>--}}
-                            {{--<input type="text" class="form-control" required>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Email</label>--}}
-                            {{--<input type="email" class="form-control" required>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Address</label>--}}
-                            {{--<textarea class="form-control" required></textarea>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>Phone</label>--}}
-                            {{--<input type="text" class="form-control" required>--}}
-                        {{--</div>                  --}}
-                    {{--</div>--}}
-                    {{--<div class="modal-footer">--}}
-                        {{--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">--}}
-                        {{--<input type="submit" class="btn btn-success" value="Add">--}}
-                    {{--</div>--}}
-            {{--</div>--}}
+      @if($type == 'edit')
+    <div id="addEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm ảnh</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            @foreach($anhSP as $anh)
+                            <div class="form-group">
+                                <img src="public/source/img/product/{{ $anh->name_image }}" alt="" style="width: 5rem; height: 5rem;">
+                                <input type="checkbox" value="{{ $anh->id }}" class="form-control-sm" name="anhSanPham">
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                <div class="form-group" style="margin-left: 1rem;">
+                    <label for="exampleFormControlFile1">Thêm ảnh</label>
+                    <input type="file" name="anh" multiple class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default bt-cancel-edit-image" data-dismiss="modal" value="Cancel">
+                        <input type="button" class="btn btn-success bt-add-edit-image" data-dismiss="modal" value="Add">
+                    </div>
+            </div>
 
-        {{--</div>--}}
+        </div>
 
-      {{--</div>--}}
+      </div>
+          @endif
+
 
   </div>
       <!-- Edit Modal HTML -->
