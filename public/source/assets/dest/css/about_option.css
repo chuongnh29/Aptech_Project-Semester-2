@@ -1,0 +1,123 @@
+.about_img_logo {
+    width: 250px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.about_us {
+    background: url(../img/banner/bg_phyilosophy_01.jpg) no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    height: 480px;
+    color: white;
+    max-width: 80%;
+    margin: 10px auto;
+}
+
+.about_us_baner h1, h3 {
+    position: inherit;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 2.5;
+    letter-spacing: .05rem;
+"
+}
+
+.about_us_baner p {
+    position: inherit;
+    text-align: center;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 2.5;
+    letter-spacing: .05rem;
+}
+
+.about_us_01 {
+    margin: 30px;
+}
+
+7
+. Team
+    /***********************************/
+.team {
+    padding-top: 116px;
+    padding-bottom: 128px;
+}
+
+.team_title {
+    margin-bottom: 186px;
+}
+
+.team_title h1 {
+    margin-bottom: 27px;
+}
+
+.team_title p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.888;
+    margin-bottom: 0px;
+}
+
+.team_container {
+    height: 513px;
+    background: #f7f7f8;
+}
+
+.team_container:hover {
+    background: #452b78;
+}
+
+.team_container:hover div,
+.team_container:hover p,
+.team_container:hover a {
+    color: #FFFFFF;
+}
+
+.team_member_image {
+    width: 263px;
+    height: 263px;
+}
+
+.team_member_image img {
+    position: absolute;
+    top: -71px;
+    left: -99px;
+    width: 100%;
+    height: auto;
+}
+
+.team_member_content {
+    padding-left: 40px;
+    padding-right: 30px;
+    margin-top: -50px;
+}
+
+.team_member_name {
+    font-size: 24px;
+    font-weight: 500;
+    color: #28262d;
+    margin-bottom: -10px;
+}
+
+.team_member_title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #452b78;
+    margin-bottom: 30px;
+}
+
+.team_container p {
+    margin-bottom: 23px;
+}
+
+.team_member_link a {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #262626;
+}

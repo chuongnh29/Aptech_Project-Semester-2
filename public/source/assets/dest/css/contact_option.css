@@ -1,6 +1,91 @@
+/*tets banner*/
+.link_page_LW_area {
+    text-align: left;
+}
+
+.link_page_LW {
+    padding: 20px 0px;
+}
+
+.link_page_LW h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    letter-spacing: .60px;
+    padding-bottom: 10px;
+}
+
+.link_page_LW ul li {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.link_page_LW ul li a {
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    letter-spacing: .35px;
+    color: #000;
+    position: relative;
+    display: inline-block;
+}
+
+.link_page_LW ul li a:before {
+    content: ">";
+    position: absolute;
+    right: -10px;
+    top: 54%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.link_page_LW ul li:last-child {
+    margin-right: 0px;
+}
+
+.link_page_LW ul li:last-child a:before {
+    display: none;
+}
+
+.contact {
+    background: url(../img/banner/contact-us.jpeg) no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    height: 480px;
+    color: white;
+    margin: 10px auto;
+}
+
+.contact_baner h1, h3 {
+    position: inherit;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 2.5;
+    letter-spacing: .05rem;
+"
+}
+
+.contact_baner p {
+    position: inherit;
+    text-align: center;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 2.5;
+    letter-spacing: .05rem;
+"
+}
+
+/*tets banner*/
+
 .contact_details {
-    /*background-image: url("public\source\img\contact_bg.png");*/
-    background-image: url("../../../img/contact_bg.jpg");
+    background-color: #151716d9;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -10,18 +95,22 @@
     padding: 10px !important;
 }
 
-.info_option {
-    margin: 0px 80px 0px 80px;
+.contact_option {
+
 }
 
-.contact_col_1 {
+/*.contact_1 {*/
+/*text-align: center;*/
+/*}*/
+
+.contact_1 {
     padding-left: 50px;
     padding-top: 20px;
 }
 
-.contact_col_1 p, a {
+.luxury_info .info_1 {
     font-size: 16px !important;
-    color: #0b0b0b !important;
+    color: #dfe5c4 !important;
 }
 
 .contact_col_2 {
@@ -46,6 +135,10 @@
 
 .contact_col_2 .form-group {
     margin-bottom: 20px !important;
+}
+
+.contact_col_2 .contact_me {
+    color: antiquewhite;
 }
 
 .maps_option {
@@ -76,53 +169,23 @@
 }
 
 .submit_btn {
-    background-image: linear-gradient(to right, #268aff 0%, #ec513f 51%, #e21905 100%);
+    background: #222222;
+    color: white;
     background-size: 200% auto;
-    z-index: 2;
-    width: 176px;
+    z-index: 1;
+    width: 150px;
     padding: 0px;
     display: inline-block;
-    transition: all 400ms ease-out;
     text-align: center;
-    outline: none !important;
-    box-shadow: none !important;
-    color: #fff;
     font-size: 25px;
     font-family: Tahoma;
-    line-height: 58px;
-    border: 6px solid rgba(204, 241, 255, .5);
+    line-height: 50px;
     border-radius: 33px;
 }
 
 .submit_btn:hover {
-    background-position: right center;
-    color: #fff;
-}
+    background: #e65540;
 
-.submit_btn:focus {
-    box-shadow: none;
-    outline: none;
-    border: 6px solid rgba(204, 241, 255, .5);
-}
-
-.solid_btn {
-    padding: 0px 53px;
-    background: #6fbcfe;
-    z-index: 2;
-    display: inline-block;
-    transition: all 400ms ease-out;
-    text-align: center;
-    color: #fff;
-    font-size: 15px;
-    font-family: Tahoma;
-    line-height: 55px;
-    border: 6px solid rgba(204, 241, 255, .5);
-    border-radius: 33px;
-}
-
-.solid_btn:hover {
-    background-position: right center;
-    color: #fff;
 }
 
 /* Button Area css

@@ -29,6 +29,8 @@
 
     <link href="public/source/assets/dest/css/contact_option.css" rel="stylesheet">
 
+    <link href="public/source/assets/dest/css/about_option.css" rel="stylesheet">
+
     <link href="public/source/assets/dest/css/util.css" rel="stylesheet">
 
     <link href="public/source/assets/dest/css/responsive.css" rel="stylesheet">

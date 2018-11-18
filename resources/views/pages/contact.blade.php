@@ -4,10 +4,9 @@
 @endsection
 @section('content')
     <!--================Categories Banner Area =================-->
-    <section class="solid_banner_area">
+    <section class="link_page_LW_area">
         <div class="container">
-            <div class="solid_banner_inner">
-                <h3>Liên hệ</h3>
+            <div class="link_page_LW">
                 <ul>
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
                     <li><a>Liên hệ</a></li>
@@ -15,39 +14,48 @@
             </div>
         </div>
     </section>
+
+    <section class="contact">
+        <div class="contact_baner">
+            <h1 style="font-size: 3.25rem; padding-top: 20px;">Luxury Watch</h1>
+            <h3>better starts now</h3>
+        </div>
+    </section>
+
     <!--================End Categories Banner Area =================-->
 
     <section class="get_in_touch_area p_100">
         <div class="container">
             <div class="row get_touch_inner">
-                <div class="row contact_details">
-                    <div class="row info_option">
-                        <div class="row media contact_col_1">
-                            <div class="d-flex">
+                <div class="row contact_details contact_option">
+                    <div class="row">
+                        <div class="row media contact_1">
+                            <div class="d-flex luxury_info">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                             </div>
-                            <div class="media-body">
-                                <p>Detech Building, 8A Tôn Thất Thuyết<br/>Mỹ Đình 2, Nam Từ Liêm, Hà Nội.</p>
+                            <div class="media-body luxury_info">
+                                <p class="info_1">Detech Building, 8A Tôn Thất Thuyết<br/>Mỹ Đình 2, Nam Từ Liêm, Hà
+                                    Nội.</p>
                             </div>
                         </div>
 
-                        <div class="row media contact_col_1">
-                            <div class="d-flex">
+                        <div class="row media contact_1">
+                            <div class="d-flex luxury_info">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                             </div>
-                            <div class="media-body">
-                                <a href="tel:+1109171234567">+84 988 888 666</a>
-                                <a href="tel:+1101911897654">+84 988 666 999</a>
+                            <div class="media-body luxury_info">
+                                <a class="info_1" href="tel:+1109171234567">+84 988 888 666</a>
+                                <a class="info_1" href="tel:+1101911897654">+84 988 666 999</a>
                             </div>
                         </div>
 
-                        <div class="row media contact_col_1">
-                            <div class="d-flex">
+                        <div class="row media contact_1">
+                            <div class="d-flex luxury_info">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </div>
-                            <div class="media-body">
-                                <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
-                                <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
+                            <div class="media-body luxury_info">
+                                <a class="info_1" href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
+                                <a class="info_1" href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +68,7 @@
                               novalidate="novalidate">
                             <input type="hidden" name="_token" value="!!csrf_token!!">
                             <div class="form-group col-lg-12">
-                                <h4 class="m-text26 p-b-36 p-t-15">
+                                <h4 class="m-text26 contact_me">
                                     CONTACT ME
                                 </h4>
                             </div>
@@ -81,7 +89,7 @@
                                 <textarea class="form-control" name="message" id="message" rows="1"
                                           placeholder="Message" style="height: 200px;"></textarea>
                             </div>
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-3">
                                 <button type="submit" value="submit" class="btn submit_btn form-control">Send</button>
                             </div>
                         </form>
