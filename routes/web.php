@@ -83,7 +83,11 @@ Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editPro
 
 Route::get('admin/bills', 'AdminController@getBills')->name('bills');
 
-Route::post('admin/bills/editstatus', 'BillsController@editBillsStatus')->name('editBillsStatus');
+Route::get('admin/bills/billform/{id?}', 'AdminController@getBillForm')->name('addBillForm');
+
+Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
+
+Route::post('admin/products/getprice/{id}', 'ProductController@getPrice')->name('getPrice');
 
 Route::group(['prefix'=>'type_product'],function(){
 	Route::get('list',['as'=>'Tproduct.list','uses'=>'AdminController@getList']);
@@ -103,3 +107,7 @@ Route::group(['prefix'=>'customer'],function()
 	Route::get('delete/{id}',['as'=>'customer.getDelete','uses'=>'AdminController@getDelelte_customer']);
 
 });
+
+Route::post('admin/billDetail/{type}/{id?}', 'BillsController@billDetail')->name('billDetail');
+
+Route::get('admin/billDetail/{type}/back/{id?}', 'BillsController@backBill')->name('addBack');

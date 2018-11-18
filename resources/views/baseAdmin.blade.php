@@ -26,8 +26,8 @@
     <!-- Custom styles for this template-->
 
     <link href="admin/css/sb-admin.css" rel="stylesheet">
-
     <link href="admin/css/MyCSS.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin/css/chosen.css">
 
 
 
@@ -56,6 +56,10 @@
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script> -->
+
+    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+    <script src="admin/js/chosen.jquery.js"></script>
+    <script src="admin/js/chosen.proto.js"></script>
     <script src="admin/js/MyJS.js"></script>
     
   </body>

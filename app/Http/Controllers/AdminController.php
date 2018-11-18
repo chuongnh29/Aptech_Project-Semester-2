@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\BillDetail;
 use App\Customer;
 use App\BillStatus;
 use App\ProductImages;
@@ -157,6 +158,7 @@ class AdminController extends Controller
     }
 
     public function getBills(Request $request){
+        $request->session()->flush();
         $url = $request->fullUrl();
         $dangCho = count(Bill::where('status_id', 1)->get());
         $daXacNhan = count(Bill::where('status_id', 2)->get());
@@ -205,6 +207,71 @@ class AdminController extends Controller
         }
 
         return $dieuKienTimKiem;
+    }
+
+    public function getBillForm($id = null, Request $request){
+        $trangThaiDonHang = BillStatus::all();
+        $sanPham = Products::all();
+        $type = 'add';
+        $idBill = null;
+        $tenKhachHang = '';
+        $gioiTinh = '';
+        $email = '';
+        $soDienThoai = '';
+        $ngayGiaoHang = '';
+        $diaChi = '';
+        $thanhToan = '';
+        $note = '';
+        $detailBill = null;
+        $bill = null;
+        $customer = null;
+        $idTrangThaiDonHang = '';
+        if($id != null){
+            $type = 'edit';
+            if(!$request->session()->has('bill')){
+                $billSes = Bill::find((int)$id);
+                $billDetailSes = BillDetail::where('bill_id', (int) $id)->get();
+                $customerSes = Customer::find($billSes->customer_id);
+                $request->session()->put([
+                    'bill' => $billSes,
+                    'customer' => $customerSes,
+                    'billDetail' => $billDetailSes
+                ]);
+            }
+            $idBill = $id;
+            $bill = Bill::find((int)$idBill);
+            $customer = Customer::find($bill->customer_id);
+            $detailBill = DB::table('bill_detail')
+                ->join('products','bill_detail.product_id','=','products.id')
+                ->select('bill_detail.id','products.name','bill_detail.quantity','bill_detail.unit_price', 'bill_detail.product_id')
+                ->where('bill_detail.bill_id',(int)$idBill)->get();
+            $tenKhachHang = $customer->name;
+            $gioiTinh = $customer->gender;
+            $email = $customer->email;
+            $soDienThoai = $customer->phone_number;
+            $ngayGiaoHang  =$bill->date_order;
+            $diaChi = $customer->address;
+            $thanhToan = $bill->payment;
+            $note = $bill->note;
+            $idTrangThaiDonHang = $bill->status_id;
+        }
+        return view('pages.bill',[
+            'type' => $type,
+            'trangThaiDonHang'=>$trangThaiDonHang,
+            'sanPham'=>$sanPham,
+            'id'=>$idBill,
+            'tenKhachHang' => $tenKhachHang,
+            'gioiTinh' => $gioiTinh,
+            'email' => $email,
+            'soDienThoai'=> $soDienThoai,
+            'ngayGiaoHang'=> $ngayGiaoHang,
+            'diaChi'=>$diaChi,
+            'thanhToan'=>$thanhToan,
+            'idTrangThaiDonHang' => $idTrangThaiDonHang,
+            'note' => $note,
+            'detailBills' => $detailBill,
+            'bill' => $bill
+        ]);
     }
 
     public function getList()

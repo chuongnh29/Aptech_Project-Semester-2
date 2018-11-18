@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('.chosen').chosen({
+        width: '100%',
+        allow_single_deselect: true
+    });
 
     function readFile(input) {
         if (input.files && input.files[0]) {

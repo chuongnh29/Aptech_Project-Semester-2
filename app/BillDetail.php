@@ -17,4 +17,6 @@ class BillDetail extends Model
     {
         return $this->belongsTo('App\Products', 'bill_id', 'id');
     }
+
+    protected $guarded = '';
 }
