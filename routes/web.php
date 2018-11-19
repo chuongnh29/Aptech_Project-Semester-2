@@ -93,4 +93,31 @@ Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editPro
 
 Route::get('admin/bills', 'AdminController@getBills')->name('bills');
 
-Route::post('admin/bills/editstatus', 'BillsController@editBillsStatus')->name('editBillsStatus');
+Route::get('admin/bills/billform/{id?}', 'AdminController@getBillForm')->name('addBillForm');
+
+Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
+
+Route::post('admin/products/getprice/{id}', 'ProductController@getPrice')->name('getPrice');
+
+Route::group(['prefix'=>'type_product'],function(){
+	Route::get('list',['as'=>'Tproduct.list','uses'=>'AdminController@getList']);
+	Route::get('add',['as'=>'Tproduct.getadd','uses'=>'AdminController@getadd_type_product']);
+	Route::post('add',['as'=>'Tproduct.postadd','uses'=>'AdminController@postadd_type_product']);
+	Route::get('delete/{id}',['as'=>'Tproduct.getDelete','uses'=>'AdminController@delete_type_product']);
+	Route::get('edit/{id}',['as'=>'Tproduct.getEdit','uses'=>'AdminController@getedit_type_product']);
+	Route::post('edit/{id}',['as'=>'Tproduct.postEdit','uses'=>'AdminController@postedit_type_product']);
+});
+
+Route::group(['prefix'=>'customer'],function()
+{
+	Route::get('add',['as'=>'customer.getAdd','uses'=>'AdminController@getAdd_customer']);
+	Route::post('add',['as'=>'customer.postAdd','uses'=>'AdminController@postAdd_customer']);
+	Route::get('edit/{id}',['as'=>'customer.getEdit','uses'=>'AdminController@getEdit_customer']);
+	Route::post('edit/{id}',['as'=>'customer.postEdit','uses'=>'AdminController@postEdit_customer']);
+	Route::get('delete/{id}',['as'=>'customer.getDelete','uses'=>'AdminController@getDelelte_customer']);
+
+});
+
+Route::post('admin/billDetail/{type}/{id?}', 'BillsController@billDetail')->name('billDetail');
+
+Route::get('admin/billDetail/{type}/back/{id?}', 'BillsController@backBill')->name('addBack');

@@ -118,7 +118,9 @@ class ProductController extends Controller
         $giaSale = (int)$request->giaSale;
         $moTa = $request->moTa;
         $anhs = $request->file('anh');
+        $anhDaiDien = $request->file('anhDaiDien');
         $post = $request->post;
+        $anhSP = $request->anhSP;
         $status = 'thất bại';
         try{
             $product = Products::find((int) $id);
@@ -133,15 +135,44 @@ class ProductController extends Controller
             $product->product_status_id = $trangThaiSP;
             $product->save();
 
-//            foreach ($anhs as $anh){
-//                $imgName = $anh->hashName();
-//                $anh->move('public/source/img/product', $imgName);
-//                $image = new ProductImages;
-//                $image->product_id = $id;
-//                $image->name_image = $imgName;
-//                $image->save();
-//
-//            }
+            $productImage = ProductImages::where('product_id',(int)$id)->get();
+            if($productImage!= null){
+                foreach ($productImage as $img){
+                    $image = ProductImages::find($img->id);
+                    $image->status_id = 3;
+                    $image->save();
+                }
+            }
+            if($anhSP!= null){
+                foreach ($anhSP as $anh){
+                    $image = ProductImages::find($anh);
+                    $image->status_id = 2;
+                    $image->save();
+                }
+            }
+            if($anhs!= null){
+                foreach ($anhs as $anh){
+                    $imgName = $anh->hashName();
+                    $anh->move('public/source/img/product', $imgName);
+                    $image = new ProductImages;
+                    $image->product_id = $id;
+                    $image->name_image = $imgName;
+                    $image->status_id = 2;
+                    $image->save();
+                }
+            }
+            if($anhDaiDien!= null){
+                foreach ($anhDaiDien as $anhDD){
+                    $imgName = $anhDD->hashName();
+                    $anhDD->move('public/source/img/product', $imgName);
+                    $image = new ProductImages;
+                    $image->product_id = $id;
+                    $image->name_image = $imgName;
+                    $image->status_id = 1;
+                    $image->save();
+                }
+            }
+
             $status = 'thành công';
         }catch (Exception $exception){
             return $exception;

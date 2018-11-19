@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('.chosen').chosen({
+        width: '100%',
+        allow_single_deselect: true
+    });
 
     function readFile(input) {
         if (input.files && input.files[0]) {
@@ -90,7 +94,6 @@ $(document).ready(function () {
 
     $('body').on('click', '.save', function () {
         // console.log($('input[name=anh]').val());
-        console.log($('input[name=anhDaiDien]').prop('files')[0]);
         var dataForm = new FormData();
         dataForm.append('tenSP', $('input[name=tenSP]').val());
         dataForm.append('thuongHieu', $('select[name=thuongHieu]').val());
@@ -108,7 +111,9 @@ $(document).ready(function () {
         });
         $.each($("input[name=anh]").prop('files'), function(i, file) {
             dataForm.append('anh[]', file);
-            console.log(file);
+        });
+        $.each($("input[name=anhSanPham]:checked"), function(i, file) {
+            dataForm.append('anhSP[]', file.value);
         });
         // dataForm.append('anh[]', $('input[name=anh]').prop('files')[0]);
 
@@ -152,7 +157,6 @@ $(document).ready(function () {
                 }
             });
         } else if(type === 'edit') {
-            console.log('type edit');
             var id = $('input[name=productID]').val();
             dataForm.append('id', id);
             $.ajaxSetup({
