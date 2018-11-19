@@ -13,6 +13,8 @@
     <link href="public/source/assets/dest/css/font-awesome.min.css" rel="stylesheet">
     <link href="public/source/assets/dest/vendors/line-icon/css/simple-line-icons.css" rel="stylesheet">
     <link href="public/source/assets/dest/vendors/elegant-icon/style.css" rel="stylesheet">
+    <link href="public/source/assets/dest/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
+
     <!-- Bootstrap -->
     <link href="public/source/assets/dest/css/bootstrap.min.css" rel="stylesheet">
 

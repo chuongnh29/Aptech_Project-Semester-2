@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
+use App\BillDetail;
 use App\Cart;
+use App\Customer;
 use App\Products;
 use App\ProductType;
 use App\Slide;
@@ -17,11 +20,17 @@ class PagesController extends Controller
     public function getIndex()
     {
         $slide = Slide::all();
-        $loai_sp_nam = ProductType::where('type', 0)->get();
-        $new_product = Products::where('new', 1)->paginate(8);
+        $new_men_product = Products::where([
+            ['new', '=', '1'],
+            ['type_gender', '=', '0']
+        ])->paginate(8);
+        $new_women_product = Products::where([
+            ['new', '=', '1'],
+            ['type_gender', '=', '1']
+        ])->paginate(8);
         $sale_product = Products::where('promotion_price', '<>', 0)->get();
         $featured_product = Products::where('new', 1)->paginate(4);
-        return view('pages.home', compact('slide', 'loai_sp_nam', 'new_product', 'sale_product', 'featured_product'));
+        return view('pages.home', compact('slide', 'loai_sp_nam', 'new_men_product', 'new_women_product', 'sale_product', 'featured_product'));
     }
 
     public function getProduct()
@@ -106,6 +115,11 @@ class PagesController extends Controller
         }
     }
 
+    public function getResetPassword()
+    {
+        return view('pages.reset_password');
+    }
+
     public function postLogout()
     {
         Auth::logout();
@@ -127,7 +141,8 @@ class PagesController extends Controller
                 'fullname' => 'required',
 //                'phone_number' => 'required|number',
                 'password' => 'required|min:5|max:20',
-                're_password' => 'required|same:password'
+                're_password' => 'required|same:password',
+                'address' => 'required'
             ],
             [
                 'username.required' => 'Vui lòng điền tên đăng nhập bạn muốn sử dụng',
@@ -140,6 +155,7 @@ class PagesController extends Controller
                 'phone_number.required' => 'Vui lòng nhập số điện thoại',
 //                'phone_number.number' => 'Số điện thoại chỉ chứa kiểu số',
                 'password.required' => 'Vui lòng nhập mật khẩu',
+                'address.required' => 'Vui lòng nhập địa chỉ',
                 're_password.same' => 'Mật khẩu bạn nhập không khớp',
                 'password.min' => 'Mật khẩu tối thiểu là 6 ký tự'
             ]);
@@ -171,10 +187,13 @@ class PagesController extends Controller
         $cart->removeItem($id);
         if (count($cart->items) > 0) {
             Session::put('cart', $cart);
+            return redirect()->back();
+
         } else {
             Session::forget('cart');
+            return redirect('empty-cart');
+
         }
-        return redirect()->back();
     }
 
     public function getEmptyCart()
@@ -193,7 +212,68 @@ class PagesController extends Controller
 
     public function getCheckOut()
     {
-        return view('pages.shopping_cart');
+        if (Session::has('cart') && Auth::check()) {
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            return view('pages.check_out', ['product_cart' => $cart->items, 'totalPrice' => $cart->totalPrice, 'totalQty' => $cart->totalQty]);
+        }
+    }
+
+    public function postCheckOut(Request $req)
+    {
+        $cart = Session::get('cart');
+        $customer = new Customer;
+        $customer->full_name = $req->name;
+        $customer->email = $req->email;
+        $customer->address = $req->address;
+        $customer->phone_number = $req->phone;
+        $customer->note = $req->notes;
+        $customer->save();
+
+        $bill = new Bill;
+        $bill->id_customer = $customer->id;
+        $bill->date_order = date('Y-m-d');
+        $bill->total = $cart->totalPrice;
+        $bill->payment = $req->payment_method;
+        $bill->note = $req->notes;
+        $bill->save();
+
+        foreach ($cart->items as $key => $value) {
+            $bill_detail = new BillDetail;
+            $bill_detail->id_bill = $bill->id;
+            $bill_detail->id_product = $key;
+            $bill_detail->quantity = $value['qty'];
+            $bill_detail->unit_price = ($value['price'] / $value['qty']);
+            $bill_detail->save();
+        }
+        Session::forget('cart');
+        return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+    }
+
+    public function getCheckLogin()
+    {
+        return view('pages.check_login');
+    }
+
+    public function postCheckLogin(Request $req)
+    {
+        $this->validate($req,
+            [
+                'username' => 'required',
+                'password' => 'required'
+            ],
+            [
+                'username.required' => 'Vui lòng nhập tên tài khoản',
+                'password.required' => 'Vui lòng nhập mật khẩu'
+            ]
+        );
+        $credentials = array('username' => $req->username, 'password' => $req->password);
+//        $credentials = array('email' => $req->email, 'password' => $req->password);
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('checkout');
+        } else {
+            return redirect()->back()->with(['flag' => 'danger', 'message' => 'Sai tên đăng nhập hoặc mật khẩu.']);
+        }
     }
 
     public function getSearch(Request $req)

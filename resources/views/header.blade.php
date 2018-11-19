@@ -45,7 +45,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         @else
-                            <a href="#">
+                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i>
                                 Đăng nhập | Đăng ký
                                 <i class="fa fa-angle-down"></i>
                             </a>
@@ -69,9 +69,9 @@
                                 <i class="icon-handbag icons js-show-header-dropdown"
                                    alt="ICON">
                             <span class="cart_quantity">
-                                @if(Session::has('cart'))
+
                                     {{Session('cart')->totalQty}}
-                                @endif
+
                                     </span>
                                 </i>
                                 <!-- Header cart noti -->
@@ -81,7 +81,6 @@
                                             <li class="header-cart-item">
                                                 <a href="{{route('delcart', $product['item']['id'])}}">
                                                     <div class="header-cart-item-img">
-
                                                         <img src="public/source/img/product/{{$product['item']['image']}}"
                                                              alt="IMG">
                                                     </div>
@@ -119,9 +118,17 @@
 
                                         <div class="header-cart-wrapbtn">
                                             <!-- Button -->
-                                            <a href="#" class="flex-c-m size1 bg1 bo-rad-5 hov1 s-text1 trans-0-4">
-                                                Thanh toán
-                                            </a>
+                                            @if(Auth::check())
+                                                <a href="{{route('checkout')}}"
+                                                   class="flex-c-m size1 bg1 bo-rad-5 hov1 s-text1 trans-0-4">
+                                                    Thanh toán
+                                                </a>
+                                            @else
+                                                <a href="{{route('checklogin')}}"
+                                                   class="flex-c-m size1 bg1 bo-rad-5 hov1 s-text1 trans-0-4">
+                                                    Thanh toán
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -146,78 +153,78 @@
 
 <!--================Menu Area =================-->
 <header class="shop_header_area">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light nav-menu">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center">
+    {{--<div class="container">--}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-menu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center">
 
-                <ul class="navbar-nav" style="alignment: center;">
-                    <li class="nav-item dropdown submenu active">
-                        <a class="nav-link dropdown-toggle" href="{{route('home')}}" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            Trang chủ
-                        </a>
+            <ul class="navbar-nav" style="alignment: center;">
+                <li class="nav-item dropdown submenu active">
+                    <a class="nav-link dropdown-toggle" href="{{route('home')}}" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        Trang chủ
+                    </a>
 
-                    </li>
-                    <li class="nav-item dropdown submenu">
-                        <a class="nav-link dropdown-toggle" href="{{route('products')}}" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            Thương hiệu
-                        </a>
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <span><i class="fa fa-angle-down down_arrow" aria-hidden="true"></i></span></a>
-                        <ul class="dropdown-menu">
-                            @foreach($loai_sp as $loai)
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('producttype', $loai->id)}}">{{$loai->name}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown submenu">
-                        <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nam
-                        </a>
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <span><i class="fa fa-angle-down down_arrow" aria-hidden="true"></i></span></a>
-                        <ul class="dropdown-menu">
-                            @foreach($loai_sp_nam as $loai)
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('loai_donghonam', $loai->id)}}">{{$loai->name}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown submenu">
-                        <a class="nav-link dropdown-toggle" href="{{route('donghonu')}}" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            Đồng hồ nữ
-                        </a>
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <span><i class="fa fa-angle-down " aria-hidden="true"></i></span></a>
-                        <ul class="dropdown-menu">
-                            @foreach($loai_sp_nu as $loai)
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="{{route('producttype', $loai->name_id)}}">
-                                        {{$loai->name}}</a></li>
-                            @endforeach
-                        </ul>
-                    </li>
+                </li>
+                <li class="nav-item dropdown submenu">
+                    <a class="nav-link dropdown-toggle" href="{{route('products')}}" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Thương hiệu
+                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <span><i class="fa fa-angle-down down_arrow" aria-hidden="true"></i></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach($loai_sp as $loai)
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{route('producttype', $loai->id)}}">{{$loai->name}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="nav-item dropdown submenu">
+                    <a class="nav-link dropdown-toggle" href="{{route('donghonam')}}" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Đồng hồ nam
+                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <span><i class="fa fa-angle-down down_arrow" aria-hidden="true"></i></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach($loai_sp_nam as $loai)
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{route('loai_donghonam', $loai->id)}}">{{$loai->name}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="nav-item dropdown submenu">
+                    <a class="nav-link dropdown-toggle" href="{{route('donghonu')}}" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Đồng hồ nữ
+                    </a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <span><i class="fa fa-angle-down " aria-hidden="true"></i></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach($loai_sp_nu as $loai)
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{route('producttype', $loai->name_id)}}">
+                                    {{$loai->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+    {{--</div>--}}
 </header>
 <!--================End Menu Area =================-->

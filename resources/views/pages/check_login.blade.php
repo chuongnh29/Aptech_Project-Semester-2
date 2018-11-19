@@ -30,10 +30,12 @@
                         <div class="login_title">
                             @if(Session::has('flag'))
                                 <div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
+                            @else
+                                <div class="alert alert-danger">Vui lòng đăng nhập tài khoản để thanh toán đơn hàng của bạn.</div>
                             @endif
                             <h2>đăng nhập vào tài khoản của bạn</h2>
                         </div>
-                        <form class="login_form row" action="{{route('login')}}" method="post">
+                        <form class="login_form row" action="{{route('checklogin')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                             <div class="col-lg-4">Tên đăng nhập</div>
