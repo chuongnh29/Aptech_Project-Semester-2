@@ -5,9 +5,3 @@
             </div>
           </div>
         </footer>
-
-<script type="text/javascript">
-   $(".alert-info").show(0).delay(2000).hide(500);
-   $(".alert-danger").show(0).delay(2000).hide(500);
-   
-</script>
