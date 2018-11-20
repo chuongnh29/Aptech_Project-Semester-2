@@ -64,9 +64,9 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{ route('adminIndex') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>Trang chủ</span>
           </a>
         </li>
         <li class="nav-item dropdown">
@@ -77,7 +77,7 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
             <a class="dropdown-item" href="{{ route('product') }}">Sản phẩm</a>
-            <a class="dropdown-item" href="register.html">Nhãn hiệu</a>
+            <a class="dropdown-item" href="{{ route('Tproduct.getadd') }}">Nhãn hiệu</a>
             <a class="dropdown-item" href="forgot-password.html">Danh mục</a>
             <div class="dropdown-divider"></div>
             <!-- <h6 class="dropdown-header">Other Pages:</h6> -->
@@ -91,13 +91,8 @@
                   <span>Đơn hàng</span></a>
           </li>
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="{{ route('customer.getAdd') }}">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Khách hàng</span></a>
         </li>
       </ul>

@@ -170,7 +170,7 @@ class AdminController extends Controller
         $bills = DB::table('bills')
             ->leftJoin('bill_status','bills.status_id','=','bill_status.id')
             ->leftJoin('customer','bills.customer_id','=','customer.id')
-            ->select('bills.id','customer.address','bills.date_order','bills.total', 'bill_status.bill_status_name','bills.note','customer.name as customer_name','customer.phone_number')
+            ->select('bills.id','customer.address','bills.date_order','bills.total', 'bill_status.bill_status_name','bills.note','customer.full_name as customer_name','customer.phone_number')
             ->where($dieuKienTimKiem)
             ->paginate(5);
         $bills->withPath($url);
@@ -193,7 +193,7 @@ class AdminController extends Controller
         $ngay = $request->ngay;
         $dieuKienTimKiem = [];
         if($tenKhachHang != null){
-            $dieuKienTimKiem[] = ['customer.name','like','%'.$tenKhachHang.'%'];
+            $dieuKienTimKiem[] = ['customer.full_name','like','%'.$tenKhachHang.'%'];
         }
         if($trangThaiDonHang != null && $trangThaiDonHang != 'none'){
             $dieuKienTimKiem[] = ['bills.status_id','=', (int) $trangThaiDonHang];
@@ -244,7 +244,7 @@ class AdminController extends Controller
                 ->join('products','bill_detail.product_id','=','products.id')
                 ->select('bill_detail.id','products.name','bill_detail.quantity','bill_detail.unit_price', 'bill_detail.product_id')
                 ->where('bill_detail.bill_id',(int)$idBill)->get();
-            $tenKhachHang = $customer->name;
+            $tenKhachHang = $customer->full_name;
             $gioiTinh = $customer->gender;
             $email = $customer->email;
             $soDienThoai = $customer->phone_number;
@@ -354,7 +354,7 @@ class AdminController extends Controller
     }
 
     public function getAdd_customer(){
-        $data = Customer::select('id','name','gender','email','address','phone_number','note')->orderby('id','DESC')->get()->toArray();
+        $data = Customer::select('id','full_name','gender','email','address','phone_number','note')->orderby('id','DESC')->get()->toArray();
 
         return view('customer.add',compact('data'));
 
@@ -368,7 +368,7 @@ class AdminController extends Controller
         ]);
  
         $cus = new Customer;
-        $cus->name = $rq->name_customer;
+        $cus->full_name = $rq->name_customer;
         $cus->gender = $rq->sex_customer;
         $cus->email = $rq->email_customer;
         $cus->address = $rq->address_customer;

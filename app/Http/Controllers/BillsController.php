@@ -69,7 +69,7 @@ class BillsController extends Controller
 
         }else{
             $customer = new Customer;
-            $customer->name = $tenKhachHang;
+            $customer->full_name = $tenKhachHang;
             $customer->gender = $gioiTinh;
             $customer->email = $email;
             $customer->address = $diaChi;
@@ -153,7 +153,7 @@ class BillsController extends Controller
             $billDetail = $request->session()->pull('billDetail');
 
             $newCustomer = new Customer;
-            $newCustomer->name = $customer->name;
+            $newCustomer->full_name = $customer->full_name;
             $newCustomer->gender = $customer->gender;
             $newCustomer->email = $customer->email;
             $newCustomer->address = $customer->address;

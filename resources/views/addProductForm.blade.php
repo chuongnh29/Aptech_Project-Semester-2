@@ -24,7 +24,7 @@
       {{--</div>--}}
       <label for="exampleFormControlFile1">Ảnh đại diện</label>
       <div class="card" style="width: 18rem;">
-          <img class="card-img-top" id="anhDaiDien" src="@if($type == 'edit')public/source/img/product/{{ $anhDaiDien->name_image }}@endif" alt="your image" alt="Card image cap" style="width: 8rem; height: 9rem; display: block;">
+          <img class="card-img-top" id="anhDaiDien" src="@if($type == 'edit')public/source/img/product/{{ $anhDaiDien->name_image }}@endif" alt="your image" alt="Card image cap" style="width: 100%; height: 15rem; display: block;">
           <div class="card-body">
               <input type="file" name="anhDaiDien" class="form-control-file">
           </div>
