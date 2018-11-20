@@ -4,7 +4,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Thêm đơn hàng</h2>
+                    <h2>Đơn hàng</h2>
                 </div>
                 <div class="col-sm-6">
 
@@ -119,11 +119,11 @@
                         <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span>Thêm sản phẩm và lưu</span></a>
                         @isset($id)
                             @if($id != null)
-                            <a href="{{ route('addBack', ['type'=>$type,'$id' => $id]) }}" class="btn btn-danger"><span>Quay lại</span></a>
+                            <a href="{{ route('bills') }}" class="btn btn-danger"><span>Quay lại</span></a>
                             @endif
 
                         @else
-                            <a href="{{ route('addBack', ['type'=>$type]) }}" class="btn btn-danger"><span>Quay lại</span></a>
+                            <a href="{{ route('bills') }}" class="btn btn-danger"><span>Quay lại</span></a>
                         @endisset
 
                     </div>

@@ -3,7 +3,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2><b>Đơn hàng</b></h2>
+                    <h2><b>Quản lý đơn hàng</b></h2>
                 </div>
                 <div class="col-sm-6 d-flex justify-content-end">
                     <form action="{{ route('bills') }}" method="get" class="form-inline">
@@ -66,7 +66,7 @@
         </form>
 
         <form action="{{ route('editBillsStatus') }}" method="post" class="form-inline" style="margin-top: 0.5rem;">
-            {{ csrf_field() }}
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <table class="table table-striped table-hover">
             <thead>
             <tr>

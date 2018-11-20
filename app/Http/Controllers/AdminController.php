@@ -158,7 +158,6 @@ class AdminController extends Controller
     }
 
     public function getBills(Request $request){
-        $request->session()->flush();
         $url = $request->fullUrl();
         $dangCho = count(Bill::where('status_id', 1)->get());
         $daXacNhan = count(Bill::where('status_id', 2)->get());
