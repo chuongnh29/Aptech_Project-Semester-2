@@ -450,7 +450,7 @@ class AdminController extends Controller
 
 
             if( Auth::attempt(['username' => $userName, 'password' =>$password,'type'=>'0'])) {
-                return redirect()->route('admin.index');
+                return redirect()->route('adminIndex');
             }else{
                 return redirect()->route('getlogin');
             }
