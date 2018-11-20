@@ -16,6 +16,9 @@ use App\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mockery\Exception;
+use Validator;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -171,7 +174,7 @@ class AdminController extends Controller
         $bills = DB::table('bills')
             ->leftJoin('bill_status','bills.status_id','=','bill_status.id')
             ->leftJoin('customer','bills.customer_id','=','customer.id')
-            ->select('bills.id','customer.address','bills.date_order','bills.total', 'bill_status.bill_status_name','bills.note','customer.name as customer_name','customer.phone_number')
+            ->select('bills.id','customer.address','bills.date_order','bills.total', 'bill_status.bill_status_name','bills.note','customer.full_name as customer_name','customer.phone_number')
             ->where($dieuKienTimKiem)
             ->paginate(5);
         $bills->withPath($url);
@@ -420,4 +423,40 @@ class AdminController extends Controller
         return redirect()->route('customer.getAdd');
 
     }
+
+    public function getLogin()
+    {
+        return view('Login.login');
+    }
+
+    public function postLogin(Request $rq)
+    {
+        $rule = [
+            'input_name' => 'required',
+            'input_password' => 'required'
+        ];
+        $message = [
+            'input_name.required' => ' Vui lòng nhập tên đăng nhập',
+            'input_password.required' => ' Vui lòng nhập mật khẩu'
+        ];
+        $validator = Validator::make($rq->all(), $rule, $message);
+
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+            $userName = $rq->input('input_name');
+            $password = $rq->input('input_password');
+
+
+            if( Auth::attempt(['username' => $userName, 'password' =>$password,'type'=>'0'])) {
+                return redirect()->route('admin.index');
+            }else{
+                return redirect()->route('getlogin');
+            }
+        }
+
+    }
+
 }
