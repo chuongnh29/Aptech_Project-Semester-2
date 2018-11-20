@@ -80,7 +80,7 @@
 	       		<tr>	
 	       				<td>{{ $count }}</td>
 
-	       				<td>{{ $items['name'] }}</td>
+	       				<td>{{ $items['full_name'] }}</td>
 
 	       				<td>{{ $items['gender'] }}</td>
 
