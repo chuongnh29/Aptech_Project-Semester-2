@@ -35,6 +35,8 @@ Route::get('login', ['as' => 'login', 'uses' => 'PagesController@getLogin']);
 
 Route::post('login', ['as' => 'login', 'uses' => 'PagesController@postLogin']);
 
+Route::get('forgot-password', ['as' => 'forgotpassword', 'uses' => 'PagesController@getResetPassword']);
+
 Route::get('logout', ['as' => 'logout', 'uses' => 'PagesController@postLogout']);
 
 Route::get('register', ['as' => 'register', 'uses' => 'PagesController@getRegister']);
@@ -50,6 +52,14 @@ Route::get('empty-cart', ['as' => 'emptycart', 'uses' => 'PagesController@getEmp
 Route::get('add-to-cart/{id}', ['as' => 'addtocart', 'uses' => 'PagesController@getAddToCart']);
 
 Route::get('del-cart/{id}', ['as' => 'delcart', 'uses' => 'PagesController@getDelItemCart']);
+
+Route::get('check-out', ['as' => 'checkout', 'uses' => 'PagesController@getCheckOut']);
+
+Route::post('check-out', ['as' => 'checkout', 'uses' => 'PagesController@postCheckOut']);
+
+Route::get('check-login', ['as' => 'checklogin', 'uses' => 'PagesController@getCheckLogin']);
+
+Route::post('check-login', ['as' => 'checklogin', 'uses' => 'PagesController@postCheckLogin']);
 
 Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBySocial');
 

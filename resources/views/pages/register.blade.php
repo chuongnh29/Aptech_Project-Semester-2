@@ -77,6 +77,12 @@
                                        placeholder="Nhập số điện thoại" required>
                             </div>
 
+                            <div class="col-lg-12 form-group">
+                                <label for="email">Địa chỉ <span>*</span></label>
+                                <input class="form-control" type="text" name="address"
+                                       placeholder="Nhập địa chỉ của bạn" required>
+                            </div>
+
                             <div class="col-lg-6 form-group">
                                 <h3>* Các trường bắt buộc</h3>
                             </div>
