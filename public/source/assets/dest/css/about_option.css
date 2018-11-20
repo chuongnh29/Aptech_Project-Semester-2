@@ -1,0 +1,134 @@
+.about_content {
+    text-align: justify;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+}
+
+.about_img_logo img{
+    width: 250px;
+}
+
+.general_intro {
+    margin-left: 10px;
+}
+
+.about_us_01 {
+    margin: 10px;
+    font-size: 15px;
+}
+
+.about_us {
+    background: url(../img/banner/bg_phyilosophy_01.jpg) no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    height: 480px;
+    color: white;
+    max-width: 80%;
+    margin: 5px auto;
+}
+
+.about_us_baner h1, h3 {
+    position: inherit;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 2.5;
+    letter-spacing: .05rem;
+}
+
+.about_us_baner p {
+    position: inherit;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 1.05rem;
+    line-height: 2.5;
+    letter-spacing: .05rem;
+}
+
+/*Team*/
+/***********************************/
+.team {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.team_title {
+    margin-bottom: 90px;
+}
+
+.team_title h1 {
+    margin-bottom: 27px;
+}
+
+.team_title p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.888;
+    margin-bottom: 0px;
+}
+
+.team_container {
+    height: 513px;
+    border-radius: 3px;
+    background: #cebfad;
+}
+
+.team_container:hover {
+    background: #181e1e;
+}
+
+.team_container:hover div,
+.team_container:hover p,
+.team_container:hover a {
+    color: #FFFFFF;
+}
+
+.team_member_image {
+    width: 263px;
+    height: 263px;
+}
+
+.team_member_image img {
+    position: absolute;
+    top: 7px;
+    left: 22px;
+    width: 85%;
+    border-radius: 50%;
+    height: 250px;
+}
+
+.team_member_content {
+    padding-left: 40px;
+    padding-right: 30px;
+    margin-top: 10px;
+}
+
+.team_member_name {
+    font-size: 24px;
+    font-weight: 500;
+    color: #28262d;
+    margin-bottom: -10px;
+}
+
+.team_member_title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #d20a0a;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.team_container p {
+    margin-bottom: 23px;
+}
+
+.team_member_link a {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #262626;
+}

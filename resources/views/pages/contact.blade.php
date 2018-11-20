@@ -1,86 +1,107 @@
 @extends('master')
 @section('title')
-    Liên hệ
+    {{__('message.contact')}}
 @endsection
 @section('content')
     <!--================Categories Banner Area =================-->
-    <section class="categories_banner_area">
+    <section class="link_page_LW_area">
         <div class="container">
-            <div class="c_banner_inner">
+            <div class="link_page_LW">
                 <ul>
-                    <li><a href="{{route('home')}}">Trang chủ</a></li>
-                    <li class="current"><a href="#">Liên hệ</a></li>
+                    <li><a href="{{route('home')}}">{{__('message.home')}}</a></li>
+                    <li><a>{{__('message.contact')}}</a></li>
                 </ul>
             </div>
         </div>
     </section>
+
+    <section class="contact">
+        <div class="contact_baner">
+            <h1 style="font-size: 3.25rem; padding-top: 20px;">Luxury Watch</h1>
+            <h3>better starts now</h3>
+        </div>
+    </section>
+
     <!--================End Categories Banner Area =================-->
 
-    <!--================Contact Area =================-->
-    <section class="contact_area p_100">
+    <section class="get_in_touch_area p_100">
         <div class="container">
-            <div class="contact_title">
-                <h2>Get in Touch</h2>
-                {{--<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur--}}
-                    {{--magni dolores eos qui.</p>--}}
-            </div>
-            <div class="row contact_details">
-                <div class="col-lg-4 col-md-6">
-                    <div class="media">
-                        <div class="d-flex">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div class="row get_touch_inner">
+                <div class="row contact_details contact_option">
+                    <div class="row">
+                        <div class="row media contact_1">
+                            <div class="d-flex luxury_info">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body luxury_info">
+                                <p class="info_1">{{__('message.address_1')}}<br/>{{__('message.address_2')}}</p>
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <p>Detech Building, 8A Tôn Thất Thuyết<br/>Mỹ Đình 2, Nam Từ Liêm, Hà Nội.</p>
+
+                        <div class="row media contact_1">
+                            <div class="d-flex luxury_info">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body luxury_info">
+                                <a class="info_1" href="tel:+1109171234567">+84 988 888 666</a>
+                                <a class="info_1" href="tel:+1101911897654">+84 988 666 999</a>
+                            </div>
                         </div>
+
+                        <div class="row media contact_1">
+                            <div class="d-flex luxury_info">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body luxury_info">
+                                <a class="info_1" href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
+                                <a class="info_1" href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-lg-6 col-md-6 maps_option">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1279.185515216312!2d105.7811353948998!3d21.028648064952094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b3260b1a8b%3A0x862052392e3f478e!2zOCBUw7RuIFRo4bqldCBUaHV54bq_dCwgTeG7uSDEkMOsbmgsIFThu6sgTGnDqm0sIEjDoCBO4buZaSAxMDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1541788654309"
+                                width="600" height="470" frameborder="2" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="row col-lg-6 contact_col_2">
+                        <form class="contact_us_form row" id="contactForm" action="{!! url('contact')!!}" method="post"
+                              novalidate="novalidate">
+                            <input type="hidden" name="_token" value="!!csrf_token!!">
+                            <div class="form-group col-lg-12">
+                                <h4 class="m-text26 contact_me">
+                                    CONTACT ME
+                                </h4>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="text" class="form-control" id="name" name="name"
+                                       placeholder="{{__('message.contact_name')}}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="email" class="form-control" id="email" name="phone"
+                                       placeholder="{{__('message.contact_phone')}}">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input type="text" class="form-control" id="subject" name="subject"
+                                       placeholder="{{__('message.contact_subject')}}">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input type="text" class="form-control" id="subject" name="email"
+                                       placeholder="{{__('message.contact_email')}}">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <textarea class="form-control" name="message" id="message" rows="1"
+                                          placeholder="{{__('message.contact_message')}}"
+                                          style="height: 200px;"></textarea>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <button type="submit" value="submit" class="btn submit_btn form-control">{{__('message.send_feedback')}}</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="media">
-                        <div class="d-flex">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                        </div>
-                        <div class="media-body">
-                            <a href="tel:+1109171234567">+84 988 888 666</a>
-                            <a href="tel:+1101911897654">+84 988 666 999</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="media">
-                        <div class="d-flex">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </div>
-                        <div class="media-body">
-                            <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
-                            <a href="mailto:luxurywatch94@gmail.com">luxurywatch94@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contact_form_inner">
-                <h3>Để lại một lời nhắn</h3>
-                <form class="contact_us_form row" action="contact_process.php" method="post" id="contactForm"
-                      novalidate="novalidate">
-                    <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên *">
-                    </div>
-                    <div class="form-group col-lg-4">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email *">
-                    </div>
-                    <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <textarea class="form-control" name="message" id="message" rows="1"
-                                  placeholder="Nhập lời nhắn..."></textarea>
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <button type="submit" value="submit" class="btn update_btn form-control">Gửi tin nhắn</button>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
+
+    <!--================End Get in Touch Area =================-->
     <!--================End Contact Area =================-->
 @endsection
