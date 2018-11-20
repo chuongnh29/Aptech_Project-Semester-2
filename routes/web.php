@@ -77,7 +77,7 @@ Route::get('admin/getproduct', 'AdminController@getProductManager')->middleware(
 
 Route::get('admin/addproduct', 'AdminController@getAddProduct')->middleware('adminLogin')->name('addProductForm');
 
-Route::post('admin/products/delete/{id}', 'ProductController@destroy');
+Route::post('admin/products/delete/{id}', 'ProductController@destroy')->middleware('adminLogin');
 
 Route::get('admin/products/delete/{id}', 'ProductController@destroy')->middleware('adminLogin');
 
@@ -87,17 +87,17 @@ Route::post('admin/products/add', 'ProductController@create')->name('addProduct'
 
 Route::get('admin/edit/{id}', 'AdminController@getAddProduct')->middleware('adminLogin')->name('editProductForm');
 
-Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->middleware('adminLogin')->name('getPost');
+Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->name('getPost');
 
-Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editProduct');
+Route::post('admin/products/edit/{id}', 'ProductController@edit')->middleware('adminLogin')->name('editProduct');
 
-Route::get('admin/bills', 'AdminController@getBills')->name('bills');
+Route::get('admin/bills', 'AdminController@getBills')->middleware('adminLogin')->name('bills');
 
 Route::get('admin/bills/billform/{id?}', 'AdminController@getBillForm')->middleware('adminLogin')->name('addBillForm');
 
-Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
+Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->middleware('adminLogin')->name('editBillsStatus');
 
-Route::post('admin/products/getprice/{id}', 'ProductController@getPrice')->name('getPrice');
+Route::post('admin/products/getprice/{id}', 'ProductController@getPrice')->middleware('adminLogin')->name('getPrice');
 
 Route::group(['prefix'=>'admin/type_product','middleware'=>'adminLogin'],function(){
 	Route::get('list',['as'=>'Tproduct.list','uses'=>'AdminController@getList']);
@@ -125,6 +125,6 @@ Route::group(['prefix'=>'admin/login'],function()
 });
 
 
-Route::post('admin/billDetail/{type}/{id?}', 'BillsController@billDetail')->name('billDetail');
+Route::post('admin/billDetail/{type}/{id?}', 'BillsController@billDetail')->middleware('adminLogin')->name('billDetail');
 
-Route::get('admin/billDetail/{type}/back/{id?}', 'BillsController@backBill')->name('addBack');
+Route::get('admin/billDetail/{type}/back/{id?}', 'BillsController@backBill')->middleware('adminLogin')->name('addBack');

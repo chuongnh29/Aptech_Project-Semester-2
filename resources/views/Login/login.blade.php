@@ -22,7 +22,7 @@
 <div class="login-form">
 <div class="main-div">
     <div class="panel">
-   <h2>Admin Login</h2>
+   <h2>Admin đăng nhập</h2>
    <p></p>
    </div>
    @include('errorValidate')
@@ -46,7 +46,7 @@
 
     </form>
     </div>
-<p class="botto-text"> Designed by Sunil Rajput</p>
+<p class="botto-text"> Designed by @</p>
 </div></div></div>
 
 
