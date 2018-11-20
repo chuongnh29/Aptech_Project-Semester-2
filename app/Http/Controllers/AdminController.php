@@ -16,6 +16,9 @@ use App\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mockery\Exception;
+use Validator;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -419,4 +422,40 @@ class AdminController extends Controller
         return redirect()->route('customer.getAdd');
 
     }
+
+    public function getLogin()
+    {
+        return view('Login.login');
+    }
+
+    public function postLogin(Request $rq)
+    {
+        $rule = [
+            'input_name' => 'required',
+            'input_password' => 'required'
+        ];
+        $message = [
+            'input_name.required' => ' Vui lòng nhập tên đăng nhập',
+            'input_password.required' => ' Vui lòng nhập mật khẩu'
+        ];
+        $validator = Validator::make($rq->all(), $rule, $message);
+
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+            $userName = $rq->input('input_name');
+            $password = $rq->input('input_password');
+
+
+            if( Auth::attempt(['username' => $userName, 'password' =>$password,'type'=>'0'])) {
+                return redirect()->route('admin.index');
+            }else{
+                return redirect()->route('getlogin');
+            }
+        }
+
+    }
+
 }

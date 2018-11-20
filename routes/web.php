@@ -65,41 +65,41 @@ Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('loginBy
 
 Route::get('/callback/{social}', 'SocialAuthController@callback');
 
-Route::get('admin/index', 'AdminController@getIndex');
+Route::get('admin/index', 'AdminController@getIndex')->middleware('adminLogin');
 
-Route::get('admin/getproduct', 'AdminController@getProductManager');
+Route::get('admin/getproduct', 'AdminController@getProductManager')->middleware('adminLogin');
 
-Route::get('admin/addproduct', 'AdminController@getAddProduct');
+Route::get('admin/addproduct', 'AdminController@getAddProduct')->middleware('adminLogin');
 
-Route::get('admin/index', 'AdminController@getIndex')->name('adminIndex');
+Route::get('admin/index', 'AdminController@getIndex')->middleware('adminLogin')->name('adminIndex');
 
-Route::get('admin/getproduct', 'AdminController@getProductManager')->name('product');
+Route::get('admin/getproduct', 'AdminController@getProductManager')->middleware('adminLogin')->name('product');
 
-Route::get('admin/addproduct', 'AdminController@getAddProduct')->name('addProductForm');
+Route::get('admin/addproduct', 'AdminController@getAddProduct')->middleware('adminLogin')->name('addProductForm');
 
 Route::post('admin/products/delete/{id}', 'ProductController@destroy');
 
-Route::get('admin/products/delete/{id}', 'ProductController@destroy');
+Route::get('admin/products/delete/{id}', 'ProductController@destroy')->middleware('adminLogin');
 
 Route::get('admin/products/delete/{id}', 'ProductController@destroy')->name('delete');
 
 Route::post('admin/products/add', 'ProductController@create')->name('addProduct');
 
-Route::get('admin/edit/{id}', 'AdminController@getAddProduct')->name('editProductForm');
+Route::get('admin/edit/{id}', 'AdminController@getAddProduct')->middleware('adminLogin')->name('editProductForm');
 
-Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->name('getPost');
+Route::get('admin/products/getpost/{id}', 'ProductController@getPost')->middleware('adminLogin')->name('getPost');
 
 Route::post('admin/products/edit/{id}', 'ProductController@edit')->name('editProduct');
 
 Route::get('admin/bills', 'AdminController@getBills')->name('bills');
 
-Route::get('admin/bills/billform/{id?}', 'AdminController@getBillForm')->name('addBillForm');
+Route::get('admin/bills/billform/{id?}', 'AdminController@getBillForm')->middleware('adminLogin')->name('addBillForm');
 
 Route::post('admin/bills/editstatus','BillsController@editBillsStatus')->name('editBillsStatus');
 
 Route::post('admin/products/getprice/{id}', 'ProductController@getPrice')->name('getPrice');
 
-Route::group(['prefix'=>'type_product'],function(){
+Route::group(['prefix'=>'admin/type_product','middleware'=>'adminLogin'],function(){
 	Route::get('list',['as'=>'Tproduct.list','uses'=>'AdminController@getList']);
 	Route::get('add',['as'=>'Tproduct.getadd','uses'=>'AdminController@getadd_type_product']);
 	Route::post('add',['as'=>'Tproduct.postadd','uses'=>'AdminController@postadd_type_product']);
@@ -108,7 +108,7 @@ Route::group(['prefix'=>'type_product'],function(){
 	Route::post('edit/{id}',['as'=>'Tproduct.postEdit','uses'=>'AdminController@postedit_type_product']);
 });
 
-Route::group(['prefix'=>'customer'],function()
+Route::group(['prefix'=>'admin/customer','middleware'=>'adminLogin'],function()
 {
 	Route::get('add',['as'=>'customer.getAdd','uses'=>'AdminController@getAdd_customer']);
 	Route::post('add',['as'=>'customer.postAdd','uses'=>'AdminController@postAdd_customer']);
@@ -117,6 +117,13 @@ Route::group(['prefix'=>'customer'],function()
 	Route::get('delete/{id}',['as'=>'customer.getDelete','uses'=>'AdminController@getDelelte_customer']);
 
 });
+
+Route::group(['prefix'=>'admin/login'],function()
+{
+	Route::get('/',['as'=>'getlogin','uses'=>'AdminController@getLogin']);
+	Route::post('/',['as'=>'postLogin','uses'=>'AdminController@postLogin']);
+});
+
 
 Route::post('admin/billDetail/{type}/{id?}', 'BillsController@billDetail')->name('billDetail');
 
